@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{66dbeba6-c7fc-4f0f-8f7d-0f32bcd3ae19}</ProjectGuid>
+    <RootNamespace>argent</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>.\External\Imgui\;.\External\DirectXShaderCompiler\Inc\;.\External\DirectXTK12\Inc\;.\External\Assimp\include;.\External\Meshoptimizer\inc\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>.\External\DirectXTK12\Lib\Debug;.\External\DirectXShaderCompiler\Lib\;.\External\Assimp\lib\Debug\;.\External\Meshoptimizer\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>DXGI.lib;D3D12.lib;dxcompiler.lib;DirectXTK12.lib;assimp-vc143-mtd.lib;meshoptimizer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <DelayLoadDLLs>%(DelayLoadDLLs)</DelayLoadDLLs>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <AdditionalIncludeDirectories>.\External\Imgui\;.\External\DirectXShaderCompiler\Inc\;.\External\DirectXTK12\Inc\;.\External\Assimp\include;.\External.\Meshoptimizer\inc\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>DXGI.lib;D3D12.lib;dxcompiler.lib;DirectXTK12.lib;assimp-vc143-mt.lib;meshoptimizer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\External\DirectXShaderCompiler\Lib\;.\External\DirectXTK12\Lib\Release\;.\External\Assimp\lib\Release\;.\External\Meshoptimizer\lib\Release\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="External\Imgui\imgui.cpp" />
+    <ClCompile Include="External\Imgui\imgui_draw.cpp" />
+    <ClCompile Include="External\Imgui\imgui_tables.cpp" />
+    <ClCompile Include="External\Imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Source\Camera.cpp" />
+    <ClCompile Include="source\core\Application.cpp" />
+    <ClCompile Include="Source\Core\Engine.cpp" />
+    <ClCompile Include="Source\core\Timer.cpp" />
+    <ClCompile Include="Source\Core\Window.cpp" />
+    <ClCompile Include="Source\DemoScene.cpp" />
+    <ClCompile Include="Source\Editor\Editor.cpp" />
+    <ClCompile Include="Source\Editor\EditorCamera.cpp" />
+    <ClCompile Include="Source\Graphics\GraphicsCommandList.cpp" />
+    <ClCompile Include="Source\Graphics\Dx12\Descriptor.cpp" />
+    <ClCompile Include="Source\Graphics\Dx12\DescriptorHeap.cpp" />
+    <ClCompile Include="Source\Graphics\Dx12\Dx12Utility.cpp" />
+    <ClCompile Include="Source\Graphics\Dx12\RootSignature.cpp" />
+    <ClCompile Include="Source\Graphics\FrameResource.cpp" />
+    <ClCompile Include="source\graphics\GraphicsEngine.cpp" />
+    <ClCompile Include="Source\Graphics\GraphicsPipelineState.cpp" />
+    <ClCompile Include="Source\Graphics\GraphicsUtility.cpp" />
+    <ClCompile Include="Source\Graphics\ImGuiController.cpp" />
+    <ClCompile Include="Source\Graphics\IndexBuffer.cpp" />
+    <ClCompile Include="Source\Graphics\Material.cpp" />
+    <ClCompile Include="Source\Graphics\Mesh.cpp" />
+    <ClCompile Include="Source\Graphics\Model.cpp" />
+    <ClCompile Include="Source\Graphics\RenderContext.cpp" />
+    <ClCompile Include="Source\Graphics\Shader.cpp" />
+    <ClCompile Include="Source\Graphics\ShaderCompiler.cpp" />
+    <ClCompile Include="Source\Graphics\SkeletalMeshRenderer.cpp" />
+    <ClCompile Include="Source\Graphics\Skeleton.cpp" />
+    <ClCompile Include="Source\Graphics\StaticMeshRenderer.cpp" />
+    <ClCompile Include="Source\Graphics\StructuredBuffer.cpp" />
+    <ClCompile Include="Source\Graphics\Texture.cpp" />
+    <ClCompile Include="Source\Graphics\VertexBuffer.cpp" />
+    <ClCompile Include="Source\Input\GamePad.cpp" />
+    <ClCompile Include="Source\Input\InputManager.cpp" />
+    <ClCompile Include="Source\Input\Keyboard.cpp" />
+    <ClCompile Include="Source\Input\Mouse.cpp" />
+    <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\ModelImpoter.cpp" />
+    <ClCompile Include="Source\Scene\BaseScene.cpp" />
+    <ClCompile Include="Source\Scene\SceneManager.cpp" />
+    <ClCompile Include="Source\SpriteRenderer.cpp" />
+    <ClCompile Include="Source\SubSystem\Subsystem.cpp" />
+    <ClCompile Include="Source\Transform.cpp" />
+    <ClCompile Include="Source\Utility\Random.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="External\Imgui\imgui.h" />
+    <ClInclude Include="External\Imgui\imgui_internal.h" />
+    <ClInclude Include="External\Imgui\imstb_rectpack.h" />
+    <ClInclude Include="External\Imgui\imstb_textedit.h" />
+    <ClInclude Include="External\Imgui\imstb_truetype.h" />
+    <ClInclude Include="Source\Camera.h" />
+    <ClInclude Include="source\core\Application.h" />
+    <ClInclude Include="Source\Core\Engine.h" />
+    <ClInclude Include="Source\core\Timer.h" />
+    <ClInclude Include="Source\Core\Window.h" />
+    <ClInclude Include="Source\DemoScene.h" />
+    <ClInclude Include="Source\Editor\Editor.h" />
+    <ClInclude Include="Source\Editor\EditorCamera.h" />
+    <ClInclude Include="Source\Graphics\AnimationClip.h" />
+    <ClInclude Include="Source\Graphics\GraphicsCommandList.h" />
+    <ClInclude Include="Source\Graphics\ConstantBuffer.h" />
+    <ClInclude Include="Source\Graphics\Dx12\Descriptor.h" />
+    <ClInclude Include="Source\Graphics\Dx12\DescriptorHeap.h" />
+    <ClInclude Include="Source\Graphics\Dx12\Dx12Utility.h" />
+    <ClInclude Include="Source\Graphics\Dx12\RootSignature.h" />
+    <ClInclude Include="Source\Graphics\FrameResource.h" />
+    <ClInclude Include="source\graphics\GraphicsEngine.h" />
+    <ClInclude Include="Source\Graphics\GraphicsPipelineState.h" />
+    <ClInclude Include="Source\Graphics\GraphicsUtility.h" />
+    <ClInclude Include="Source\Graphics\ImGuiController.h" />
+    <ClInclude Include="Source\Graphics\IndexBuffer.h" />
+    <ClInclude Include="Source\Graphics\Material.h" />
+    <ClInclude Include="Source\Graphics\Mesh.h" />
+    <ClInclude Include="Source\Graphics\Model.h" />
+    <ClInclude Include="Source\Graphics\RenderContext.h" />
+    <ClInclude Include="Source\Graphics\Shader.h" />
+    <ClInclude Include="Source\Graphics\ShaderCompiler.h" />
+    <ClInclude Include="Source\Graphics\SkeletalMeshRenderer.h" />
+    <ClInclude Include="Source\Graphics\Skeleton.h" />
+    <ClInclude Include="Source\Graphics\StaticMeshRenderer.h" />
+    <ClInclude Include="Source\Graphics\StructuredBuffer.h" />
+    <ClInclude Include="Source\Graphics\Texture.h" />
+    <ClInclude Include="Source\Graphics\VertexBuffer.h" />
+    <ClInclude Include="Source\Input\GamePad.h" />
+    <ClInclude Include="Source\Input\InputManager.h" />
+    <ClInclude Include="Source\Input\Keyboard.h" />
+    <ClInclude Include="Source\Input\Mouse.h" />
+    <ClInclude Include="Source\ModelImpoter.h" />
+    <ClInclude Include="Source\Scene\BaseScene.h" />
+    <ClInclude Include="Source\Scene\SceneManager.h" />
+    <ClInclude Include="Source\SpriteRenderer.h" />
+    <ClInclude Include="Source\SubSystem\Subsystem.h" />
+    <ClInclude Include="Source\Transform.h" />
+    <ClInclude Include="source\utility\Misc.h" />
+    <ClInclude Include="Source\Utility\Random.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

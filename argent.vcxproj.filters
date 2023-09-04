@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="source\core\Application.cpp">
+      <Filter>Argent\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="source\graphics\GraphicsEngine.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Dx12\DescriptorHeap.cpp">
+      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Dx12\Descriptor.cpp">
+      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\FrameResource.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Dx12\Dx12Utility.cpp">
+      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utility\Random.cpp">
+      <Filter>Argent\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\ShaderCompiler.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Dx12\RootSignature.cpp">
+      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\GraphicsPipelineState.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\GraphicsUtility.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Shader.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="External\Imgui\imgui.cpp">
+      <Filter>External\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="External\Imgui\imgui_draw.cpp">
+      <Filter>External\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="External\Imgui\imgui_tables.cpp">
+      <Filter>External\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="External\Imgui\imgui_widgets.cpp">
+      <Filter>External\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\VertexBuffer.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\ImGuiController.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Texture.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\core\Timer.cpp">
+      <Filter>Argent\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\IndexBuffer.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scene\BaseScene.cpp">
+      <Filter>Argent\SubSystem\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Scene\SceneManager.cpp">
+      <Filter>Argent\SubSystem\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DemoScene.cpp" />
+    <ClCompile Include="Source\Graphics\Model.cpp">
+      <Filter>Argent\SubSystem\Graphics\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Material.cpp">
+      <Filter>Argent\SubSystem\Graphics\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Mesh.cpp">
+      <Filter>Argent\SubSystem\Graphics\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SubSystem\Subsystem.cpp">
+      <Filter>Argent\SubSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Engine.cpp">
+      <Filter>Argent\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Window.cpp">
+      <Filter>Argent\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Transform.cpp">
+      <Filter>Com</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Camera.cpp">
+      <Filter>Com</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\GraphicsCommandList.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\RenderContext.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\StructuredBuffer.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModelImpoter.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Skeleton.cpp">
+      <Filter>Argent\SubSystem\Graphics\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Editor\Editor.cpp">
+      <Filter>Argent\SubSystem\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Input\InputManager.cpp">
+      <Filter>Argent\SubSystem\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Input\Keyboard.cpp">
+      <Filter>Argent\SubSystem\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Input\Mouse.cpp">
+      <Filter>Argent\SubSystem\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Editor\EditorCamera.cpp">
+      <Filter>Argent\SubSystem\Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Input\GamePad.cpp">
+      <Filter>Argent\SubSystem\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\SkeletalMeshRenderer.cpp">
+      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SpriteRenderer.cpp">
+      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\StaticMeshRenderer.cpp">
+      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="External">
+      <UniqueIdentifier>{0544e1e9-002f-4301-bf53-b72065371520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\Imgui">
+      <UniqueIdentifier>{9326f7eb-4f65-44f2-b3fb-0e0873ff8e30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent">
+      <UniqueIdentifier>{b1461a96-e29b-4d97-b63a-35e634d22cbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\Utility">
+      <UniqueIdentifier>{fa31b989-44a7-493f-ac09-316d9ff8e967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\Core">
+      <UniqueIdentifier>{478b5aea-6915-4477-b154-1782ca80861a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem">
+      <UniqueIdentifier>{194c2c7f-eca1-49c5-86db-865388074c57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Scene">
+      <UniqueIdentifier>{78b3777c-02cf-42bd-95b7-c5e98d051e6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Graphics">
+      <UniqueIdentifier>{4b8a03b9-d07d-4958-906a-4981d3675030}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Graphics\Dx12">
+      <UniqueIdentifier>{a7e8d8f7-9c3c-4565-8df6-10e0176d8a82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Graphics\Model">
+      <UniqueIdentifier>{002c2379-45aa-438d-9823-c12a2ef77c8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Com">
+      <UniqueIdentifier>{875b541c-4c5b-447c-8393-e7085554bcd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Editor">
+      <UniqueIdentifier>{4b40ab6d-9f86-4e2e-a683-3579077aa530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Input">
+      <UniqueIdentifier>{63e4084f-161a-47d4-98bf-73adb2444936}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Project">
+      <UniqueIdentifier>{b3d32644-a796-42be-89bb-1935ea92b875}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Graphics\Renderer">
+      <UniqueIdentifier>{14430b0e-b285-4789-8a1f-81a1224b5c0c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\core\Application.h">
+      <Filter>Argent\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="source\utility\Misc.h">
+      <Filter>Argent\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="source\graphics\GraphicsEngine.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Dx12\DescriptorHeap.h">
+      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Dx12\Descriptor.h">
+      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\FrameResource.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Dx12\Dx12Utility.h">
+      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utility\Random.h">
+      <Filter>Argent\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Dx12\RootSignature.h">
+      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\ShaderCompiler.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\GraphicsPipelineState.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\GraphicsUtility.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Shader.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="External\Imgui\imgui.h">
+      <Filter>External\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="External\Imgui\imgui_internal.h">
+      <Filter>External\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="External\Imgui\imstb_rectpack.h">
+      <Filter>External\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="External\Imgui\imstb_textedit.h">
+      <Filter>External\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="External\Imgui\imstb_truetype.h">
+      <Filter>External\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\VertexBuffer.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\ImGuiController.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Texture.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\core\Timer.h">
+      <Filter>Argent\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\ConstantBuffer.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\IndexBuffer.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scene\BaseScene.h">
+      <Filter>Argent\SubSystem\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Scene\SceneManager.h">
+      <Filter>Argent\SubSystem\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DemoScene.h" />
+    <ClInclude Include="Source\Graphics\Model.h">
+      <Filter>Argent\SubSystem\Graphics\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Mesh.h">
+      <Filter>Argent\SubSystem\Graphics\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Material.h">
+      <Filter>Argent\SubSystem\Graphics\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SubSystem\Subsystem.h">
+      <Filter>Argent\SubSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\Engine.h">
+      <Filter>Argent\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\Window.h">
+      <Filter>Argent\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Transform.h">
+      <Filter>Com</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Camera.h">
+      <Filter>Com</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\GraphicsCommandList.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\RenderContext.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\StructuredBuffer.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModelImpoter.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Skeleton.h">
+      <Filter>Argent\SubSystem\Graphics\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Editor\Editor.h">
+      <Filter>Argent\SubSystem\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Input\InputManager.h">
+      <Filter>Argent\SubSystem\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Input\Keyboard.h">
+      <Filter>Argent\SubSystem\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Input\Mouse.h">
+      <Filter>Argent\SubSystem\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Editor\EditorCamera.h">
+      <Filter>Argent\SubSystem\Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Input\GamePad.h">
+      <Filter>Argent\SubSystem\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\SkeletalMeshRenderer.h">
+      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SpriteRenderer.h">
+      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\StaticMeshRenderer.h">
+      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\AnimationClip.h">
+      <Filter>Argent\SubSystem\Graphics\Model</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <FxCompile Include="..\Assets\Shader\ImGuiVS.hlsl" />
+    <FxCompile Include="..\Assets\Shader\ImGuiPS.hlsl" />
+    <FxCompile Include="..\Assets\Shader\SpritePS.hlsl" />
+    <FxCompile Include="..\Assets\Shader\SpriteVS.hlsl" />
+    <FxCompile Include="..\Assets\Shader\StaticMeshVS.hlsl" />
+    <FxCompile Include="..\Assets\Shader\StaticMeshPS.hlsl" />
+    <FxCompile Include="..\Assets\Shader\DemoMeshShaderPS.hlsl" />
+    <FxCompile Include="..\Assets\Shader\DemoMeshShaderAS.hlsl" />
+    <FxCompile Include="..\Assets\Shader\DemoMeshShaderAMS.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\External\DirectXTK12\Inc\SimpleMath.inl">
+      <Filter>External\DirectXTK12</Filter>
+    </None>
+    <None Include="..\Assets\Shader\ImGui.hlsli" />
+    <None Include="..\Assets\Shader\RootSignature.hlsli" />
+    <None Include="..\Assets\Shader\StaticMesh.hlsli" />
+    <None Include="..\Assets\Shader\DemoMeshShader.hlsli" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="External">
+      <UniqueIdentifier>{92344264-9d20-481a-a6fd-e0baa88e2ac3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\DirectXShaderCompiler">
+      <UniqueIdentifier>{a6997e47-fe3a-415b-bb9d-29d5bbb1496b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External\DirectXTK12">
+      <UniqueIdentifier>{6d89f88c-0192-41de-8c1f-1699b18e4bfb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\External\DirectXShaderCompiler\Inc\d3d12shader.h">
+      <Filter>External\DirectXShaderCompiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXShaderCompiler\Inc\dxcapi.h">
+      <Filter>External\DirectXShaderCompiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXShaderCompiler\Inc\dxcerrors.h">
+      <Filter>External\DirectXShaderCompiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXShaderCompiler\Inc\dxcisense.h">
+      <Filter>External\DirectXShaderCompiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\Audio.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\BufferHelpers.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\CommonStates.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\DDSTextureLoader.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\DescriptorHeap.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\DirectXHelpers.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\EffectPipelineStateDescription.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\Effects.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\GamePad.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\GeometricPrimitive.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\GraphicsMemory.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\Keyboard.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\Model.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\Mouse.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\PostProcess.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\PrimitiveBatch.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\RenderTargetState.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\ResourceUploadBatch.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\ScreenGrab.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\SimpleMath.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\SpriteBatch.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\SpriteFont.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\VertexTypes.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\WICTextureLoader.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\External\DirectXTK12\Inc\XboxDDSTextureLoader.h">
+      <Filter>External\DirectXTK12</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Assets\Shader\Constant.h" />
+    <ClInclude Include="..\Assets\Shader\RenderResource.h" />
+  </ItemGroup>
+</Project>
