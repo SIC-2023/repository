@@ -1,28 +1,13 @@
 #include "Material.h"
 
 #include "ConstantBuffer.h"
+#include "GraphicsEngine.h"
 #include "Texture.h"
 #include "Dx12/DescriptorHeap.h"
+#include "imgui.h"
 
 namespace argent::graphics
 {
-	//PbrMaterial::PbrMaterial(ID3D12Device* device, ID3D12CommandQueue* command_queue,
-	//	dx12::DescriptorHeap* srv_descriptor_heap, const Data& data)
-	//{
-	//	//マップはコピー禁止なのでfor文で全部移していく
-	//	for(const auto& d : data.texture_data_)
-	//	{
-	//		data_.texture_data_[d.first] = d.second;
-	//	}
-	//	data_.name_ = data.name_;
-
-	//	for(const auto& d : data.texture_data_)
-	//	{
-	//		textures_[d.first] = std::make_unique<Texture>(device, command_queue, d.second.c_str(), srv_descriptor_heap->PopDescriptor());
-	//		//textures_[d.first] = std::make_unique<Texture>(device, command_queue, d.second.c_str(), srv_descriptor_heap->PopDescriptor());
-	//	}
-	//}
-
 	PbrMaterial::PbrMaterial(const GraphicsContext& graphics_context, const Data& data)
 	{
 		//マップはコピー禁止なのでfor文で全部移していく
@@ -37,7 +22,7 @@ namespace argent::graphics
 			textures_[d.first] = std::make_unique<Texture>(graphics_context, d.second.c_str());
 			//textures_[d.first] = std::make_unique<Texture>(device, command_queue, d.second.c_str(), srv_descriptor_heap->PopDescriptor());
 		}
-
+		constant_buffer_ = std::make_unique<ConstantBuffer<Constant>>(graphics_context.device_, graphics_context.cbv_srv_uav_heap_->PopDescriptor());
 	}
 
 	void PbrMaterial::UpdateConstantBuffer()
@@ -56,5 +41,17 @@ namespace argent::graphics
 	uint64_t PbrMaterial::GetHeapIndex() const
 	{
 		return constant_buffer_->GetHeapIndex();
+	}
+
+	void PbrMaterial::OnGui()
+	{
+		if(ImGui::TreeNode("マテリアル"))
+		{
+			uint64_t base = textures_.at(TextureUsage::BaseColor)->GetHeapIndex();
+			uint64_t normal = textures_.at(TextureUsage::Normal)->GetHeapIndex();
+			ImGui::Image(reinterpret_cast<ImTextureID>(base), ImVec2(128, 128));
+			ImGui::Image(reinterpret_cast<ImTextureID>(normal), ImVec2(128, 128));
+			ImGui::TreePop();
+		}
 	}
 }

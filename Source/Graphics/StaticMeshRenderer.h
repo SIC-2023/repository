@@ -1,18 +1,18 @@
 #pragma once
 
-#include "Dx12/Descriptor.h"
 
 #include "ConstantBuffer.h"
-#include "Model.h"
 #include "GraphicsPipelineState.h"
-
-#include "../Transform.h"
+#include "Model.h"
 
 namespace argent::graphics
 {
 	struct GraphicsContext;
 	class RenderContext;
 
+	/**
+	 * \brief ボーンなし3Dモデル描画クラス
+	 */
 	class StaticMeshRenderer
 	{
 	public:

@@ -19,6 +19,7 @@
     <None Include="..\Assets\Shader\RootSignature.hlsli" />
     <None Include="..\Assets\Shader\StaticMesh.hlsli" />
     <None Include="..\Assets\Shader\DemoMeshShader.hlsli" />
+    <None Include="..\Assets\Shader\CommonCalc.hlsli" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">

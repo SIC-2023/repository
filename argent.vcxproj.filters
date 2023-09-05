@@ -5,37 +5,22 @@
     <ClCompile Include="source\core\Application.cpp">
       <Filter>Argent\Core</Filter>
     </ClCompile>
-    <ClCompile Include="source\graphics\GraphicsEngine.cpp">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Graphics\Dx12\DescriptorHeap.cpp">
-      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
+      <Filter>Argent\SubSystem\Graphics\Dx12Wrap</Filter>
     </ClCompile>
     <ClCompile Include="Source\Graphics\Dx12\Descriptor.cpp">
-      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Graphics\FrameResource.cpp">
-      <Filter>Argent\SubSystem\Graphics</Filter>
+      <Filter>Argent\SubSystem\Graphics\Dx12Wrap</Filter>
     </ClCompile>
     <ClCompile Include="Source\Graphics\Dx12\Dx12Utility.cpp">
-      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
+      <Filter>Argent\SubSystem\Graphics\Dx12Wrap</Filter>
     </ClCompile>
     <ClCompile Include="Source\Utility\Random.cpp">
       <Filter>Argent\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Graphics\ShaderCompiler.cpp">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Graphics\Dx12\RootSignature.cpp">
-      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Graphics\GraphicsPipelineState.cpp">
-      <Filter>Argent\SubSystem\Graphics</Filter>
+      <Filter>Argent\SubSystem\Graphics\Dx12Wrap</Filter>
     </ClCompile>
     <ClCompile Include="Source\Graphics\GraphicsUtility.cpp">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Graphics\Shader.cpp">
       <Filter>Argent\SubSystem\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="External\Imgui\imgui.cpp">
@@ -50,20 +35,11 @@
     <ClCompile Include="External\Imgui\imgui_widgets.cpp">
       <Filter>External\Imgui</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Graphics\VertexBuffer.cpp">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Graphics\ImGuiController.cpp">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Graphics\Texture.cpp">
       <Filter>Argent\SubSystem\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Source\core\Timer.cpp">
       <Filter>Argent\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Graphics\IndexBuffer.cpp">
-      <Filter>Argent\SubSystem\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Source\Scene\BaseScene.cpp">
       <Filter>Argent\SubSystem\Scene</Filter>
@@ -96,18 +72,6 @@
     <ClCompile Include="Source\Camera.cpp">
       <Filter>Com</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Graphics\GraphicsCommandList.cpp">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Graphics\RenderContext.cpp">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Graphics\StructuredBuffer.cpp">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModelImpoter.cpp">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Graphics\Skeleton.cpp">
       <Filter>Argent\SubSystem\Graphics\Model</Filter>
     </ClCompile>
@@ -138,8 +102,44 @@
     <ClCompile Include="Source\Graphics\SpriteRenderer.cpp">
       <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ModelImpoter.cpp">
+      <Filter>Argent\SubSystem\Graphics\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\IndexBuffer.cpp">
+      <Filter>Argent\SubSystem\Graphics\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\StructuredBuffer.cpp">
+      <Filter>Argent\SubSystem\Graphics\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\VertexBuffer.cpp">
+      <Filter>Argent\SubSystem\Graphics\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\GraphicsCommandList.cpp">
+      <Filter>Argent\SubSystem\Graphics\Dx12Wrap</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\GraphicsPipelineState.cpp">
+      <Filter>Argent\SubSystem\Graphics\Dx12Wrap</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\ShaderCompiler.cpp">
+      <Filter>Argent\SubSystem\Graphics\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Shader.cpp">
+      <Filter>Argent\SubSystem\Graphics\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\Texture.cpp">
+      <Filter>Argent\SubSystem\Graphics\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="source\graphics\GraphicsEngine.cpp">
+      <Filter>Argent\SubSystem\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\FrameResource.cpp">
+      <Filter>Argent\SubSystem\Graphics\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\RenderContext.cpp">
+      <Filter>Argent\SubSystem\Graphics\Draw</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Documents\Original\Library作成\GraphicsEngine\0714_2023\argent\Source\Graphics\PipelineManager.cpp">
-      <Filter>Argent\SubSystem\Graphics</Filter>
+      <Filter>Argent\SubSystem\Graphics\Draw</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -167,9 +167,6 @@
     <Filter Include="Argent\SubSystem\Graphics">
       <UniqueIdentifier>{4b8a03b9-d07d-4958-906a-4981d3675030}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Argent\SubSystem\Graphics\Dx12">
-      <UniqueIdentifier>{a7e8d8f7-9c3c-4565-8df6-10e0176d8a82}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Argent\SubSystem\Graphics\Model">
       <UniqueIdentifier>{002c2379-45aa-438d-9823-c12a2ef77c8c}</UniqueIdentifier>
     </Filter>
@@ -191,6 +188,24 @@
     <Filter Include="Sic">
       <UniqueIdentifier>{dac85baf-26bc-4677-a190-b7e8a18941da}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Argent\SubSystem\Graphics\Buffer">
+      <UniqueIdentifier>{465a474b-06fd-4c5f-a2b1-e667ad365d6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Graphics\Dx12Wrap">
+      <UniqueIdentifier>{a7e8d8f7-9c3c-4565-8df6-10e0176d8a82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Graphics\Shader">
+      <UniqueIdentifier>{23db46cd-2917-44e6-b3c7-318f70ac4090}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Graphics\Texture">
+      <UniqueIdentifier>{47edf27f-737a-4e96-b027-4ab18eae4af2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Graphics\Core">
+      <UniqueIdentifier>{dff74ed1-c210-40cd-ac12-cec0ef3ae552}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Graphics\Draw">
+      <UniqueIdentifier>{74977f05-1265-4738-b405-54eab8bc11dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\core\Application.h">
@@ -199,37 +214,22 @@
     <ClInclude Include="source\utility\Misc.h">
       <Filter>Argent\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="source\graphics\GraphicsEngine.h">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Graphics\Dx12\DescriptorHeap.h">
-      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
+      <Filter>Argent\SubSystem\Graphics\Dx12Wrap</Filter>
     </ClInclude>
     <ClInclude Include="Source\Graphics\Dx12\Descriptor.h">
-      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\FrameResource.h">
-      <Filter>Argent\SubSystem\Graphics</Filter>
+      <Filter>Argent\SubSystem\Graphics\Dx12Wrap</Filter>
     </ClInclude>
     <ClInclude Include="Source\Graphics\Dx12\Dx12Utility.h">
-      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
+      <Filter>Argent\SubSystem\Graphics\Dx12Wrap</Filter>
     </ClInclude>
     <ClInclude Include="Source\Utility\Random.h">
       <Filter>Argent\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Source\Graphics\Dx12\RootSignature.h">
-      <Filter>Argent\SubSystem\Graphics\Dx12</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\ShaderCompiler.h">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\GraphicsPipelineState.h">
-      <Filter>Argent\SubSystem\Graphics</Filter>
+      <Filter>Argent\SubSystem\Graphics\Dx12Wrap</Filter>
     </ClInclude>
     <ClInclude Include="Source\Graphics\GraphicsUtility.h">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\Shader.h">
       <Filter>Argent\SubSystem\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="External\Imgui\imgui.h">
@@ -247,23 +247,11 @@
     <ClInclude Include="External\Imgui\imstb_truetype.h">
       <Filter>External\Imgui</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Graphics\VertexBuffer.h">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Graphics\ImGuiController.h">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\Texture.h">
       <Filter>Argent\SubSystem\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Source\core\Timer.h">
       <Filter>Argent\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\ConstantBuffer.h">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\IndexBuffer.h">
-      <Filter>Argent\SubSystem\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Source\Scene\BaseScene.h">
       <Filter>Argent\SubSystem\Scene</Filter>
@@ -295,18 +283,6 @@
     </ClInclude>
     <ClInclude Include="Source\Camera.h">
       <Filter>Com</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\GraphicsCommandList.h">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\RenderContext.h">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\StructuredBuffer.h">
-      <Filter>Argent\SubSystem\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModelImpoter.h">
-      <Filter>Argent\SubSystem\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Source\Graphics\Skeleton.h">
       <Filter>Argent\SubSystem\Graphics\Model</Filter>
@@ -341,8 +317,47 @@
     <ClInclude Include="Source\Graphics\SpriteRenderer.h">
       <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Source\ModelImpoter.h">
+      <Filter>Argent\SubSystem\Graphics\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\ConstantBuffer.h">
+      <Filter>Argent\SubSystem\Graphics\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\IndexBuffer.h">
+      <Filter>Argent\SubSystem\Graphics\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\StructuredBuffer.h">
+      <Filter>Argent\SubSystem\Graphics\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\VertexBuffer.h">
+      <Filter>Argent\SubSystem\Graphics\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\GraphicsCommandList.h">
+      <Filter>Argent\SubSystem\Graphics\Dx12Wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\GraphicsPipelineState.h">
+      <Filter>Argent\SubSystem\Graphics\Dx12Wrap</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\ShaderCompiler.h">
+      <Filter>Argent\SubSystem\Graphics\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Shader.h">
+      <Filter>Argent\SubSystem\Graphics\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\Texture.h">
+      <Filter>Argent\SubSystem\Graphics\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="source\graphics\GraphicsEngine.h">
+      <Filter>Argent\SubSystem\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\FrameResource.h">
+      <Filter>Argent\SubSystem\Graphics\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\RenderContext.h">
+      <Filter>Argent\SubSystem\Graphics\Draw</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Documents\Original\Library作成\GraphicsEngine\0714_2023\argent\Source\Graphics\PipelineManager.h">
-      <Filter>Argent\SubSystem\Graphics</Filter>
+      <Filter>Argent\SubSystem\Graphics\Draw</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

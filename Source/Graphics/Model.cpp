@@ -62,10 +62,11 @@ namespace argent::graphics
 		{
 			for(auto& m : materials_)
 			{
-				uint64_t base_index = static_cast<uint64_t>(m->GetBaseIndex());
-				uint64_t normal_index = static_cast<uint64_t>(m->GetNormalIndex());
-				ImGui::Image(reinterpret_cast<ImTextureID>(base_index), ImVec2(256, 256));
-				ImGui::Image(reinterpret_cast<ImTextureID>(normal_index), ImVec2(256, 256));
+				m->OnGui();
+				//uint64_t base_index = static_cast<uint64_t>(m->GetBaseIndex());
+				//uint64_t normal_index = static_cast<uint64_t>(m->GetNormalIndex());
+				//ImGui::Image(reinterpret_cast<ImTextureID>(base_index), ImVec2(256, 256));
+				//ImGui::Image(reinterpret_cast<ImTextureID>(normal_index), ImVec2(256, 256));
 
 				for(auto& n : data_.nodes_)
 				{

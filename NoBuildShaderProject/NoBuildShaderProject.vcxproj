@@ -186,6 +186,7 @@
     </FxCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Assets\Shader\CommonCalc.hlsli" />
     <None Include="..\Assets\Shader\DemoMeshShader.hlsli" />
     <None Include="..\Assets\Shader\ImGui.hlsli" />
     <None Include="..\Assets\Shader\RootSignature.hlsli" />
