@@ -14,6 +14,7 @@ void Camera::OnGui()
 		ImGui::DragFloat("Rotation_Speed", &rotation_speed_, 0.001f, 0.001f, 1.57f);
 		ImGui::DragFloat3("Position", &position_.x, 0.01f, -FLT_MAX, FLT_MAX);
 		ImGui::DragFloat3("Rotate", &rotation_.x, 0.01f, -FLT_MAX, FLT_MAX);
+		ImGui::DragFloat("FovAngle", &fov_angle_, 0.001f, 10.0f / 180 * 3.14f, 3.14);
 		ImGui::TreePop();
 	}
 }
@@ -46,8 +47,8 @@ void Camera::Controller()
 			if (keyboard.GetKey(D)/* Keyboard D */) right_input += 1.0f;
 
 			//è„â∫
-			if (keyboard.GetKey(Q)/* Keyboard Q */) up_input += 1.0f;
-			if (keyboard.GetKey(E)/* Keyboard E */) up_input -= 1.0f;
+			if (keyboard.GetKey(E)/* Keyboard E */) up_input += 1.0f;
+			if (keyboard.GetKey(Q)/* Keyboard Q */) up_input -= 1.0f;
 
 			using namespace DirectX;
 

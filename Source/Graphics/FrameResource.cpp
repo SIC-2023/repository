@@ -1,7 +1,7 @@
 #include "FrameResource.h"
 
 #include "Dx12/Dx12Utility.h"
-#include "GraphicsEngine.h"
+//#include "GraphicsEngine.h"
 #include "../Utility/Misc.h"
 
 namespace argent::graphics
@@ -29,14 +29,14 @@ namespace argent::graphics
 
 	//•`‰æŠJŽn
 	void FrameResource::Begin(ID3D12GraphicsCommandList* command_list, const D3D12_VIEWPORT& viewport,
-		const D3D12_RECT& rect) const
+		const D3D12_RECT& rect, const float clear_color[4]) const
 	{
 		dx12::SetTransitionResourceBarrier(command_list, D3D12_RESOURCE_STATE_PRESENT,
 			D3D12_RESOURCE_STATE_RENDER_TARGET, back_buffer_.Get());
 
 		command_list->OMSetRenderTargets(1u, &rtv_cpu_descriptor_handle_, false,
 			&dsv_cpu_descriptor_handle_);
-		command_list->ClearRenderTargetView(rtv_cpu_descriptor_handle_, GraphicsEngine::kClearColor, 0u, nullptr);
+		command_list->ClearRenderTargetView(rtv_cpu_descriptor_handle_, clear_color, 0u, nullptr);
 		command_list->ClearDepthStencilView(dsv_cpu_descriptor_handle_, D3D12_CLEAR_FLAG_DEPTH | D3D12_CLEAR_FLAG_STENCIL,
 			1.0f, 0u, 0u, nullptr);
 		command_list->RSSetViewports(1u, &viewport);

@@ -57,14 +57,14 @@ namespace argent::graphics
 		size_t GetNumMeshes() const { return meshes_.size(); }
 		std::shared_ptr<Mesh> GetMesh(size_t index) { return meshes_.at(index); }
 		size_t GetNumMaterials() const { return materials_.size(); }
-		std::shared_ptr<PbrMaterial> GetMaterial(size_t index) { return materials_.at(index); }
+		std::shared_ptr<IMaterial> GetMaterial(size_t index) { return materials_.at(index); }
 
 		uint32_t GetNumPolygons() const { return data_.num_polygons_; }
 	private:
 		Data data_;
 
 		std::vector<std::shared_ptr<Mesh>> meshes_{};
-		std::vector<std::shared_ptr<PbrMaterial>> materials_{};
+		std::vector<std::shared_ptr<IMaterial>> materials_{};
 	};
 }
 

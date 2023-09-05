@@ -10,6 +10,7 @@
 #include "Dx12/DescriptorHeap.h"
 
 #include "FrameResource.h"
+#include "GraphicsContext.h"
 
 
 //todo 別の場所に置く
@@ -25,16 +26,6 @@ namespace argent
 
 namespace argent::graphics
 {
-	struct GraphicsContext
-	{
-		ID3D12Device8* device_;
-		//ID3D12CommandQueue* rendering_queue_;
-		ID3D12CommandQueue* upload_queue_;
-		dx12::DescriptorHeap* cbv_srv_uav_heap_;
-		dx12::DescriptorHeap* dsv_heap_;
-		dx12::DescriptorHeap* rtv_heap_;
-	};
-
 	//描画API統括のクラス
 	//描画関連のすべてをこのクラスで管理する
 	class GraphicsEngine final :
@@ -94,22 +85,7 @@ namespace argent::graphics
 		HRESULT CreateDevice();
 		HRESULT CreateSwapChain(HWND hwnd);
 
-		//ID3D12Device8* GetDevice() const { return device_.Get(); }
-		//ID3D12CommandQueue* GetCommandQueue() const { return command_queue_.Get(); }
-		//ID3D12GraphicsCommandList6* GetCommandList() const { return graphics_command_lists_[current_back_buffer_index_]->GetCommandList(); }
-		//dx12::DescriptorHeap* GetDescriptorHeap(dx12::DescriptorHeap::HeapType heap_type) const
-		//{
-		//	return descriptor_heaps_[static_cast<int>(heap_type)].get();
-		//}
-
-		//D3D12_VIEWPORT GetViewport() const { return viewport_; }
-		//D3D12_RECT GetScissorRect() const { return scissor_rect_; }
-		//uint32_t GetCurrentBackBufferIndex() const { return current_back_buffer_index_; }
-		//float GetWindowWidth() const { return window_width_; }
-		//float GetWindowHeight() const { return window_height_; }
-
 		uint64_t GetFenceValue() const { return fence_value_; }
-		//uint64_t GetSceneConstantHeapIndex() const { return frame_resources_[current_back_buffer_index_]->GetSceneConstantHeapIndex(); }
 		void UpdateSceneConstantBuffer(const SceneConstant& scene_constant) const { frame_resources_[current_back_buffer_index_]->UpdateSceneConstantBuffer(scene_constant); }
 		void UpdateFrustumConstantBuffer(const DirectX::XMFLOAT4X4& view_projection, const DirectX::XMFLOAT4& camera_position) const { frame_resources_[current_back_buffer_index_]->UpdateFrustumConstantBuffer(view_projection, camera_position); }
 

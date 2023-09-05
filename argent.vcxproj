@@ -210,6 +210,7 @@
     <ClInclude Include="Source\Graphics\Dx12\Dx12Utility.h" />
     <ClInclude Include="Source\Graphics\Dx12\RootSignature.h" />
     <ClInclude Include="Source\Graphics\FrameResource.h" />
+    <ClInclude Include="Source\Graphics\GraphicsContext.h" />
     <ClInclude Include="source\graphics\GraphicsEngine.h" />
     <ClInclude Include="Source\Graphics\GraphicsPipelineState.h" />
     <ClInclude Include="Source\Graphics\GraphicsUtility.h" />

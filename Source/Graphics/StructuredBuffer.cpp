@@ -49,6 +49,7 @@ namespace argent::graphics
         device->CreateShaderResourceView(resource_.Get(), &shader_resource_view_desc, descriptor_.GetCpuHandle());
 
         //リソースのアップロード
+        //リソースをアップロードしないと使えない
         D3D12_SUBRESOURCE_DATA subresource_data{};
         subresource_data.pData = p_data;
         subresource_data.RowPitch = size;

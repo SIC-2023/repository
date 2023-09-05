@@ -359,5 +359,8 @@
     <ClInclude Include="..\..\Documents\Original\Library作成\GraphicsEngine\0714_2023\argent\Source\Graphics\PipelineManager.h">
       <Filter>Argent\SubSystem\Graphics\Draw</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Graphics\GraphicsContext.h">
+      <Filter>Argent\SubSystem\Graphics\Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

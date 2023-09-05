@@ -3,9 +3,8 @@
 #include "imgui.h"
 
 #include "d3dx12.h"
-#include "GraphicsEngine.h"
+#include "GraphicsContext.h"
 #include "RenderContext.h"
-#include "Dx12/DescriptorHeap.h"
 
 struct RenderResource
 {
@@ -13,8 +12,6 @@ struct RenderResource
 	uint32_t object_constant_index_;
 	uint32_t mesh_constant_index_;
 	uint32_t material_constant_index_;
-	/*uint32_t base_color_texture_index_;
-	uint32_t normal_texture_index_;*/
 	uint32_t vertices_index_;
 	uint32_t vertex_indices_index_;
 	uint32_t meshlets_index_;
