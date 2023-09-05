@@ -182,7 +182,6 @@ namespace argent::graphics
 		//TODO ImGui
 		im_gui_controller_->Begin(window_width_, window_height_);
 
-
 		return render_context;
 	}
 

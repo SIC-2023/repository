@@ -33,6 +33,7 @@ namespace argent::graphics
 		void UpdateFrustumConstantBuffer(const DirectX::XMFLOAT4X4& view_projection_matrix, const DirectX::XMFLOAT4& camera_position) const;
 		uint64_t GetSceneConstantHeapIndex() const { return scene_constant_buffer_->GetHeapIndex(); }
 		uint64_t GetFrustumConstantHeapIndex() const { return frustum_constant_buffer_->GetHeapIndex(); }
+
 	private:
 
 		Microsoft::WRL::ComPtr<ID3D12Resource> back_buffer_;

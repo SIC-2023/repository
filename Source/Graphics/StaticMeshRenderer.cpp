@@ -27,7 +27,8 @@ struct RenderResource
 
 namespace argent::graphics
 {
-	StaticMeshRenderer::StaticMeshRenderer(const GraphicsContext& graphics_context, const std::shared_ptr<Model>& model)
+	StaticMeshRenderer::StaticMeshRenderer(const GraphicsContext& graphics_context, 
+		const std::shared_ptr<Model>& model, const wchar_t* ps_filename)
 	{
 		auto* device = graphics_context.device_;
 		auto* cbv_descriptor = graphics_context.cbv_srv_uav_heap_;
@@ -48,7 +49,8 @@ namespace argent::graphics
 
 		GraphicsPipelineDesc graphics_pipeline_desc{};
 		graphics_pipeline_desc.vs_filename_ = L"./Assets/Shader/StaticMeshVS.hlsl";
-		graphics_pipeline_desc.ps_filename_ = L"./Assets/Shader/StaticMeshPS.hlsl";
+		graphics_pipeline_desc.ps_filename_ = ps_filename;
+		//graphics_pipeline_desc.ps_filename_ = L"./Assets/Shader/StaticMeshPS.hlsl";
 		graphics_pipeline_desc.independent_input_layout_buffer_enable_ = true;
 		graphics_pipeline_desc.rasterizer_mode_ = dx12::RasterizerMode::CullBackSolid;
 		graphics_pipeline_state_ = std::make_unique<GraphicsPipelineState>(device, graphics_pipeline_desc, L"StaticMeshPipeline");
@@ -106,8 +108,6 @@ namespace argent::graphics
 			const auto& material = model_->GetMaterial(mesh->GetMaterialIndex());
 			material->UpdateConstantBuffer();
 			render_resource.material_constant_index_ = material->GetHeapIndex();
-			//render_resource.base_color_texture_index_ = static_cast<uint32_t>(material->GetBaseIndex());
-			//render_resource.normal_index_ = static_cast<uint32_t>(material->GetNormalIndex());
 
 			if(!use_mesh_shader_)
 			{

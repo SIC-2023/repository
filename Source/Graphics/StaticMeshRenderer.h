@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "ConstantBuffer.h"
 #include "GraphicsPipelineState.h"
 #include "Model.h"
@@ -27,7 +25,8 @@ namespace argent::graphics
 		};
 
 	public:
-		StaticMeshRenderer(const GraphicsContext& graphics_context, const std::shared_ptr<Model>& model);
+		StaticMeshRenderer(const GraphicsContext& graphics_context, const std::shared_ptr<Model>& model,
+			const wchar_t* ps_filename = L"./Assets/Shader/StaticMeshPS.hlsl");
 
 		void Render(const RenderContext& render_context, const DirectX::XMFLOAT4X4& world);
 

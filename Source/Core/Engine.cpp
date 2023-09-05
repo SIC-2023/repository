@@ -84,6 +84,9 @@ namespace argent
 
 		scene_manager->Render(render_context);
 
+		//TODO ポストプロセス
+
+
 		gfx->End(render_context);
 	}
 }

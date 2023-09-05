@@ -141,6 +141,10 @@
     <ClCompile Include="..\..\Documents\Original\Library作成\GraphicsEngine\0714_2023\argent\Source\Graphics\PipelineManager.cpp">
       <Filter>Argent\SubSystem\Graphics\Draw</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Graphics\PostProcessManager.cpp">
+      <Filter>Argent\SubSystem\Graphics\PostProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\PostProcess.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -205,6 +209,9 @@
     </Filter>
     <Filter Include="Argent\SubSystem\Graphics\Draw">
       <UniqueIdentifier>{74977f05-1265-4738-b405-54eab8bc11dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Graphics\PostProcess">
+      <UniqueIdentifier>{29727879-708c-403a-878e-6ac007284145}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -362,5 +369,9 @@
     <ClInclude Include="Source\Graphics\GraphicsContext.h">
       <Filter>Argent\SubSystem\Graphics\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Graphics\PostProcessManager.h">
+      <Filter>Argent\SubSystem\Graphics\PostProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\PostProcess.h" />
   </ItemGroup>
 </Project>
