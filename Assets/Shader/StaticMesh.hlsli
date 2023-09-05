@@ -24,9 +24,8 @@ struct RenderResource
     uint scene_constant_index_;
     uint object_constant_index_;
     uint mesh_constant_index_;
-    //uint base_color_texture_index_;
-    //uint normal_texture_index_;
-    uint material_constant_index_;
+    uint base_color_texture_index_;
+    uint normal_texture_index_;
     uint vertices_index_;
     uint vertex_indices_index_;
     uint meshlets_index_;
