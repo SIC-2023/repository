@@ -91,7 +91,7 @@ namespace argent::graphics
 		graphics_pipeline_desc.ps_filename_ = L"./Assets/Shader/StaticMeshPS.hlsl";
 		graphics_pipeline_desc.independent_input_layout_buffer_enable_ = true;
 		graphics_pipeline_desc.rasterizer_mode_ = dx12::RasterizerMode::CullBackSolid;
-		graphics_pipeline_state_ = std::make_unique<GraphicsPipelineState>(device, graphics_pipeline_desc);
+		graphics_pipeline_state_ = std::make_unique<GraphicsPipelineState>(device, graphics_pipeline_desc, L"StaticMeshPipeline");
 
 		//Mesh Shader
 		MeshShaderPipelineDesc mesh_shader_pipeline_desc{};

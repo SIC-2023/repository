@@ -132,11 +132,14 @@
     <ClCompile Include="Source\Graphics\SkeletalMeshRenderer.cpp">
       <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SpriteRenderer.cpp">
-      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Graphics\StaticMeshRenderer.cpp">
       <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graphics\SpriteRenderer.cpp">
+      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Documents\Original\Library作成\GraphicsEngine\0714_2023\argent\Source\Graphics\PipelineManager.cpp">
+      <Filter>Argent\SubSystem\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +187,9 @@
     </Filter>
     <Filter Include="Argent\SubSystem\Graphics\Renderer">
       <UniqueIdentifier>{14430b0e-b285-4789-8a1f-81a1224b5c0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sic">
+      <UniqueIdentifier>{dac85baf-26bc-4677-a190-b7e8a18941da}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -326,14 +332,17 @@
     <ClInclude Include="Source\Graphics\SkeletalMeshRenderer.h">
       <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SpriteRenderer.h">
-      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Graphics\StaticMeshRenderer.h">
       <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Source\Graphics\AnimationClip.h">
       <Filter>Argent\SubSystem\Graphics\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graphics\SpriteRenderer.h">
+      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Documents\Original\Library作成\GraphicsEngine\0714_2023\argent\Source\Graphics\PipelineManager.h">
+      <Filter>Argent\SubSystem\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

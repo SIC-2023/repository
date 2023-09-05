@@ -23,8 +23,8 @@ namespace argent::graphics
 		friend class GraphicsEngine;
 	public:
 		RenderContext(const GraphicsEngine* graphics_engine, int frame_resource_index, uint32_t scene_constant_buffer_heap_index, 
-			uint32_t frustum_constant_buffer_heap_index, 
-			GraphicsCommandList* graphics_command_list);
+			uint32_t frustum_constant_buffer_heap_index, GraphicsCommandList* graphics_command_list,
+			D3D12_VIEWPORT viewport);
 
 
 	private:
@@ -40,6 +40,7 @@ namespace argent::graphics
 		uint32_t GetSceneConstantHeapIndex() const { return scene_constant_buffer_heap_index_; }
 		uint32_t GetFrustumConstantHeapIndex() const { return frustum_constant_buffer_heap_index_; }
 		ID3D12GraphicsCommandList6* GetCommandList() const { return graphics_command_list_->GetCommandList(); }
+		D3D12_VIEWPORT GetViewport() const { return viewport_; }
 	private:
 
 		const GraphicsEngine* graphics_engine_;
@@ -48,6 +49,7 @@ namespace argent::graphics
 		uint32_t frustum_constant_buffer_heap_index_{};
 		GraphicsCommandList* graphics_command_list_{};
 		RenderTarget render_target_{};
+		D3D12_VIEWPORT viewport_{};
 	};
 }
 

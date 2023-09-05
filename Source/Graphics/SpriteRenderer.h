@@ -3,10 +3,9 @@
 #include <DirectXMath.h>
 #include <wrl.h>
 
-#include "Graphics/Dx12/Descriptor.h"
-#include "Graphics/GraphicsPipelineState.h"
-#include "Graphics/VertexBuffer.h"
-#include "Graphics/Texture.h"
+#include "GraphicsPipelineState.h"
+#include "VertexBuffer.h"
+#include "Texture.h"
 
 namespace argent::graphics
 {
@@ -19,9 +18,6 @@ namespace argent::graphics
 	class SpriteRenderer
 	{
 	public:
-		//SpriteRenderer(ID3D12Device* device, ID3D12CommandQueue* command_queue, 
-		//	const wchar_t* filename, const graphics::dx12::Descriptor& srv_descriptor);
-
 		SpriteRenderer(const GraphicsContext& graphics_context, const wchar_t* filename);
 
 	private:
@@ -34,6 +30,7 @@ namespace argent::graphics
 
 		void Render(const graphics::RenderContext& render_context);
 	private:
+
 		std::unique_ptr<graphics::GraphicsPipelineState> graphics_pipeline_state_{};
 
 		Microsoft::WRL::ComPtr<ID3D12Resource> vertex_buffer_{};
@@ -42,7 +39,6 @@ namespace argent::graphics
 		std::unique_ptr<graphics::VertexBuffer<DirectX::XMFLOAT4>> color_buffer_{};
 
 		std::unique_ptr<graphics::Texture> texture_{};
-
 
 		//todo  äOÇ…èoÇµÇΩÇ¢
 		DirectX::XMFLOAT2 position_{};

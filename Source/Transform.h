@@ -9,8 +9,7 @@ namespace argent
 	public:
 		Transform() = default;
 
-
-		DirectX::XMFLOAT4X4 CalcWorldMatrix()
+		DirectX::XMFLOAT4X4 CalcWorldMatrix() const
 		{
 			DirectX::XMMATRIX C = DirectX::XMLoadFloat4x4(&coordinate_system);
 			DirectX::XMMATRIX S = DirectX::XMMatrixScaling(scale_.x, scale_.y, scale_.z);

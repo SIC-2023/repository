@@ -12,7 +12,7 @@ namespace argent::graphics
 		gp_desc.vs_filename_ = L"./Assets/Shader/SkeletalMeshVS.hlsl";
 		gp_desc.ps_filename_ = L"./Assets/Shader/SkeletalMeshPS.hlsl";
 		gp_desc.rasterizer_mode_ = dx12::RasterizerMode::CullBackSolid;
-		graphics_pipeline_state_ = std::make_unique<GraphicsPipelineState>(device, gp_desc);
+		graphics_pipeline_state_ = std::make_unique<GraphicsPipelineState>(device, gp_desc, L"SkeletalMeshPipeline");
 	}
 
 	void SkeletalMeshRenderer::Render(const RenderContext& render_context, const DirectX::XMFLOAT4X4& world) const

@@ -10,10 +10,14 @@
 #include "../Utility/Misc.h"
 #include "Dx12/Dx12Utility.h"
 
+//TODO 消せ
+#include "GraphicsEngine.h"
+#include "../Core/Engine.h"
+
 namespace argent::graphics
 {
 	GraphicsPipelineState::GraphicsPipelineState(ID3D12Device* device,
-		const GraphicsPipelineDesc& graphics_pipeline_desc)
+		const GraphicsPipelineDesc& graphics_pipeline_desc, LPCWSTR pipeline_name)
 	{
 		//必須シェーダーのみ作成
 		shader_[Shader::Type::Vertex] = std::make_shared<Shader>(graphics_pipeline_desc.vs_filename_, Shader::Type::Vertex);
@@ -104,8 +108,17 @@ namespace argent::graphics
 		graphics_pipeline_state_desc.NodeMask = 1u;
 		graphics_pipeline_state_desc.Flags = D3D12_PIPELINE_STATE_FLAG_NONE;
 
-		hr = device->CreateGraphicsPipelineState(&graphics_pipeline_state_desc, IID_PPV_ARGS(pipeline_state_.ReleaseAndGetAddressOf()));
-		_ARGENT_ASSERT_EXPR(hr);
+		//TODO 消せ
+		auto pipeline_library = GetEngine()->GetSubsystemLocator().Get<GraphicsEngine>()->GetPipelineLibrary();
+		hr = pipeline_library->LoadGraphicsPipeline(pipeline_name, &graphics_pipeline_state_desc, IID_PPV_ARGS(pipeline_state_.ReleaseAndGetAddressOf()));
+		if(FAILED(hr))
+		{
+			hr = device->CreateGraphicsPipelineState(&graphics_pipeline_state_desc, IID_PPV_ARGS(pipeline_state_.ReleaseAndGetAddressOf()));
+			_ARGENT_ASSERT_EXPR(hr);
+
+			hr = pipeline_library->StorePipeline(pipeline_name, pipeline_state_.Get());
+			_ARGENT_ASSERT_EXPR(hr);
+		}
 	}
 
 	GraphicsPipelineState::GraphicsPipelineState(ID3D12Device8* device,
@@ -168,7 +181,7 @@ namespace argent::graphics
 	GraphicsPipelineState::GraphicsPipelineState(ID3D12Device* device,
 	                                             D3D12_GRAPHICS_PIPELINE_STATE_DESC pipeline_state_desc, const wchar_t* vs_filename, const wchar_t* ps_filename)
 	{
-				//必須シェーダーのみ作成
+		//必須シェーダーのみ作成
 		shader_[Shader::Type::Vertex] = std::make_shared<Shader>(vs_filename, Shader::Type::Vertex);
 		shader_[Shader::Type::Pixel] = std::make_shared<Shader>(ps_filename, Shader::Type::Pixel);
 
@@ -191,7 +204,6 @@ namespace argent::graphics
 
 		hr = device->CreateGraphicsPipelineState(&pipeline_state_desc, IID_PPV_ARGS(pipeline_state_.ReleaseAndGetAddressOf()));
 		_ARGENT_ASSERT_EXPR(hr);
-
 	}
 
 	std::shared_ptr<Shader> GraphicsPipelineState::GetShader(Shader::Type shader_type) const

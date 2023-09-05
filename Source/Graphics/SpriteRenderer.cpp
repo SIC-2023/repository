@@ -1,20 +1,13 @@
 #include "SpriteRenderer.h"
 
-#include "Graphics/GraphicsEngine.h"
-#include "Graphics/GraphicsUtility.h"
-#include "Graphics/Shader.h"
-#include "Utility/Misc.h"
-#include "Graphics/ShaderCompiler.h"
-
-#include "Core/Engine.h"
+#include "GraphicsEngine.h"
+#include "Shader.h"
 
 //todo
 #include "imgui.h"
 
-
 namespace argent::graphics
 {
-
 	struct Constant
 	{
 		uint32_t texture_index;
@@ -25,45 +18,6 @@ namespace argent::graphics
 	DirectX::XMFLOAT2 CalcRotate(const DirectX::XMFLOAT2& position, const DirectX::XMFLOAT2 center, float angle);
 	DirectX::XMFLOAT3 CalcNdcPosition(const DirectX::XMFLOAT2& world_position, const DirectX::XMFLOAT2& viewport_size);
 
-
-	//SpriteRenderer::SpriteRenderer(ID3D12Device* device, ID3D12CommandQueue* command_queue,
-	//	const wchar_t* filename, const graphics::dx12::Descriptor& srv_descriptor)
-	//{
-	//	texture_ = std::make_unique<graphics::Texture>(device, command_queue, filename, srv_descriptor);
-
-	//	graphics::GraphicsPipelineDesc graphics_pipeline_desc{};
-	//	graphics_pipeline_desc.vs_filename_ = L"./Assets/Shader/SpriteVS.hlsl";
-	//	graphics_pipeline_desc.ps_filename_ = L"./Assets/Shader/SpritePS.hlsl";
-	//	graphics_pipeline_state_ = std::make_unique<graphics::GraphicsPipelineState>(device, graphics_pipeline_desc);
-
-
-	//	//頂点バッファ
-	//	std::vector<DirectX::XMFLOAT3> vertices
-	//	{
-	//		{ -0.5f,  0.5f, 0 },
-	//		{  0.5f,  0.5f, 0 },
-	//		{ -0.5f, -0.5f, 0 },
-	//		{  0.5f, -0.5f, 0 },
-	//	};
-	//	std::vector<DirectX::XMFLOAT2> texcoord
-	//	{
-	//		{ 0.0f, 0.0f },
-	//		{ 1.0f, 0.0f },
-	//		{ 0.0f, 1.0f },
-	//		{ 1.0f, 1.0f },
-	//	};
-	//	std::vector<DirectX::XMFLOAT4> color
-	//	{
-	//		{ 1, 1, 1, 1},
-	//		{ 1, 1, 1, 1},
-	//		{ 1, 1, 1, 1},
-	//		{ 1, 1, 1, 1}
-	//	};
-	//	position_buffer_ = std::make_unique<graphics::VertexBuffer<DirectX::XMFLOAT3>>(device, vertices, false);
-	//	texcoord_buffer_ = std::make_unique<graphics::VertexBuffer<DirectX::XMFLOAT2>>(device, texcoord, false);
-	//	color_buffer_ = std::make_unique<graphics::VertexBuffer<DirectX::XMFLOAT4>>(device, color, false);
-	//}
-
 	SpriteRenderer::SpriteRenderer(const GraphicsContext& graphics_context, const wchar_t* filename)
 	{
 		texture_ = std::make_unique<graphics::Texture>(graphics_context, filename);
@@ -71,11 +25,10 @@ namespace argent::graphics
 		graphics::GraphicsPipelineDesc graphics_pipeline_desc{};
 		graphics_pipeline_desc.vs_filename_ = L"./Assets/Shader/SpriteVS.hlsl";
 		graphics_pipeline_desc.ps_filename_ = L"./Assets/Shader/SpritePS.hlsl";
-		graphics_pipeline_state_ = std::make_unique<graphics::GraphicsPipelineState>(graphics_context.device_, graphics_pipeline_desc);
-
+		graphics_pipeline_state_ = std::make_unique<graphics::GraphicsPipelineState>(graphics_context.device_, graphics_pipeline_desc, L"SpritePipeline");
 
 		//頂点バッファ
-		std::vector<DirectX::XMFLOAT3> vertices
+		std::vector<DirectX::XMFLOAT3> position
 		{
 			{ -0.5f,  0.5f, 0 },
 			{  0.5f,  0.5f, 0 },
@@ -96,17 +49,15 @@ namespace argent::graphics
 			{ 1, 1, 1, 1},
 			{ 1, 1, 1, 1}
 		};
-		position_buffer_ = std::make_unique<graphics::VertexBuffer<DirectX::XMFLOAT3>>(graphics_context.device_, vertices, false);
+		position_buffer_ = std::make_unique<graphics::VertexBuffer<DirectX::XMFLOAT3>>(graphics_context.device_, position, false);
 		texcoord_buffer_ = std::make_unique<graphics::VertexBuffer<DirectX::XMFLOAT2>>(graphics_context.device_, texcoord, false);
 		color_buffer_ = std::make_unique<graphics::VertexBuffer<DirectX::XMFLOAT4>>(graphics_context.device_, color, false);
-
 	}
-
-
 
 	void SpriteRenderer::Render(const graphics::RenderContext& render_context)
 	{
-		auto graphics_command_list = render_context.GetCommandList();
+		const auto graphics_command_list = render_context.GetCommandList();
+
 		//todo
 		if(ImGui::TreeNode("Sprite Renderer"))
 		{
@@ -119,8 +70,7 @@ namespace argent::graphics
 			ImGui::ColorPicker4("Color", &color_.x);
 			ImGui::TreePop();
 		}
-
-		const auto viewport = GetEngine()->GetSubsystemLocator().Get<graphics::GraphicsEngine>()->GetViewport();
+		const auto& viewport = render_context.GetViewport();
 
 		const DirectX::XMFLOAT2 viewport_size{ viewport.Width, viewport.Height };
 		graphics_pipeline_state_->SetOnCommandList(graphics_command_list);
@@ -165,7 +115,6 @@ namespace argent::graphics
 		texcoord[2].y = (tex_pos_.y + tex_size_.y) / texture_->GetHeight();
 		texcoord[3].x = (tex_pos_.x + tex_size_.x) / texture_->GetWidth();
 		texcoord[3].y = (tex_pos_.y + tex_size_.y) / texture_->GetHeight();
-
 
 		auto w = texture_->GetWidth();
 		auto h = texture_->GetHeight();

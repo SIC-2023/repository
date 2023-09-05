@@ -25,6 +25,8 @@ void DemoScene::OnAwake()
 		graphics->GetGraphicsContext(), model_data);
 	static_mesh_renderer_ = std::make_unique<argent::graphics::StaticMeshRenderer>(
 		graphics->GetGraphicsContext(),	model);
+	static_mesh_renderer_1 = std::make_unique<argent::graphics::StaticMeshRenderer>(
+		graphics->GetGraphicsContext(),	model);
 
 	sprite_renderer_ = std::make_unique<argent::graphics::SpriteRenderer>(
 		graphics->GetGraphicsContext(), L"./Assets/pic001.png");
@@ -33,37 +35,10 @@ void DemoScene::OnAwake()
 void DemoScene::Update()
 {
 	//TODO 消せ
-
 	//カメラコントローラーのチェック
 	{
 		camera_.Controller();
 	}
-
-	//キーボードのチェック
-	{
-		/*auto& keyboard = argent::GetEngine()->GetSubsystemLocator().Get<argent::input::InputManager>()->GetKeyboard();
-		if (keyboard.GetKey(argent::input::KeyCode::W))
-		{
-			auto pos = mesh_transform_.GetPosition();
-			pos.z += 0.1f;
-			mesh_transform_.SetPosition(pos);
-		}
-
-		if(keyboard.GetKeyDown(argent::input::KeyCode::W))
-		{
-			auto pos = mesh_transform_.GetPosition();
-			pos.z += 10.0f;
-			mesh_transform_.SetPosition(pos);
-		}
-
-		if(keyboard.GetKeyUp(argent::input::KeyCode::W))
-		{
-			auto pos = mesh_transform_.GetPosition();
-			pos.z -= 10.0f;
-			mesh_transform_.SetPosition(pos);
-		}*/
-	}
-		
 }
 
 void DemoScene::Render(const argent::graphics::RenderContext& render_context)

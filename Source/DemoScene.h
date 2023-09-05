@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "SpriteRenderer.h"
+#include "Graphics/SpriteRenderer.h"
 #include "Graphics/StaticMeshRenderer.h"
 #include "Camera.h"
 #include "Transform.h"
@@ -29,5 +29,6 @@ private:
 
 	std::unique_ptr<argent::graphics::SpriteRenderer> sprite_renderer_{};
 	std::unique_ptr<argent::graphics::StaticMeshRenderer> static_mesh_renderer_{};
+	std::unique_ptr<argent::graphics::StaticMeshRenderer> static_mesh_renderer_1{};
 };
 

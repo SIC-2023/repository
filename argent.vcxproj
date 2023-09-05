@@ -138,6 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Documents\Original\Library作成\GraphicsEngine\0714_2023\argent\Source\Graphics\PipelineManager.cpp" />
     <ClCompile Include="External\Imgui\imgui.cpp" />
     <ClCompile Include="External\Imgui\imgui_draw.cpp" />
     <ClCompile Include="External\Imgui\imgui_tables.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="Source\Graphics\ShaderCompiler.cpp" />
     <ClCompile Include="Source\Graphics\SkeletalMeshRenderer.cpp" />
     <ClCompile Include="Source\Graphics\Skeleton.cpp" />
+    <ClCompile Include="Source\Graphics\SpriteRenderer.cpp" />
     <ClCompile Include="Source\Graphics\StaticMeshRenderer.cpp" />
     <ClCompile Include="Source\Graphics\StructuredBuffer.cpp" />
     <ClCompile Include="Source\Graphics\Texture.cpp" />
@@ -181,12 +183,12 @@
     <ClCompile Include="Source\ModelImpoter.cpp" />
     <ClCompile Include="Source\Scene\BaseScene.cpp" />
     <ClCompile Include="Source\Scene\SceneManager.cpp" />
-    <ClCompile Include="Source\SpriteRenderer.cpp" />
     <ClCompile Include="Source\SubSystem\Subsystem.cpp" />
     <ClCompile Include="Source\Transform.cpp" />
     <ClCompile Include="Source\Utility\Random.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Documents\Original\Library作成\GraphicsEngine\0714_2023\argent\Source\Graphics\PipelineManager.h" />
     <ClInclude Include="External\Imgui\imgui.h" />
     <ClInclude Include="External\Imgui\imgui_internal.h" />
     <ClInclude Include="External\Imgui\imstb_rectpack.h" />
@@ -221,6 +223,7 @@
     <ClInclude Include="Source\Graphics\ShaderCompiler.h" />
     <ClInclude Include="Source\Graphics\SkeletalMeshRenderer.h" />
     <ClInclude Include="Source\Graphics\Skeleton.h" />
+    <ClInclude Include="Source\Graphics\SpriteRenderer.h" />
     <ClInclude Include="Source\Graphics\StaticMeshRenderer.h" />
     <ClInclude Include="Source\Graphics\StructuredBuffer.h" />
     <ClInclude Include="Source\Graphics\Texture.h" />
@@ -232,7 +235,6 @@
     <ClInclude Include="Source\ModelImpoter.h" />
     <ClInclude Include="Source\Scene\BaseScene.h" />
     <ClInclude Include="Source\Scene\SceneManager.h" />
-    <ClInclude Include="Source\SpriteRenderer.h" />
     <ClInclude Include="Source\SubSystem\Subsystem.h" />
     <ClInclude Include="Source\Transform.h" />
     <ClInclude Include="source\utility\Misc.h" />

@@ -52,7 +52,7 @@ namespace argent::graphics
 	class GraphicsPipelineState
 	{
 	public:
-		GraphicsPipelineState(ID3D12Device* device, const GraphicsPipelineDesc& graphics_pipeline_desc);
+		GraphicsPipelineState(ID3D12Device* device, const GraphicsPipelineDesc& graphics_pipeline_desc, LPCWSTR pipeline_name);
 		GraphicsPipelineState(ID3D12Device8* device, const MeshShaderPipelineDesc& mesh_shader_pipeline_desc);
 		GraphicsPipelineState(ID3D12Device* device, 
 			D3D12_GRAPHICS_PIPELINE_STATE_DESC pipeline_state_desc, 

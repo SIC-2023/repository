@@ -13,7 +13,6 @@
 
 
 //todo •Ê‚ÌêŠ‚É’u‚­
-#include "../SpriteRenderer.h"
 #include "ImGuiController.h"
 #include "RenderContext.h"
 
@@ -102,17 +101,23 @@ namespace argent::graphics
 		//{
 		//	return descriptor_heaps_[static_cast<int>(heap_type)].get();
 		//}
-		D3D12_VIEWPORT GetViewport() const { return viewport_; }
-		D3D12_RECT GetScissorRect() const { return scissor_rect_; }
-		uint32_t GetCurrentBackBufferIndex() const { return current_back_buffer_index_; }
+
+		//D3D12_VIEWPORT GetViewport() const { return viewport_; }
+		//D3D12_RECT GetScissorRect() const { return scissor_rect_; }
+		//uint32_t GetCurrentBackBufferIndex() const { return current_back_buffer_index_; }
+		//float GetWindowWidth() const { return window_width_; }
+		//float GetWindowHeight() const { return window_height_; }
+
 		uint64_t GetFenceValue() const { return fence_value_; }
-		float GetWindowWidth() const { return window_width_; }
-		float GetWindowHeight() const { return window_height_; }
-		uint64_t GetSceneConstantHeapIndex() const { return frame_resources_[current_back_buffer_index_]->GetSceneConstantHeapIndex(); }
+		//uint64_t GetSceneConstantHeapIndex() const { return frame_resources_[current_back_buffer_index_]->GetSceneConstantHeapIndex(); }
 		void UpdateSceneConstantBuffer(const SceneConstant& scene_constant) const { frame_resources_[current_back_buffer_index_]->UpdateSceneConstantBuffer(scene_constant); }
 		void UpdateFrustumConstantBuffer(const DirectX::XMFLOAT4X4& view_projection, const DirectX::XMFLOAT4& camera_position) const { frame_resources_[current_back_buffer_index_]->UpdateFrustumConstantBuffer(view_projection, camera_position); }
 
 		[[nodiscard]] const GraphicsContext& GetGraphicsContext() const { return graphics_context_; }
+
+
+		//TODO •Ê‚ÌêŠ‚ÉˆÚ‚µ‚½‚¢
+		ID3D12PipelineLibrary* GetPipelineLibrary() const { return pipeline_library_.Get(); }
 	private:
 
 		//dxgiŠÖ˜A
@@ -144,6 +149,9 @@ namespace argent::graphics
 
 		//TODO ImGui‚Í‚Ç‚±‚É’u‚­‚Ì‚ª³‰ğ??
 		std::unique_ptr<ImGuiController> im_gui_controller_{};
+
+
+		Microsoft::WRL::ComPtr<ID3D12PipelineLibrary> pipeline_library_;
 	};
 }
 

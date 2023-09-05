@@ -117,6 +117,11 @@ namespace argent::graphics
 		im_gui_controller_->Initialize(hwnd, device_.Get(), 
 			descriptor_heap->PopDescriptor(), 
 			descriptor_heap->GetIncrementSize(), descriptor_heap->GetGpuHandleStart());
+
+
+		//TODO •Ê‚ÌêŠ‚É
+		hr = device_->CreatePipelineLibrary(nullptr, 0, IID_PPV_ARGS(pipeline_library_.ReleaseAndGetAddressOf()));
+		_ARGENT_ASSERT_EXPR(hr);
 	}
 
 	void GraphicsEngine::OnShutdown()
@@ -155,9 +160,11 @@ namespace argent::graphics
 			WaitForSingleObject(fence_event, INFINITE);
 		}
 
-		RenderContext render_context(this, current_back_buffer_index_, static_cast<uint32_t>(frame_resources_[GetCurrentBackBufferIndex()]->GetSceneConstantHeapIndex()),
-			static_cast<uint32_t>(frame_resources_[GetCurrentBackBufferIndex()]->GetFrustumConstantHeapIndex()),
-			graphics_command_lists_[current_back_buffer_index_].get());
+		const RenderContext render_context(this, current_back_buffer_index_, 
+			static_cast<uint32_t>(frame_resources_[current_back_buffer_index_]->GetSceneConstantHeapIndex()),
+			static_cast<uint32_t>(frame_resources_[current_back_buffer_index_]->GetFrustumConstantHeapIndex()),
+			graphics_command_lists_[current_back_buffer_index_].get(),
+			viewport_);
 		render_context.Begin();
 
 		frame_resources_[current_back_buffer_index_]->Begin(graphics_command_lists_[current_back_buffer_index_]->GetCommandList(), viewport_, scissor_rect_);
