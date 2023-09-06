@@ -8,6 +8,7 @@
 #define float3	DirectX::XMFLOAT3
 #define float4	DirectX::XMFLOAT4
 #define float4x4	DirectX::XMFLOAT4X4
+#define uint	uint32_t
 
 #else
 
@@ -46,5 +47,13 @@ struct Frustum
 	float4 eye_position_;
 };
 
-
+struct PBRMaterial
+{
+	uint base_color_index_;
+	uint normal_tex_index_;
+	uint metallic_tex_index_;
+	uint roughness_tex_index_;
+	float metallic_factor_;
+	float roughness_factor_;
+};
 #endif //_CONSTANT_H_
