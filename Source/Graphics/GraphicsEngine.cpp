@@ -111,7 +111,6 @@ namespace argent::graphics
 		fence_value_ = 0u;
 
 		graphics_context_.device_ = device_.Get();
-		//graphics_context_.rendering_queue_ = rendering_command_queue_.Get();
 		graphics_context_.upload_queue_ = upload_command_queue_.Get();
 		graphics_context_.cbv_srv_uav_heap_ = descriptor_heaps_[static_cast<int>(dx12::DescriptorHeap::HeapType::CbvSrvUav)].get();
 		graphics_context_.dsv_heap_ = descriptor_heaps_[static_cast<int>(dx12::DescriptorHeap::HeapType::Dsv)].get();
@@ -119,7 +118,6 @@ namespace argent::graphics
 
 		//‚±‚±‚©‚ç‚ÍƒIƒvƒVƒ‡ƒ“
 		im_gui_controller_ = std::make_unique<ImGuiController>();
-		//auto* descriptor_heap = GetDescriptorHeap(dx12::DescriptorHeap::HeapType::CbvSrvUav);
 		auto* descriptor_heap = descriptor_heaps_[static_cast<int>(dx12::DescriptorHeap::HeapType::CbvSrvUav)].get();
 		im_gui_controller_->Initialize(hwnd, device_.Get(), 
 			descriptor_heap->PopDescriptor(), 
@@ -203,6 +201,7 @@ namespace argent::graphics
 		rendering_command_queue_->Signal(fence_.Get(), ++fence_value_);
 		fence_values_[current_back_buffer_index_] = fence_value_;
 		swap_chain_->Present(0u, 0u);
+
 		++current_back_buffer_index_;
 		if(current_back_buffer_index_ >= kNumBackBuffers)
 		{

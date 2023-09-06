@@ -86,7 +86,6 @@ namespace argent::graphics
 	void FrameBuffer::Begin(ID3D12GraphicsCommandList* command_list, 
 							UINT num_rects, const D3D12_RECT* p_rect)
 	{
-		//TODO
 		//rtv dsv クリア
 		command_list->ClearRenderTargetView(rtv_descriptor_.GetCpuHandle(), 
 			clear_color_, num_rects, p_rect);
@@ -115,7 +114,8 @@ namespace argent::graphics
 			D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE);
 		command_list->ResourceBarrier(1u, &resource_barrier);
 
-		//??? 元々セットされてたやつをセットし直す or nullレンダーターゲットをセットする
+		//???TODO 元々セットされてたやつをセットし直す or nullレンダーターゲットをセットする
+		command_list->OMSetRenderTargets(0u, nullptr, false, nullptr);
 	}
 
 }
