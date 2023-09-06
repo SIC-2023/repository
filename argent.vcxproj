@@ -151,6 +151,7 @@
     <ClCompile Include="Source\DemoScene.cpp" />
     <ClCompile Include="Source\Editor\Editor.cpp" />
     <ClCompile Include="Source\Editor\EditorCamera.cpp" />
+    <ClCompile Include="Source\Graphics\FrameBuffer.cpp" />
     <ClCompile Include="Source\Graphics\GraphicsCommandList.cpp" />
     <ClCompile Include="Source\Graphics\Dx12\Descriptor.cpp" />
     <ClCompile Include="Source\Graphics\Dx12\DescriptorHeap.cpp" />
@@ -205,6 +206,7 @@
     <ClInclude Include="Source\Editor\Editor.h" />
     <ClInclude Include="Source\Editor\EditorCamera.h" />
     <ClInclude Include="Source\Graphics\AnimationClip.h" />
+    <ClInclude Include="Source\Graphics\FrameBuffer.h" />
     <ClInclude Include="Source\Graphics\GraphicsCommandList.h" />
     <ClInclude Include="Source\Graphics\ConstantBuffer.h" />
     <ClInclude Include="Source\Graphics\Dx12\Descriptor.h" />

@@ -3,9 +3,9 @@
 #include <filesystem>
 #include <iostream>
 
-#include "../../External/DirectXTK12/Inc/DDSTextureLoader.h"
-#include "../../External/DirectXTK12/Inc/WICTextureLoader.h"
-#include "../../External/DirectXTK12/Inc/ResourceUploadBatch.h"
+#include "DDSTextureLoader.h"
+#include "WICTextureLoader.h"
+#include "ResourceUploadBatch.h"
 
 #include "../Utility/Misc.h"
 

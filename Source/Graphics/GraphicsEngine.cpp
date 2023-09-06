@@ -97,6 +97,13 @@ namespace argent::graphics
 				descriptor_heaps_[static_cast<int>(dx12::DescriptorHeap::HeapType::CbvSrvUav)]->PopDescriptor());
 		}
 
+		DXGI_SWAP_CHAIN_DESC swap_chain_desc{};
+		swap_chain_->GetDesc(&swap_chain_desc);
+
+		Microsoft::WRL::ComPtr<ID3D12Resource> resource_;
+		swap_chain_->GetBuffer(0u, IID_PPV_ARGS(resource_.ReleaseAndGetAddressOf()));
+		auto desc = resource_->GetDesc();
+
 		//ビューポート、レクト、その他変数
 		viewport_ = D3D12_VIEWPORT(0.f, 0.f, window_width_, window_height_, 0.f, 1.f);
 		scissor_rect_ = D3D12_RECT(0u, 0u, static_cast<LONG>(window_width_), static_cast<LONG>(window_height_));
