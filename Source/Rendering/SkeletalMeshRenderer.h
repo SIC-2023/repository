@@ -2,11 +2,11 @@
 
 #include <memory>
 
-#include "ConstantBuffer.h"
-#include "GraphicsPipelineState.h"
-#include "RenderContext.h"
+#include "../Graphics/ConstantBuffer.h"
+#include "../Graphics/GraphicsPipelineState.h"
+#include "../Graphics/Model.h"
 
-#include "Model.h"
+#include "RenderContext.h"
 
 namespace argent::graphics
 {

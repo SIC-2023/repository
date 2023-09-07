@@ -10,6 +10,9 @@
     <FxCompile Include="..\Assets\Shader\DemoMeshShaderPS.hlsl" />
     <FxCompile Include="..\Assets\Shader\DemoMeshShaderAS.hlsl" />
     <FxCompile Include="..\Assets\Shader\DemoMeshShaderAMS.hlsl" />
+    <FxCompile Include="..\Assets\Shader\FullscreenQuadVS.hlsl" />
+    <FxCompile Include="..\Assets\Shader\FullscreenQuad.hlsli" />
+    <FxCompile Include="..\Assets\Shader\FullscreenQuadPS.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\External\DirectXTK12\Inc\SimpleMath.inl">

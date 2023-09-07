@@ -5,7 +5,6 @@
 
 #include "meshoptimizer.h"
 
-#include "Graphics/StaticMeshRenderer.h"
 #include "Graphics/AnimationClip.h"
 #include "Graphics/Skeleton.h"
 

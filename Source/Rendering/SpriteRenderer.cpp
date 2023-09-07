@@ -1,8 +1,9 @@
 #include "SpriteRenderer.h"
 
-#include "GraphicsContext.h"
+#include "../Graphics/GraphicsContext.h"
+#include "../Graphics/Shader.h"
+
 #include "RenderContext.h"
-#include "Shader.h"
 
 //todo
 #include "imgui.h"

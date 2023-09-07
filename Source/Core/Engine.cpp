@@ -3,10 +3,18 @@
 #include <iostream>
 
 #include "../Utility/Misc.h"
+
 #include "../Core/Window.h"
 #include "../Core/Timer.h"
+
 #include "../Input/InputManager.h"
+
+#include "../Rendering/RenderContext.h"
+
+#include "../Graphics/ImGuiController.h"
+#include "../Graphics/FrameResource.h"
 #include "../Graphics/GraphicsEngine.h"
+
 #include "../Scene/SceneManager.h"
 
 namespace argent
@@ -21,22 +29,22 @@ namespace argent
 	Engine::Engine():
 		is_request_showdown_(false)
 	{
-		if (engine) _ASSERT_EXPR(FALSE, L"エンジンのインスタンスが複数定義されています");
+		if (engine) _ASSERT_EXPR(FALSE, L"Already Instantiated : argent::Engine");
 
 		engine = this;
 
-		std::cout << "エンジンが作成されました" << std::endl;	
+		std::cout << "Engine are instantiated" << std::endl;	
 	}
 
 	Engine::~Engine()
 	{
-		//TODO subsystemLocatorにRemoveを作成する
+		//TODO maybe nothing to do here
 		
 	}
 
 	void Engine::SetUp()
 	{
-		//TODO 各種サブシステムを追加していく
+		//TODO add various subsystem on subsystem locator
 		subsystem_locator_.Add<Window>();
 
 		subsystem_locator_.Add<input::InputManager>();
@@ -48,7 +56,7 @@ namespace argent
 
 	void Engine::OnShutdown()
 	{
-		//TODO
+		//TODO remove various subsystem from subsystem locator
 		subsystem_locator_.Remove<Timer>();
 		subsystem_locator_.Remove<scene::SceneManager>();
 		subsystem_locator_.Remove<graphics::GraphicsEngine>();
@@ -60,31 +68,31 @@ namespace argent
 
 	void Engine::Run()
 	{
-		//TODO シーンマネージャ読んだりとか
+		//TODO to call update or renderer function
 
-		//ウィンドウイベント、メッセージの更新
+		//Update window event and message
 		const auto& window = subsystem_locator_.Get<Window>();
 		window->ProcessSystemEventQueue();
 		
 
-		//キー入力の更新
+		//Update input (keyboard, mouse and Gamepad)
 		subsystem_locator_.Get<input::InputManager>()->Update(window->GetHwnd());
 
-		//タイマー更新
+		//Update timer (delta time and total time)
 		subsystem_locator_.Get<Timer>()->Tick();
 
-		//シーンアップデート
+		//Update scene object(like player, enemy, camera ...) on cpu side
 		const auto scene_manager = subsystem_locator_.Get<scene::SceneManager>();
 		scene_manager->Update();
 
-		//描画
+		//Draw scene
 		const auto gfx = subsystem_locator_.Get<graphics::GraphicsEngine>();
 
 		const auto render_context = gfx->Begin();
 
 		scene_manager->Render(render_context);
 
-		//TODO ポストプロセス
+		//TODO PostProcess
 
 
 		gfx->End(render_context);

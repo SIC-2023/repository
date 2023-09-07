@@ -17,7 +17,8 @@ namespace argent::graphics
 	class ImGuiController
 	{
 	public:
-		ImGuiController() = default;
+		ImGuiController();
+		virtual ~ImGuiController();
 
 	public:
 

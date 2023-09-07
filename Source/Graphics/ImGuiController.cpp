@@ -553,6 +553,14 @@ L"./Assets/Shader/ImGuiVS.hlsl", L"./Assets/Shader/ImGuiPS.hlsl");
         }
 	}
 
+	ImGuiController::ImGuiController()
+	{
+	}
+
+	ImGuiController::~ImGuiController()
+	{
+	}
+
 	void ImGuiController::UpdateImGuiMouseData()
 	{
 		ImGuiIO& io = ImGui::GetIO();

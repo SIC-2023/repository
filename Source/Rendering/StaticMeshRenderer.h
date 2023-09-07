@@ -1,7 +1,7 @@
 #pragma once
-#include "ConstantBuffer.h"
-#include "GraphicsPipelineState.h"
-#include "Model.h"
+#include "../Graphics/ConstantBuffer.h"
+#include "../Graphics/GraphicsPipelineState.h"
+#include "../Graphics/Model.h"
 
 namespace argent::graphics
 {

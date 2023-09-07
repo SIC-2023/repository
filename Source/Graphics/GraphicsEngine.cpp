@@ -11,6 +11,14 @@
 #include "../Utility/Misc.h"
 #include "Dx12/DescriptorHeap.h"
 
+#include "FrameResource.h"
+#include "GraphicsContext.h"
+
+
+//todo •Ê‚ÌêŠ‚É’u‚­
+#include "ImGuiController.h"
+#include "../Rendering/RenderContext.h"
+
 namespace argent::graphics
 {
 	void GraphicsEngine::OnAwake()
@@ -209,6 +217,17 @@ namespace argent::graphics
 		}
 	}
 
+	void GraphicsEngine::UpdateSceneConstantBuffer(const SceneConstant& scene_constant) const
+	{
+		frame_resources_[current_back_buffer_index_]->UpdateSceneConstantBuffer(scene_constant);
+	}
+
+	void GraphicsEngine::UpdateFrustumConstantBuffer(const DirectX::XMFLOAT4X4& view_projection,
+		const DirectX::XMFLOAT4& camera_position) const
+	{
+		frame_resources_[current_back_buffer_index_]->UpdateFrustumConstantBuffer(view_projection, camera_position);
+	}
+
 	//ƒwƒ‹ƒp[Œn
 	HRESULT GraphicsEngine::FindAdapter(IDXGIAdapter1** pp_adapter) const
 	{
@@ -290,4 +309,5 @@ namespace argent::graphics
 		_ARGENT_ASSERT_EXPR(hr);
 		return hr;
 	}
+
 }

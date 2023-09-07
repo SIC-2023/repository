@@ -1,5 +1,7 @@
 #include "application.h"
 
+#include "../Utility/Misc.h"
+
 namespace argent
 {
 	

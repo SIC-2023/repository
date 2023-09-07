@@ -1,27 +1,37 @@
 #pragma once
 #include <dxgi1_6.h>
 #include <d3d12.h>
-#include <memory>
+#include <DirectXMath.h>
 #include <wrl.h>
+
+#include <memory>
 
 #include "../SubSystem/Subsystem.h"
 
-#include "Dx12/Descriptor.h"
-#include "Dx12/DescriptorHeap.h"
-
-#include "FrameResource.h"
 #include "GraphicsContext.h"
 
 
-//todo ï ÇÃèÍèäÇ…íuÇ≠
-#include "ImGuiController.h"
-#include "RenderContext.h"
+struct SceneConstant;
 
-
-
+//Forward Declaration
 namespace argent
 {
 	class Application;
+}
+
+//Forward Declaration
+namespace argent::graphics
+{
+	class RenderContext;
+	class GraphicsCommandList;
+	class FrameResource;
+	class ImGuiController;
+}
+
+//Forward Declaration
+namespace argent::graphics::dx12
+{
+	class DescriptorHeap;
 }
 
 namespace argent::graphics
@@ -86,8 +96,8 @@ namespace argent::graphics
 		HRESULT CreateSwapChain(HWND hwnd);
 
 		uint64_t GetFenceValue() const { return fence_value_; }
-		void UpdateSceneConstantBuffer(const SceneConstant& scene_constant) const { frame_resources_[current_back_buffer_index_]->UpdateSceneConstantBuffer(scene_constant); }
-		void UpdateFrustumConstantBuffer(const DirectX::XMFLOAT4X4& view_projection, const DirectX::XMFLOAT4& camera_position) const { frame_resources_[current_back_buffer_index_]->UpdateFrustumConstantBuffer(view_projection, camera_position); }
+		void UpdateSceneConstantBuffer(const SceneConstant& scene_constant) const; 
+		void UpdateFrustumConstantBuffer(const DirectX::XMFLOAT4X4& view_projection, const DirectX::XMFLOAT4& camera_position) const;
 
 		[[nodiscard]] const GraphicsContext& GetGraphicsContext() const { return graphics_context_; }
 
@@ -124,7 +134,7 @@ namespace argent::graphics
 		uint64_t fence_values_[kNumBackBuffers]{};
 
 		//TODO ImGuiÇÕÇ«Ç±Ç…íuÇ≠ÇÃÇ™ê≥â??
-		std::unique_ptr<ImGuiController> im_gui_controller_{};
+		std::unique_ptr<ImGuiController> im_gui_controller_;
 
 
 		Microsoft::WRL::ComPtr<ID3D12PipelineLibrary> pipeline_library_;

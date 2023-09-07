@@ -3,9 +3,9 @@
 #include <DirectXMath.h>
 #include <wrl.h>
 
-#include "GraphicsPipelineState.h"
-#include "VertexBuffer.h"
-#include "Texture.h"
+#include "../Graphics/GraphicsPipelineState.h"
+#include "../Graphics/VertexBuffer.h"
+#include "../Graphics/Texture.h"
 
 namespace argent::graphics
 {

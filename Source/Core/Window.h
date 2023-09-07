@@ -10,7 +10,7 @@ namespace argent
 	{
 	public:
 		Window();
-		virtual ~Window() = default;
+		virtual ~Window() override = default;
 
 		void OnAwake() override;
 		void OnShutdown() override;
@@ -19,7 +19,7 @@ namespace argent
 		LONG GetWindowWidth() const { return window_width_; }
 		LONG GetWindowHeight() const { return window_height_; }
 
-		//message peek‚Æ‚©
+		//To call message peek and ...
 		void ProcessSystemEventQueue();
 
 	private:

@@ -2,8 +2,8 @@
 
 #include <memory>
 
-#include "Graphics/SpriteRenderer.h"
-#include "Graphics/StaticMeshRenderer.h"
+#include "Rendering/SpriteRenderer.h"
+#include "Rendering/StaticMeshRenderer.h"
 #include "Camera.h"
 #include "Transform.h"
 #include "Scene/BaseScene.h"

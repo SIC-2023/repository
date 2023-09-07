@@ -93,15 +93,6 @@
     <ClCompile Include="Source\Input\GamePad.cpp">
       <Filter>Argent\SubSystem\Input</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Graphics\SkeletalMeshRenderer.cpp">
-      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Graphics\StaticMeshRenderer.cpp">
-      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Graphics\SpriteRenderer.cpp">
-      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="Source\ModelImpoter.cpp">
       <Filter>Argent\SubSystem\Graphics\Model</Filter>
     </ClCompile>
@@ -135,19 +126,28 @@
     <ClCompile Include="Source\Graphics\FrameResource.cpp">
       <Filter>Argent\SubSystem\Graphics\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Graphics\RenderContext.cpp">
-      <Filter>Argent\SubSystem\Graphics\Draw</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Documents\Original\Library作成\GraphicsEngine\0714_2023\argent\Source\Graphics\PipelineManager.cpp">
-      <Filter>Argent\SubSystem\Graphics\Draw</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Graphics\PostProcessManager.cpp">
-      <Filter>Argent\SubSystem\Graphics\PostProcess</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Graphics\PostProcess.cpp">
-      <Filter>Argent\SubSystem\Graphics\PostProcess</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Graphics\FrameBuffer.cpp" />
+    <ClCompile Include="Source\Rendering\RenderingManager.cpp">
+      <Filter>Argent\SubSystem\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Rendering\PostProcess.cpp">
+      <Filter>Argent\SubSystem\Rendering\PostProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Rendering\PostProcessManager.cpp">
+      <Filter>Argent\SubSystem\Rendering\PostProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Rendering\SkeletalMeshRenderer.cpp">
+      <Filter>Argent\SubSystem\Rendering\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Rendering\SpriteRenderer.cpp">
+      <Filter>Argent\SubSystem\Rendering\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Rendering\StaticMeshRenderer.cpp">
+      <Filter>Argent\SubSystem\Rendering\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Rendering\RenderContext.cpp">
+      <Filter>Argent\SubSystem\Rendering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -189,9 +189,6 @@
     <Filter Include="Argent\SubSystem\Project">
       <UniqueIdentifier>{b3d32644-a796-42be-89bb-1935ea92b875}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Argent\SubSystem\Graphics\Renderer">
-      <UniqueIdentifier>{14430b0e-b285-4789-8a1f-81a1224b5c0c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sic">
       <UniqueIdentifier>{dac85baf-26bc-4677-a190-b7e8a18941da}</UniqueIdentifier>
     </Filter>
@@ -210,11 +207,14 @@
     <Filter Include="Argent\SubSystem\Graphics\Core">
       <UniqueIdentifier>{dff74ed1-c210-40cd-ac12-cec0ef3ae552}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Argent\SubSystem\Graphics\Draw">
-      <UniqueIdentifier>{74977f05-1265-4738-b405-54eab8bc11dc}</UniqueIdentifier>
+    <Filter Include="Argent\SubSystem\Rendering">
+      <UniqueIdentifier>{fc10e8fc-b109-47ea-a78f-bbea4937af09}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Argent\SubSystem\Graphics\PostProcess">
-      <UniqueIdentifier>{29727879-708c-403a-878e-6ac007284145}</UniqueIdentifier>
+    <Filter Include="Argent\SubSystem\Rendering\Renderer">
+      <UniqueIdentifier>{b87bcd56-50d0-4e79-b0e3-30bc3c7a6123}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Rendering\PostProcess">
+      <UniqueIdentifier>{46496079-d388-429e-b6dc-f08c2cdb7db5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -315,17 +315,8 @@
     <ClInclude Include="Source\Input\GamePad.h">
       <Filter>Argent\SubSystem\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Graphics\SkeletalMeshRenderer.h">
-      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\StaticMeshRenderer.h">
-      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Graphics\AnimationClip.h">
       <Filter>Argent\SubSystem\Graphics\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\SpriteRenderer.h">
-      <Filter>Argent\SubSystem\Graphics\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Source\ModelImpoter.h">
       <Filter>Argent\SubSystem\Graphics\Model</Filter>
@@ -363,21 +354,30 @@
     <ClInclude Include="Source\Graphics\FrameResource.h">
       <Filter>Argent\SubSystem\Graphics\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Graphics\RenderContext.h">
-      <Filter>Argent\SubSystem\Graphics\Draw</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Documents\Original\Library作成\GraphicsEngine\0714_2023\argent\Source\Graphics\PipelineManager.h">
-      <Filter>Argent\SubSystem\Graphics\Draw</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Graphics\GraphicsContext.h">
       <Filter>Argent\SubSystem\Graphics\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Graphics\PostProcessManager.h">
-      <Filter>Argent\SubSystem\Graphics\PostProcess</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Graphics\PostProcess.h">
-      <Filter>Argent\SubSystem\Graphics\PostProcess</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Graphics\FrameBuffer.h" />
+    <ClInclude Include="Source\Rendering\RenderingManager.h">
+      <Filter>Argent\SubSystem\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Rendering\PostProcess.h">
+      <Filter>Argent\SubSystem\Rendering\PostProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Rendering\PostProcessManager.h">
+      <Filter>Argent\SubSystem\Rendering\PostProcess</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Rendering\SkeletalMeshRenderer.h">
+      <Filter>Argent\SubSystem\Rendering\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Rendering\SpriteRenderer.h">
+      <Filter>Argent\SubSystem\Rendering\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Rendering\StaticMeshRenderer.h">
+      <Filter>Argent\SubSystem\Rendering\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Rendering\RenderContext.h">
+      <Filter>Argent\SubSystem\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

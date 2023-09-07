@@ -27,6 +27,10 @@ namespace argent::graphics
 		frustum_constant_buffer_ = std::make_unique<ConstantBuffer<Frustum>>(device, frustum_cbv_descriptor);
 	}
 
+	FrameResource::~FrameResource()
+	{
+	}
+
 	//•`‰æŠJŽn
 	void FrameResource::Begin(ID3D12GraphicsCommandList* command_list, const D3D12_VIEWPORT& viewport,
 		const D3D12_RECT& rect, const float clear_color[4]) const

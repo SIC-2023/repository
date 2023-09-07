@@ -20,6 +20,7 @@ namespace argent::graphics
 	public:
 		FrameResource(ID3D12Device* device, IDXGISwapChain* swap_chain, uint32_t back_buffer_index, 
 			dx12::Descriptor rtv_descriptor, dx12::Descriptor dsv_descriptor, dx12::Descriptor scene_cbv_descriptor, dx12::Descriptor frustum_cbv_descriptor);
+		virtual ~FrameResource();
 
 		//バックバッファへの描画開始
 		void Begin(ID3D12GraphicsCommandList* command_list, 

@@ -18,7 +18,7 @@ namespace argent
 			break;
 		}
 
-		//ImGui ウィンドウプロシージャ
+		//ImGui Window procedure
 		graphics::ImGuiController::ImGuiWndProcHandler(hWnd, msg, wParam, lParam);
 
 		return DefWindowProc(hWnd, msg, wParam, lParam);
@@ -31,9 +31,7 @@ namespace argent
 
 	void Window::OnAwake()
 	{
-		//TODO ウィンドウの幅、高さを別の場所から引っ張ってこれるようにする
-
-		//ウィンドウの生成
+		//Creating and registering window
 		WNDCLASSEXW wc{};
 		wc.cbSize = sizeof(wc);
 		wc.lpfnWndProc = HandleMessage;
@@ -59,7 +57,7 @@ namespace argent
 
 	void Window::OnShutdown()
 	{
-		//TODO なんかウィンドウの登録を解除するやつがあったはず
+		//TODO Is it need to override OnShutdown function of this class
 		Subsystem::OnShutdown();
 	}
 
