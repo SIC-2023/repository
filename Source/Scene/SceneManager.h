@@ -25,6 +25,8 @@ namespace argent::scene
 		void Update();
 
 		void Render(const rendering::RenderContext& render_context);
+
+		BaseScene* GetCurrentScene() const { return scene_.get(); }
 	private:
 
 		//todo

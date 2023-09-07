@@ -40,7 +40,7 @@ namespace argent::graphics
 		void Finalize();
 
 		void Begin(float window_width, float window_height);
-		void End(ID3D12Device* device, ID3D12GraphicsCommandList* command_list, UINT current_back_buffer_index);
+		void End(ID3D12GraphicsCommandList* command_list, UINT current_back_buffer_index);
 
 	private:
 

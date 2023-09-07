@@ -119,6 +119,7 @@ namespace argent::graphics
 		fence_value_ = 0u;
 
 		graphics_context_.device_ = device_.Get();
+		graphics_context_.swap_chain_ = swap_chain_.Get();
 		graphics_context_.upload_queue_ = upload_command_queue_.Get();
 		graphics_context_.cbv_srv_uav_heap_ = descriptor_heaps_[static_cast<int>(dx12::DescriptorHeap::HeapType::CbvSrvUav)].get();
 		graphics_context_.dsv_heap_ = descriptor_heaps_[static_cast<int>(dx12::DescriptorHeap::HeapType::Dsv)].get();
@@ -177,7 +178,8 @@ namespace argent::graphics
 			static_cast<uint32_t>(frame_resources_[current_back_buffer_index_]->GetSceneConstantHeapIndex()),
 			static_cast<uint32_t>(frame_resources_[current_back_buffer_index_]->GetFrustumConstantHeapIndex()),
 			graphics_command_lists_[current_back_buffer_index_].get(),
-			viewport_);
+			viewport_, window_width_, window_height_);
+
 		render_context.Begin();
 
 		frame_resources_[current_back_buffer_index_]->Begin(
@@ -189,8 +191,8 @@ namespace argent::graphics
 		{
 			descriptor_heaps_[static_cast<int>(dx12::DescriptorHeap::HeapType::CbvSrvUav)]->GetD3d12DescriptorHeap()
 		};
-		render_context.GetCommandList()->SetDescriptorHeaps(1u, descriptor_heaps);
 
+		render_context.GetCommandList()->SetDescriptorHeaps(1u, descriptor_heaps);
 
 		//TODO ImGui
 		im_gui_controller_->Begin(window_width_, window_height_);
@@ -200,8 +202,7 @@ namespace argent::graphics
 
 	void GraphicsEngine::End(const rendering::RenderContext& render_context)
 	{
-		im_gui_controller_->End(device_.Get(), render_context.GetCommandList(),
-			current_back_buffer_index_);
+		im_gui_controller_->End(render_context.GetCommandList(), current_back_buffer_index_);
 
 		frame_resources_[current_back_buffer_index_]->End(render_context.GetCommandList());
 		render_context.End(rendering_command_queue_.Get());

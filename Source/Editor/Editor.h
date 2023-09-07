@@ -5,6 +5,10 @@
 
 #include "../SubSystem/Subsystem.h"
 
+#include "../Graphics/ImGuiController.h"
+
+#include "../Rendering/RenderContext.h"
+
 namespace argent::editor
 {
 	class Editor final : public Subsystem
@@ -27,10 +31,15 @@ namespace argent::editor
 		void OnAwake() override;
 		void OnShutdown() override;
 
-		void Update();
+		void Begin(const rendering::RenderContext& render_context);
+		void End(const rendering::RenderContext& render_context);
+
 		void Render();
 	private:
 		Camera editor_camera_;
+
+		//TODO ImGuiÇÕÇ«Ç±Ç…íuÇ≠ÇÃÇ™ê≥â??
+		std::unique_ptr<graphics::ImGuiController> imgui_controller_;
 	};
 }
 

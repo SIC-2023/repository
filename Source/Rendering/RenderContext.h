@@ -26,7 +26,7 @@ namespace argent::rendering
 	public:
 		RenderContext(const graphics::GraphicsEngine* graphics_engine, int frame_resource_index, uint32_t scene_constant_buffer_heap_index, 
 			uint32_t frustum_constant_buffer_heap_index, graphics::GraphicsCommandList* graphics_command_list,
-			D3D12_VIEWPORT viewport);
+			D3D12_VIEWPORT viewport, float window_width, float window_height);
 
 	private:
 		void Begin() const;
@@ -42,6 +42,8 @@ namespace argent::rendering
 		uint32_t GetFrustumConstantHeapIndex() const { return frustum_constant_buffer_heap_index_; }
 		ID3D12GraphicsCommandList6* GetCommandList() const { return graphics_command_list_->GetCommandList(); }
 		D3D12_VIEWPORT GetViewport() const { return viewport_; }
+		float GetWindowWidth() const { return window_width_; }
+		float GetWindowHeight() const { return window_height_; }
 	private:
 
 		const graphics::GraphicsEngine* graphics_engine_;
@@ -51,6 +53,9 @@ namespace argent::rendering
 		graphics::GraphicsCommandList* graphics_command_list_{};
 		RenderTarget render_target_{};
 		D3D12_VIEWPORT viewport_{};
+
+		float window_width_;
+		float window_height_;
 	};
 }
 

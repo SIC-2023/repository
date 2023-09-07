@@ -11,9 +11,6 @@ namespace argent::graphics
 	class Texture
 	{
 	public:
-		//Texture(ID3D12Device* device, ID3D12CommandQueue* command_queue, const wchar_t* filename, const dx12::Descriptor& srv_descriptor);
-		//Texture(ID3D12Device* device, ID3D12CommandQueue* command_queue, const char* filename, const dx12::Descriptor& srv_descriptor);
-
 		Texture(const GraphicsContext& graphics_context, const wchar_t* filename);
 		Texture(const GraphicsContext& graphics_context, const char* filename);
 		uint64_t GetHeapIndex() const { return srv_descriptor_.GetHeapIndex(); }

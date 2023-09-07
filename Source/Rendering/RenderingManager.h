@@ -2,6 +2,12 @@
 
 #include "../SubSystem/Subsystem.h"
 
+#include "PostProcessManager.h"
+
+#include "../Graphics/GraphicsUtility.h"
+#include "../Graphics/FrameResource.h"
+#include "../Graphics/FrameBuffer.h"
+
 namespace argent::scene
 {
 	class BaseScene;
@@ -9,7 +15,7 @@ namespace argent::scene
 
 namespace argent::rendering
 {
-	class RenderContext;	
+	class RenderContext;
 }
 
 namespace argent::rendering
@@ -24,6 +30,12 @@ namespace argent::rendering
 		void OnShutdown() override;
 
 		void Execute(const RenderContext& render_context, scene::BaseScene* scene);
+
+	private:
+		PostProcessManager post_process_manager_;
+
+		std::unique_ptr<graphics::FrameResource> frame_resource_[graphics::kNumBackBuffers];
+		std::unique_ptr<graphics::FrameBuffer> frame_buffers_[graphics::kNumBackBuffers];
 	};
 }
 

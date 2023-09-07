@@ -364,7 +364,6 @@ L"./Assets/Shader/ImGuiVS.hlsl", L"./Assets/Shader/ImGuiPS.hlsl");
 		    want_update_monitors_ = false;
 		}
 
-        //todo タイマーを作ったら入れましょう
         // Setup time step
         INT64 current_time = 0;
         ::QueryPerformanceCounter((LARGE_INTEGER*)&current_time);
@@ -404,7 +403,7 @@ L"./Assets/Shader/ImGuiVS.hlsl", L"./Assets/Shader/ImGuiPS.hlsl");
 		ImGui::NewFrame();
 	}
 
-	void ImGuiController::End(ID3D12Device* device, ID3D12GraphicsCommandList* command_list
+	void ImGuiController::End(ID3D12GraphicsCommandList* command_list
         , UINT current_back_buffer_index)
 	{
 		auto timer = GetEngine()->GetSubsystemLocator().Get<Timer>();

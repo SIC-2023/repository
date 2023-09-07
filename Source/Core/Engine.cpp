@@ -10,6 +10,7 @@
 #include "../Input/InputManager.h"
 
 #include "../Rendering/RenderContext.h"
+#include "../Rendering/RenderingManager.h"
 
 #include "../Graphics/ImGuiController.h"
 #include "../Graphics/FrameResource.h"
@@ -50,6 +51,8 @@ namespace argent
 		subsystem_locator_.Add<input::InputManager>();
 
 		subsystem_locator_.Add<graphics::GraphicsEngine>();
+		subsystem_locator_.Add<rendering::RenderingManager>();
+
 		subsystem_locator_.Add<scene::SceneManager>();
 		subsystem_locator_.Add<Timer>();
 	}
@@ -59,6 +62,9 @@ namespace argent
 		//TODO remove various subsystem from subsystem locator
 		subsystem_locator_.Remove<Timer>();
 		subsystem_locator_.Remove<scene::SceneManager>();
+
+		subsystem_locator_.Remove<rendering::RenderingManager>();
+
 		subsystem_locator_.Remove<graphics::GraphicsEngine>();
 
 		subsystem_locator_.Remove<input::InputManager>();
@@ -89,6 +95,8 @@ namespace argent
 		const auto gfx = subsystem_locator_.Get<graphics::GraphicsEngine>();
 
 		const auto render_context = gfx->Begin();
+
+		//subsystem_locator_.Get<rendering::RenderingManager>()->Execute(render_context);
 
 		scene_manager->Render(render_context);
 

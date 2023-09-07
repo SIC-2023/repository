@@ -8,6 +8,7 @@
 
 #include "../SubSystem/Subsystem.h"
 
+#include "GraphicsUtility.h"
 #include "GraphicsContext.h"
 
 
@@ -50,7 +51,7 @@ namespace argent::graphics
 
 	public:
 		//static定数
-		static constexpr int kNumBackBuffers{ 3 };	//トリプルバッファリング
+		//static constexpr int kNumBackBuffers{ 3 };	//トリプルバッファリング
 		static constexpr FLOAT kClearColor[4]{ 1.0f, 0.0f, 0.0f, 1.0f };
 
 	public:
@@ -103,7 +104,6 @@ namespace argent::graphics
 		void UpdateFrustumConstantBuffer(const DirectX::XMFLOAT4X4& view_projection, const DirectX::XMFLOAT4& camera_position) const;
 
 		[[nodiscard]] const GraphicsContext& GetGraphicsContext() const { return graphics_context_; }
-
 
 		//TODO 別の場所に移したい
 		ID3D12PipelineLibrary* GetPipelineLibrary() const { return pipeline_library_.Get(); }

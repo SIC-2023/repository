@@ -3,10 +3,16 @@
 
 namespace argent::rendering
 {
-	PostProcessManager::PostProcessManager(const graphics::GraphicsContext& graphics_context)
+	void PostProcessManager::OnAwake(const graphics::GraphicsContext& graphics_context)
 	{
 
 	}
+
+	void PostProcessManager::OnShutdown()
+	{
+		
+	}
+
 
 	void PostProcessManager::Execute(const RenderContext& render_context)
 	{
