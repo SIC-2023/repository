@@ -3,11 +3,19 @@
 #include "../Graphics/GraphicsPipelineState.h"
 #include "../Graphics/Model.h"
 
+
 namespace argent::graphics
 {
 	struct GraphicsContext;
-	class RenderContext;
+}
 
+namespace argent::rendering
+{
+	class RenderContext;
+}
+
+namespace argent::rendering
+{
 	/**
 	 * \brief ボーンなし3Dモデル描画クラス
 	 */
@@ -25,7 +33,7 @@ namespace argent::graphics
 		};
 
 	public:
-		StaticMeshRenderer(const GraphicsContext& graphics_context, const std::shared_ptr<Model>& model,
+		StaticMeshRenderer(const graphics::GraphicsContext& graphics_context, const std::shared_ptr<graphics::Model>& model,
 			const wchar_t* ps_filename = L"./Assets/Shader/StaticMeshPS.hlsl");
 
 		void Render(const RenderContext& render_context, const DirectX::XMFLOAT4X4& world);
@@ -33,12 +41,12 @@ namespace argent::graphics
 	private:
 
 		//スタティックメッシュメンバ
-		std::unique_ptr<GraphicsPipelineState> graphics_pipeline_state_{};
-		std::unique_ptr<GraphicsPipelineState> mesh_shader_pipeline_state_{};
-		std::shared_ptr<Model> model_{};
+		std::unique_ptr<graphics::GraphicsPipelineState> graphics_pipeline_state_{};
+		std::unique_ptr<graphics::GraphicsPipelineState> mesh_shader_pipeline_state_{};
+		std::shared_ptr<graphics::Model> model_{};
 
-		std::unique_ptr<ConstantBuffer<ObjectConstant>> object_constant_buffer_[3]{};
-		std::vector<std::unique_ptr<ConstantBuffer<MeshConstant>>> mesh_constant_buffers_[3]{};
+		std::unique_ptr<graphics::ConstantBuffer<ObjectConstant>> object_constant_buffer_[3]{};
+		std::vector<std::unique_ptr<graphics::ConstantBuffer<MeshConstant>>> mesh_constant_buffers_[3]{};
 
 		//TODO 消しなさい
 		bool use_mesh_shader_ = false;

@@ -3,7 +3,6 @@
 #include "Input/InputManager.h"
 #include "Core/Engine.h"
 
-
 #include "Graphics/GraphicsEngine.h"
 #include "../Assets/Shader/Constant.h"
 #include "Rendering/RenderContext.h"
@@ -17,20 +16,20 @@ void DemoScene::OnAwake()
 
 	//auto model_data = argent::graphics::ImportModel("./Assets/Gear1.gltf");
 	//auto model_data = argent::graphics::ImportModel("./Assets/ToyCar.gltf");
-	auto model_data = argent::graphics::ImportModel("./Assets/arakBarrak_v025.fbx");
+	//auto model_data = argent::graphics::ImportModel("./Assets/arakBarrak_v025.fbx");
 	//auto model_data = argent::graphics::ImportModel("./Assets/ue_Mannequin.fbx");
 	//auto model_data = argent::graphics::ImportModel("./Assets/untitled.gltf");
-	//auto model_data = argent::graphics::ImportModel("./Assets/untitled2.gltf");
+	auto model_data = argent::graphics::ImportModel("./Assets/untitled2.gltf");
 
 	//TODO ユーザーがモデルを作る必要はないようにする
 	std::shared_ptr<argent::graphics::Model> model = std::make_shared<argent::graphics::Model>(
 		graphics->GetGraphicsContext(), model_data);
-	static_mesh_renderer_ = std::make_unique<argent::graphics::StaticMeshRenderer>(
+	static_mesh_renderer_ = std::make_unique<argent::rendering::StaticMeshRenderer>(
 		graphics->GetGraphicsContext(),	model);
-	static_mesh_renderer_1 = std::make_unique<argent::graphics::StaticMeshRenderer>(
+	static_mesh_renderer_1 = std::make_unique<argent::rendering::StaticMeshRenderer>(
 		graphics->GetGraphicsContext(),	model);
 
-	sprite_renderer_ = std::make_unique<argent::graphics::SpriteRenderer>(
+	sprite_renderer_ = std::make_unique<argent::rendering::SpriteRenderer>(
 		graphics->GetGraphicsContext(), L"./Assets/pic001.png");
 }
 
@@ -43,7 +42,7 @@ void DemoScene::Update()
 	}
 }
 
-void DemoScene::Render(const argent::graphics::RenderContext& render_context)
+void DemoScene::Render(const argent::rendering::RenderContext& render_context)
 {
 	if (ImGui::TreeNode("Scene"))
 	{

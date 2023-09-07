@@ -163,7 +163,7 @@ namespace argent::graphics
 		im_gui_controller_->Finalize();
 	}
 
-	RenderContext GraphicsEngine::Begin() const
+	rendering::RenderContext GraphicsEngine::Begin() const
 	{
 		//•`‰æI—¹‚Ü‚Å‘Ò‹@
 		if(fence_->GetCompletedValue() < fence_values_[current_back_buffer_index_])
@@ -173,7 +173,7 @@ namespace argent::graphics
 			WaitForSingleObject(fence_event, INFINITE);
 		}
 
-		const RenderContext render_context(this, current_back_buffer_index_, 
+		const rendering::RenderContext render_context(this, current_back_buffer_index_, 
 			static_cast<uint32_t>(frame_resources_[current_back_buffer_index_]->GetSceneConstantHeapIndex()),
 			static_cast<uint32_t>(frame_resources_[current_back_buffer_index_]->GetFrustumConstantHeapIndex()),
 			graphics_command_lists_[current_back_buffer_index_].get(),
@@ -198,7 +198,7 @@ namespace argent::graphics
 		return render_context;
 	}
 
-	void GraphicsEngine::End(const RenderContext& render_context)
+	void GraphicsEngine::End(const rendering::RenderContext& render_context)
 	{
 		im_gui_controller_->End(device_.Get(), render_context.GetCommandList(),
 			current_back_buffer_index_);

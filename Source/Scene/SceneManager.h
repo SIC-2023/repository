@@ -24,7 +24,7 @@ namespace argent::scene
 
 		void Update();
 
-		void Render(const graphics::RenderContext& render_context);
+		void Render(const rendering::RenderContext& render_context);
 	private:
 
 		//todo

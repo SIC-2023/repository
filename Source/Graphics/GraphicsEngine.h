@@ -19,10 +19,13 @@ namespace argent
 	class Application;
 }
 
+namespace argent::rendering
+{
+	class RenderContext;
+}
 //Forward Declaration
 namespace argent::graphics
 {
-	class RenderContext;
 	class GraphicsCommandList;
 	class FrameResource;
 	class ImGuiController;
@@ -80,7 +83,7 @@ namespace argent::graphics
 		 * ディスクリプタヒープをセットする
 		 * \return 
 		 */
-		RenderContext Begin() const;
+		rendering::RenderContext Begin() const;
 
 		/**
 		 * \brief 描画終了
@@ -88,7 +91,7 @@ namespace argent::graphics
 		 * フェンスバリューを更新
 		 * \param render_context 
 		 */
-		void End(const RenderContext& render_context);
+		void End(const rendering::RenderContext& render_context);
 
 		//DirectX12API作成関数
 		HRESULT FindAdapter(IDXGIAdapter1** pp_adapter) const;

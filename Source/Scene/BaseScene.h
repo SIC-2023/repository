@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace argent::graphics
+namespace argent::rendering
 {
 	class RenderContext;
 }
@@ -22,7 +22,7 @@ namespace argent::scene
 
 
 		virtual void Update() = 0;
-		virtual void Render(const graphics::RenderContext& render_context) = 0;
+		virtual void Render(const rendering::RenderContext& render_context) = 0;
 
 		const std::string& GetName() const { return name_; }
 		const char* GetNameCStr() const { return name_.c_str(); }

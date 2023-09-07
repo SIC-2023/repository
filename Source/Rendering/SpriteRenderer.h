@@ -10,15 +10,19 @@
 namespace argent::graphics
 {
 	struct GraphicsContext;
+}
+
+namespace argent::rendering
+{
 	class RenderContext;
 }
 
-namespace argent::graphics
+namespace argent::rendering
 {
 	class SpriteRenderer
 	{
 	public:
-		SpriteRenderer(const GraphicsContext& graphics_context, const wchar_t* filename);
+		SpriteRenderer(const graphics::GraphicsContext& graphics_context, const wchar_t* filename);
 
 	private:
 		static constexpr int kLeftTop = 0;
@@ -28,7 +32,7 @@ namespace argent::graphics
 
 	public:
 
-		void Render(const graphics::RenderContext& render_context);
+		void Render(const rendering::RenderContext& render_context);
 	private:
 
 		std::unique_ptr<graphics::GraphicsPipelineState> graphics_pipeline_state_{};

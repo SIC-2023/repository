@@ -8,7 +8,7 @@
 //todo
 #include "imgui.h"
 
-namespace argent::graphics
+namespace argent::rendering
 {
 	struct Constant
 	{
@@ -20,7 +20,7 @@ namespace argent::graphics
 	DirectX::XMFLOAT2 CalcRotate(const DirectX::XMFLOAT2& position, const DirectX::XMFLOAT2 center, float angle);
 	DirectX::XMFLOAT3 CalcNdcPosition(const DirectX::XMFLOAT2& world_position, const DirectX::XMFLOAT2& viewport_size);
 
-	SpriteRenderer::SpriteRenderer(const GraphicsContext& graphics_context, const wchar_t* filename)
+	SpriteRenderer::SpriteRenderer(const graphics::GraphicsContext& graphics_context, const wchar_t* filename)
 	{
 		texture_ = std::make_unique<graphics::Texture>(graphics_context, filename);
 
@@ -56,7 +56,7 @@ namespace argent::graphics
 		color_buffer_ = std::make_unique<graphics::VertexBuffer<DirectX::XMFLOAT4>>(graphics_context.device_, color, false);
 	}
 
-	void SpriteRenderer::Render(const graphics::RenderContext& render_context)
+	void SpriteRenderer::Render(const rendering::RenderContext& render_context)
 	{
 		const auto graphics_command_list = render_context.GetCommandList();
 

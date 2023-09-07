@@ -6,12 +6,13 @@
 
 #include "../../Assets/Shader/Constant.h"
 
-
-
 namespace argent::graphics
 {
 	class GraphicsEngine;
+}
 
+namespace argent::rendering
+{
 	struct RenderTarget
 	{
 		const D3D12_CPU_DESCRIPTOR_HANDLE* p_rtv_cpu_descriptor_handle_;
@@ -21,12 +22,11 @@ namespace argent::graphics
 	//‚PƒtƒŒ[ƒ€‚Ì•`‰æ‚Ég‚¤î•ñ‚ğ‹l‚ß‚ñ‚¾ƒNƒ‰ƒX
 	class RenderContext
 	{
-		friend class GraphicsEngine;
+		friend class argent::graphics::GraphicsEngine;
 	public:
-		RenderContext(const GraphicsEngine* graphics_engine, int frame_resource_index, uint32_t scene_constant_buffer_heap_index, 
-			uint32_t frustum_constant_buffer_heap_index, GraphicsCommandList* graphics_command_list,
+		RenderContext(const graphics::GraphicsEngine* graphics_engine, int frame_resource_index, uint32_t scene_constant_buffer_heap_index, 
+			uint32_t frustum_constant_buffer_heap_index, graphics::GraphicsCommandList* graphics_command_list,
 			D3D12_VIEWPORT viewport);
-
 
 	private:
 		void Begin() const;
@@ -44,11 +44,11 @@ namespace argent::graphics
 		D3D12_VIEWPORT GetViewport() const { return viewport_; }
 	private:
 
-		const GraphicsEngine* graphics_engine_;
+		const graphics::GraphicsEngine* graphics_engine_;
 		int frame_index_{};
 		uint32_t scene_constant_buffer_heap_index_{};
 		uint32_t frustum_constant_buffer_heap_index_{};
-		GraphicsCommandList* graphics_command_list_{};
+		graphics::GraphicsCommandList* graphics_command_list_{};
 		RenderTarget render_target_{};
 		D3D12_VIEWPORT viewport_{};
 	};

@@ -11,7 +11,13 @@ float4 main(VertexShaderOutput pin) : SV_TARGET
     Texture2D base_color_texture = ResourceDescriptorHeap[material_constant.base_color_index_];
     Texture2D normal_texture = ResourceDescriptorHeap[material_constant.normal_tex_index_];
 
+#if 0
     float2 texcoord = float2(pin.texcoord.x, 1.0f - pin.texcoord.y);
+
+#else
+    float2 texcoord = float2(pin.texcoord.x, pin.texcoord.y);
+#endif
+
     float4 color = base_color_texture.Sample(linearSampler, texcoord);
     float4 normal_color = normal_texture.Sample(linearSampler, texcoord);
 

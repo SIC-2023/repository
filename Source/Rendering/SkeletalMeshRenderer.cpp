@@ -2,17 +2,17 @@
 
 #include "../../Assets/Shader/RenderResource.h"
 
-namespace argent::graphics
+namespace argent::rendering
 {
-	SkeletalMeshRenderer::SkeletalMeshRenderer(ID3D12Device8* device, std::shared_ptr<Model> model)
+	SkeletalMeshRenderer::SkeletalMeshRenderer(ID3D12Device8* device, std::shared_ptr<graphics::Model> model)
 	{
 		model_ = model;
 
-		GraphicsPipelineDesc gp_desc{};
+		graphics::GraphicsPipelineDesc gp_desc{};
 		gp_desc.vs_filename_ = L"./Assets/Shader/SkeletalMeshVS.hlsl";
 		gp_desc.ps_filename_ = L"./Assets/Shader/SkeletalMeshPS.hlsl";
-		gp_desc.rasterizer_mode_ = dx12::RasterizerMode::CullBackSolid;
-		graphics_pipeline_state_ = std::make_unique<GraphicsPipelineState>(device, gp_desc, L"SkeletalMeshPipeline");
+		gp_desc.rasterizer_mode_ = graphics::dx12::RasterizerMode::CullBackSolid;
+		graphics_pipeline_state_ = std::make_unique<graphics::GraphicsPipelineState>(device, gp_desc, L"SkeletalMeshPipeline");
 	}
 
 	void SkeletalMeshRenderer::Render(const RenderContext& render_context, const DirectX::XMFLOAT4X4& world) const
@@ -24,7 +24,7 @@ namespace argent::graphics
 		object_constant.world_ = world;
 		object_constant_buffer->UpdateConstantBuffer(object_constant);
 
-		AnimationClip::Keyframe keyframe{};
+		graphics::AnimationClip::Keyframe keyframe{};
 		for(uint32_t mesh_index = 0; mesh_index < model_->GetNumMeshes(); ++mesh_index)
 		{
 			const auto& mesh = model_->GetMesh(mesh_index);

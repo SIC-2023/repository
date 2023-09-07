@@ -8,7 +8,7 @@
 
 #include "RenderContext.h"
 
-namespace argent::graphics
+namespace argent::rendering
 {
 	/**
 	 * \brief ボーンを持っているモデル描画のクラス
@@ -28,18 +28,17 @@ namespace argent::graphics
 			DirectX::XMFLOAT4X4 bone_transform_[256]{};
 		};
 
-		SkeletalMeshRenderer(ID3D12Device8* device, std::shared_ptr<Model> model);
+		SkeletalMeshRenderer(ID3D12Device8* device, std::shared_ptr<graphics::Model> model);
 
 		virtual ~SkeletalMeshRenderer() = default;
 
 		void Render(const RenderContext& render_context, const DirectX::XMFLOAT4X4& world) const;
 	private:
-		std::unique_ptr<GraphicsPipelineState> graphics_pipeline_state_{};
-		std::shared_ptr<Model> model_{};
+		std::unique_ptr<graphics::GraphicsPipelineState> graphics_pipeline_state_{};
+		std::shared_ptr<graphics::Model> model_{};
 
-
-		std::unique_ptr<ConstantBuffer<ObjectConstant>> object_constant_buffers_[3]{};
-		std::vector<std::unique_ptr<ConstantBuffer<SkeletalMeshConstant>>> mesh_constant_buffers_[3]{};
+		std::unique_ptr<graphics::ConstantBuffer<ObjectConstant>> object_constant_buffers_[3]{};
+		std::vector<std::unique_ptr<graphics::ConstantBuffer<SkeletalMeshConstant>>> mesh_constant_buffers_[3]{};
 	};
 }
 

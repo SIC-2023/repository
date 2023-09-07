@@ -25,10 +25,10 @@ struct RenderResource
 	uint32_t texcoord_index_;
 };
 
-namespace argent::graphics
+namespace argent::rendering
 {
-	StaticMeshRenderer::StaticMeshRenderer(const GraphicsContext& graphics_context, 
-		const std::shared_ptr<Model>& model, const wchar_t* ps_filename)
+	StaticMeshRenderer::StaticMeshRenderer(const graphics::GraphicsContext& graphics_context, 
+		const std::shared_ptr<graphics::Model>& model, const wchar_t* ps_filename)
 	{
 		auto* device = graphics_context.device_;
 		auto* cbv_descriptor = graphics_context.cbv_srv_uav_heap_;
@@ -37,30 +37,30 @@ namespace argent::graphics
 			auto& mesh_constant_buffer0 = mesh_constant_buffers_[0].emplace_back();
 			auto& mesh_constant_buffer1 = mesh_constant_buffers_[1].emplace_back();
 			auto& mesh_constant_buffer2 = mesh_constant_buffers_[2].emplace_back();
-			mesh_constant_buffer0 = std::make_unique<ConstantBuffer<MeshConstant>>(device, cbv_descriptor->PopDescriptor());
-			mesh_constant_buffer1 = std::make_unique<ConstantBuffer<MeshConstant>>(device, cbv_descriptor->PopDescriptor());
-			mesh_constant_buffer2 = std::make_unique<ConstantBuffer<MeshConstant>>(device, cbv_descriptor->PopDescriptor());
+			mesh_constant_buffer0 = std::make_unique<graphics::ConstantBuffer<MeshConstant>>(device, cbv_descriptor->PopDescriptor());
+			mesh_constant_buffer1 = std::make_unique<graphics::ConstantBuffer<MeshConstant>>(device, cbv_descriptor->PopDescriptor());
+			mesh_constant_buffer2 = std::make_unique<graphics::ConstantBuffer<MeshConstant>>(device, cbv_descriptor->PopDescriptor());
 		}
 
-		object_constant_buffer_[0] = std::make_unique<ConstantBuffer<ObjectConstant>>(device, cbv_descriptor->PopDescriptor());
-		object_constant_buffer_[1] = std::make_unique<ConstantBuffer<ObjectConstant>>(device, cbv_descriptor->PopDescriptor());
-		object_constant_buffer_[2] = std::make_unique<ConstantBuffer<ObjectConstant>>(device, cbv_descriptor->PopDescriptor());
+		object_constant_buffer_[0] = std::make_unique<graphics::ConstantBuffer<ObjectConstant>>(device, cbv_descriptor->PopDescriptor());
+		object_constant_buffer_[1] = std::make_unique<graphics::ConstantBuffer<ObjectConstant>>(device, cbv_descriptor->PopDescriptor());
+		object_constant_buffer_[2] = std::make_unique<graphics::ConstantBuffer<ObjectConstant>>(device, cbv_descriptor->PopDescriptor());
 		model_ = model;
 
-		GraphicsPipelineDesc graphics_pipeline_desc{};
+		graphics::GraphicsPipelineDesc graphics_pipeline_desc{};
 		graphics_pipeline_desc.vs_filename_ = L"./Assets/Shader/StaticMeshVS.hlsl";
 		graphics_pipeline_desc.ps_filename_ = ps_filename;
 		graphics_pipeline_desc.independent_input_layout_buffer_enable_ = true;
-		graphics_pipeline_desc.rasterizer_mode_ = dx12::RasterizerMode::CullBackSolid;
-		graphics_pipeline_state_ = std::make_unique<GraphicsPipelineState>(device, graphics_pipeline_desc, L"StaticMeshPipeline");
+		graphics_pipeline_desc.rasterizer_mode_ = graphics::dx12::RasterizerMode::CullBackSolid;
+		graphics_pipeline_state_ = std::make_unique<graphics::GraphicsPipelineState>(device, graphics_pipeline_desc, L"StaticMeshPipeline");
 
 		//Mesh Shader
-		MeshShaderPipelineDesc mesh_shader_pipeline_desc{};
+		graphics::MeshShaderPipelineDesc mesh_shader_pipeline_desc{};
 		mesh_shader_pipeline_desc.ms_filename_ = L"./Assets/Shader/DemoMeshShaderAMS.hlsl";
 		mesh_shader_pipeline_desc.as_filename_ = L"./Assets/Shader/DemoMeshShaderAS.hlsl";
 		mesh_shader_pipeline_desc.ps_filename_ = L"./Assets/Shader/DemoMeshShaderPS.hlsl";
-		mesh_shader_pipeline_desc.rasterizer_mode_ = dx12::RasterizerMode::CullBackSolid;
-		mesh_shader_pipeline_state_ = std::make_unique<GraphicsPipelineState>(device, mesh_shader_pipeline_desc);
+		mesh_shader_pipeline_desc.rasterizer_mode_ = graphics::dx12::RasterizerMode::CullBackSolid;
+		mesh_shader_pipeline_state_ = std::make_unique<graphics::GraphicsPipelineState>(device, mesh_shader_pipeline_desc);
 	}
 
 	void StaticMeshRenderer::Render(const RenderContext& render_context, const DirectX::XMFLOAT4X4& world)

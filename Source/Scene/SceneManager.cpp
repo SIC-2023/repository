@@ -21,7 +21,7 @@ namespace argent::scene
 		scene_->Update();
 	}
 
-	void SceneManager::Render(const graphics::RenderContext& render_context)
+	void SceneManager::Render(const rendering::RenderContext& render_context)
 	{
 		scene_->Render(render_context);
 	}

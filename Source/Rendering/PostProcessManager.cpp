@@ -1,9 +1,9 @@
 #include "PostProcessManager.h"
 
 
-namespace argent::graphics
+namespace argent::rendering
 {
-	PostProcessManager::PostProcessManager(const GraphicsContext& graphics_context)
+	PostProcessManager::PostProcessManager(const graphics::GraphicsContext& graphics_context)
 	{
 
 	}

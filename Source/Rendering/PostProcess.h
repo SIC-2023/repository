@@ -3,12 +3,12 @@
 #include "../Graphics/GraphicsContext.h"
 #include "RenderContext.h"
 
-namespace argent::graphics
+namespace argent::rendering
 {
 	class PostProcess
 	{
 	public:
-		PostProcess(const GraphicsContext& graphics_context);
+		PostProcess(const graphics::GraphicsContext& graphics_context);
 
 		virtual ~PostProcess() = default;
 
