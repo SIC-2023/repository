@@ -34,12 +34,10 @@ namespace argent::editor
 		void Begin(const rendering::RenderContext& render_context);
 		void End(const rendering::RenderContext& render_context);
 
-		void Render();
 	private:
 		Camera editor_camera_;
 
-		//TODO ImGui‚Í‚Ç‚±‚É’u‚­‚Ì‚ª³‰ğ??
-		std::unique_ptr<graphics::ImGuiController> imgui_controller_;
+		graphics::ImGuiController imgui_controller_;
 	};
 }
 

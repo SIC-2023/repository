@@ -225,7 +225,7 @@ namespace argent::graphics
 	}
 
 	//imguiÇÃèâä˙âªèàóù
-	void ImGuiController::Initialize(HWND hwnd, ID3D12Device* device, const dx12::Descriptor& srv_descriptor,
+	void ImGuiController::OnAwake(HWND hwnd, ID3D12Device* device, const dx12::Descriptor& srv_descriptor,
 		UINT descriptor_increment_size, size_t descriptor_heap_pointer_start)
 	{
 		hwnd_ = hwnd;
@@ -337,7 +337,7 @@ L"./Assets/Shader/ImGuiVS.hlsl", L"./Assets/Shader/ImGuiPS.hlsl");
 		}
 	}
 
-	void ImGuiController::Finalize()
+	void ImGuiController::OnShutdown()
 	{
 		//-------------------------------------Dx12 Finalize-------------------------------------//
 		ImGui::DestroyPlatformWindows();

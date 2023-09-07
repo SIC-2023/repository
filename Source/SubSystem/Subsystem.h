@@ -30,7 +30,7 @@ namespace argent
 
 		~SubsystemLocator() = default;
 
-		template<class T> std::shared_ptr<T> Get()
+		template<class T> std::shared_ptr<T> Get() 
 		{
 			CertificateSubsystemType<T>();
 			if (!subsystems_.contains(typeid(T).hash_code())) return nullptr;

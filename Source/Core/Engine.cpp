@@ -9,12 +9,14 @@
 
 #include "../Input/InputManager.h"
 
-#include "../Rendering/RenderContext.h"
-#include "../Rendering/RenderingManager.h"
-
 #include "../Graphics/ImGuiController.h"
 #include "../Graphics/FrameResource.h"
 #include "../Graphics/GraphicsEngine.h"
+
+#include "../Rendering/RenderContext.h"
+#include "../Rendering/RenderingManager.h"
+
+#include "../Editor/Editor.h"
 
 #include "../Scene/SceneManager.h"
 
@@ -51,9 +53,13 @@ namespace argent
 		subsystem_locator_.Add<input::InputManager>();
 
 		subsystem_locator_.Add<graphics::GraphicsEngine>();
+
 		subsystem_locator_.Add<rendering::RenderingManager>();
 
+		if(is_editor_mode_) subsystem_locator_.Add<editor::Editor>();
+
 		subsystem_locator_.Add<scene::SceneManager>();
+
 		subsystem_locator_.Add<Timer>();
 	}
 
@@ -61,7 +67,10 @@ namespace argent
 	{
 		//TODO remove various subsystem from subsystem locator
 		subsystem_locator_.Remove<Timer>();
+
 		subsystem_locator_.Remove<scene::SceneManager>();
+
+		if(is_editor_mode_) subsystem_locator_.Remove<editor::Editor>();
 
 		subsystem_locator_.Remove<rendering::RenderingManager>();
 
@@ -96,12 +105,20 @@ namespace argent
 
 		const auto render_context = gfx->Begin();
 
+		if(is_editor_mode_)
+		{
+			subsystem_locator_.Get<editor::Editor>()->Begin(render_context);
+		}
+
 		//subsystem_locator_.Get<rendering::RenderingManager>()->Execute(render_context);
 
 		scene_manager->Render(render_context);
 
 		//TODO PostProcess
-
+		if(is_editor_mode_)
+		{
+			subsystem_locator_.Get<editor::Editor>()->End(render_context);
+		}
 
 		gfx->End(render_context);
 	}
