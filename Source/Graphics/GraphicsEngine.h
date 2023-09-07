@@ -135,11 +135,7 @@ namespace argent::graphics
 		uint32_t current_back_buffer_index_{};
 		uint64_t fence_value_{};
 		uint64_t fence_values_[kNumBackBuffers]{};
-
-		//TODO ImGui‚Í‚Ç‚±‚É’u‚­‚Ì‚ª³‰ğ??
-		std::unique_ptr<ImGuiController> im_gui_controller_;
-
-
+		
 		Microsoft::WRL::ComPtr<ID3D12PipelineLibrary> pipeline_library_;
 	};
 }

@@ -12,6 +12,7 @@ namespace argent::editor
 		auto& subsystem_locator = GetEngine()->GetSubsystemLocator();
 
 		const auto& graphics_context = subsystem_locator.Get<graphics::GraphicsEngine>()->GetGraphicsContext();
+
 		imgui_controller_.OnAwake(subsystem_locator.Get<Window>()->GetHwnd(), 
 			graphics_context.device_, graphics_context.cbv_srv_uav_heap_->PopDescriptor(), 
 			graphics_context.cbv_srv_uav_heap_->GetIncrementSize(), graphics_context.cbv_srv_uav_heap_->GetGpuHandleStart());

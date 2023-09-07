@@ -125,14 +125,6 @@ namespace argent::graphics
 		graphics_context_.dsv_heap_ = descriptor_heaps_[static_cast<int>(dx12::DescriptorHeap::HeapType::Dsv)].get();
 		graphics_context_.rtv_heap_ = descriptor_heaps_[static_cast<int>(dx12::DescriptorHeap::HeapType::Rtv)].get();
 
-		//‚±‚±‚©‚ç‚ÍƒIƒvƒVƒ‡ƒ“
-		//im_gui_controller_ = std::make_unique<ImGuiController>();
-		//auto* descriptor_heap = descriptor_heaps_[static_cast<int>(dx12::DescriptorHeap::HeapType::CbvSrvUav)].get();
-		//im_gui_controller_->OnAwake(hwnd, device_.Get(), 
-		//	descriptor_heap->PopDescriptor(), 
-		//	descriptor_heap->GetIncrementSize(), descriptor_heap->GetGpuHandleStart());
-
-
 		//TODO •Ê‚ÌêŠ‚É
 		hr = device_->CreatePipelineLibrary(nullptr, 0, IID_PPV_ARGS(pipeline_library_.ReleaseAndGetAddressOf()));
 		_ARGENT_ASSERT_EXPR(hr);
@@ -160,8 +152,6 @@ namespace argent::graphics
 			fence_->SetEventOnCompletion(fence_value, fence_event);
 			WaitForSingleObject(fence_event, INFINITE);
 		}
-
-		//im_gui_controller_->OnShutdown();
 	}
 
 	rendering::RenderContext GraphicsEngine::Begin() const
@@ -194,16 +184,11 @@ namespace argent::graphics
 
 		render_context.GetCommandList()->SetDescriptorHeaps(1u, descriptor_heaps);
 
-		//TODO ImGui
-		//im_gui_controller_->Begin(window_width_, window_height_);
-
 		return render_context;
 	}
 
 	void GraphicsEngine::End(const rendering::RenderContext& render_context)
 	{
-		//im_gui_controller_->End(render_context.GetCommandList(), current_back_buffer_index_);
-
 		frame_resources_[current_back_buffer_index_]->End(render_context.GetCommandList());
 		render_context.End(rendering_command_queue_.Get());
 
@@ -310,5 +295,4 @@ namespace argent::graphics
 		_ARGENT_ASSERT_EXPR(hr);
 		return hr;
 	}
-
 }

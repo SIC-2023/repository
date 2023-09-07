@@ -48,10 +48,11 @@ namespace argent
 		{
 			return subsystem_locator_;
 		}
+
 	private:
 		SubsystemLocator subsystem_locator_;	//contain all subsystem
 		bool is_request_showdown_;
-		bool is_editor_mode_ = true;
+		bool is_editor_mode_ = false;
 	};
 }
 
