@@ -126,7 +126,6 @@
     <ClCompile Include="Source\Graphics\FrameResource.cpp">
       <Filter>Argent\SubSystem\Graphics\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Graphics\FrameBuffer.cpp" />
     <ClCompile Include="Source\Rendering\RenderingManager.cpp">
       <Filter>Argent\SubSystem\Rendering</Filter>
     </ClCompile>
@@ -148,6 +147,15 @@
     <ClCompile Include="Source\Rendering\RenderContext.cpp">
       <Filter>Argent\SubSystem\Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Graphics\FrameBuffer.cpp">
+      <Filter>Argent\SubSystem\Graphics\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\argent_engine\Source\Editor\EditorWindow.cpp">
+      <Filter>Argent\SubSystem\Editor\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="..\argent_engine\Source\Editor\SceneWindow.cpp" />
+    <ClCompile Include="..\argent_engine\Source\Editor\InspectorWindow.cpp" />
+    <ClCompile Include="..\argent_engine\Source\Editor\Hierarchy.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -215,6 +223,9 @@
     </Filter>
     <Filter Include="Argent\SubSystem\Rendering\PostProcess">
       <UniqueIdentifier>{46496079-d388-429e-b6dc-f08c2cdb7db5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\SubSystem\Editor\Window">
+      <UniqueIdentifier>{aaa280d8-37e6-48c1-96d6-2b0d1ef19296}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -357,7 +368,6 @@
     <ClInclude Include="Source\Graphics\GraphicsContext.h">
       <Filter>Argent\SubSystem\Graphics\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Graphics\FrameBuffer.h" />
     <ClInclude Include="Source\Rendering\RenderingManager.h">
       <Filter>Argent\SubSystem\Rendering</Filter>
     </ClInclude>
@@ -379,5 +389,14 @@
     <ClInclude Include="Source\Rendering\RenderContext.h">
       <Filter>Argent\SubSystem\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Graphics\FrameBuffer.h">
+      <Filter>Argent\SubSystem\Graphics\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\argent_engine\Source\Editor\EditorWindow.h">
+      <Filter>Argent\SubSystem\Editor\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="..\argent_engine\Source\Editor\SceneWindow.h" />
+    <ClInclude Include="..\argent_engine\Source\Editor\InspectorWindow.h" />
+    <ClInclude Include="..\argent_engine\Source\Editor\Hierarchy.h" />
   </ItemGroup>
 </Project>

@@ -16,10 +16,10 @@ void DemoScene::OnAwake()
 
 	//auto model_data = argent::graphics::ImportModel("./Assets/Gear1.gltf");
 	//auto model_data = argent::graphics::ImportModel("./Assets/ToyCar.gltf");
-	//auto model_data = argent::graphics::ImportModel("./Assets/arakBarrak_v025.fbx");
+	auto model_data = argent::graphics::ImportModel("./Assets/arakBarrak_v025.fbx");
 	//auto model_data = argent::graphics::ImportModel("./Assets/ue_Mannequin.fbx");
 	//auto model_data = argent::graphics::ImportModel("./Assets/untitled.gltf");
-	auto model_data = argent::graphics::ImportModel("./Assets/untitled2.gltf");
+	//auto model_data = argent::graphics::ImportModel("./Assets/untitled2.gltf");
 
 	//TODO ユーザーがモデルを作る必要はないようにする
 	std::shared_ptr<argent::graphics::Model> model = std::make_shared<argent::graphics::Model>(

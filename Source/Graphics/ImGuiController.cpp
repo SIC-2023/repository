@@ -241,6 +241,7 @@ namespace argent::graphics
 
 		//ドッキング可能に
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+	//	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
 		//-------------------------------------Win32 Initialize-------------------------------------//
 
