@@ -5,6 +5,8 @@
 
 #include "../SubSystem/Subsystem.h"
 
+#include "EditorWindow.h"
+
 #include "../Graphics/ImGuiController.h"
 
 #include "../Rendering/RenderContext.h"
@@ -31,13 +33,23 @@ namespace argent::editor
 		void OnAwake() override;
 		void OnShutdown() override;
 
-		void Begin(const rendering::RenderContext& render_context);
-		void End(const rendering::RenderContext& render_context);
+		void OnRender(const rendering::RenderContext& render_context);
 
+	private:
+		template<class T>
+		void Register();
 	private:
 		Camera editor_camera_;
 
 		graphics::ImGuiController imgui_controller_;
+
+		std::vector<std::unique_ptr<EditorWindow>> editor_windows_;
 	};
+
+	template <class T>
+	void Editor::Register()
+	{
+		editor_windows_.emplace_back(std::make_unique<T>());
+	}
 }
 

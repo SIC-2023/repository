@@ -67,19 +67,6 @@ namespace argent::rendering
 	{
 		auto graphics_command_list = render_context.GetCommandList();
 
-		if(ImGui::TreeNode("StaticMesh"))
-		{
-			model_->OnGui();
-			ImGui::Checkbox("Using Mesh Shader", &use_mesh_shader_);
-			ImGui::Text(use_mesh_shader_ ? "Mesh Shader" : "Vertex Shader");
-
-			int mesh = static_cast<int>(model_->GetNumMeshes());
-			ImGui::InputInt("Mesh Counts", &mesh);
-			int polygon = model_->GetNumPolygons();
-			ImGui::InputInt("Polygon Counts", &polygon);
-
-			ImGui::TreePop();
-		}
 
 		RenderResource render_resource{};
 
@@ -138,6 +125,23 @@ namespace argent::rendering
 				graphics_command_list->SetGraphicsRoot32BitConstants(0u, sizeof(render_resource) / 4, &render_resource, 0u);
 				graphics_command_list->DispatchMesh((static_cast<UINT>(mesh->GetNumMeshlets()) + 32u - 1u) / 32, 1, 1);
 			}
+		}
+	}
+
+	void StaticMeshRenderer::DrawOnGui()
+	{
+		if (ImGui::TreeNode("StaticMesh"))
+		{
+			model_->OnGui();
+			ImGui::Checkbox("Using Mesh Shader", &use_mesh_shader_);
+			ImGui::Text(use_mesh_shader_ ? "Mesh Shader" : "Vertex Shader");
+
+			int mesh = static_cast<int>(model_->GetNumMeshes());
+			ImGui::InputInt("Mesh Counts", &mesh);
+			int polygon = model_->GetNumPolygons();
+			ImGui::InputInt("Polygon Counts", &polygon);
+
+			ImGui::TreePop();
 		}
 	}
 }

@@ -150,12 +150,18 @@
     <ClCompile Include="Source\Graphics\FrameBuffer.cpp">
       <Filter>Argent\SubSystem\Graphics\Buffer</Filter>
     </ClCompile>
-    <ClCompile Include="..\argent_engine\Source\Editor\EditorWindow.cpp">
+    <ClCompile Include="Source\Editor\EditorWindow.cpp">
       <Filter>Argent\SubSystem\Editor\Window</Filter>
     </ClCompile>
-    <ClCompile Include="..\argent_engine\Source\Editor\SceneWindow.cpp" />
-    <ClCompile Include="..\argent_engine\Source\Editor\InspectorWindow.cpp" />
-    <ClCompile Include="..\argent_engine\Source\Editor\Hierarchy.cpp" />
+    <ClCompile Include="Source\Editor\Hierarchy.cpp">
+      <Filter>Argent\SubSystem\Editor\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Editor\InspectorWindow.cpp">
+      <Filter>Argent\SubSystem\Editor\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Editor\SceneWindow.cpp">
+      <Filter>Argent\SubSystem\Editor\Window</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -392,11 +398,17 @@
     <ClInclude Include="Source\Graphics\FrameBuffer.h">
       <Filter>Argent\SubSystem\Graphics\Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="..\argent_engine\Source\Editor\EditorWindow.h">
+    <ClInclude Include="Source\Editor\EditorWindow.h">
       <Filter>Argent\SubSystem\Editor\Window</Filter>
     </ClInclude>
-    <ClInclude Include="..\argent_engine\Source\Editor\SceneWindow.h" />
-    <ClInclude Include="..\argent_engine\Source\Editor\InspectorWindow.h" />
-    <ClInclude Include="..\argent_engine\Source\Editor\Hierarchy.h" />
+    <ClInclude Include="Source\Editor\Hierarchy.h">
+      <Filter>Argent\SubSystem\Editor\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Editor\InspectorWindow.h">
+      <Filter>Argent\SubSystem\Editor\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Editor\SceneWindow.h">
+      <Filter>Argent\SubSystem\Editor\Window</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

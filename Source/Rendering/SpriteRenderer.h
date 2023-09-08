@@ -33,6 +33,7 @@ namespace argent::rendering
 	public:
 
 		void Render(const rendering::RenderContext& render_context);
+		void DrawOnGui();
 	private:
 
 		std::unique_ptr<graphics::GraphicsPipelineState> graphics_pipeline_state_{};

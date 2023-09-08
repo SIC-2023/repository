@@ -38,6 +38,7 @@ namespace argent::rendering
 
 		void Render(const RenderContext& render_context, const DirectX::XMFLOAT4X4& world);
 
+		void DrawOnGui();
 	private:
 
 		//スタティックメッシュメンバ

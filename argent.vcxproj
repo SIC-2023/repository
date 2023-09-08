@@ -138,10 +138,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\argent_engine\Source\Editor\EditorWindow.cpp" />
-    <ClCompile Include="..\argent_engine\Source\Editor\Hierarchy.cpp" />
-    <ClCompile Include="..\argent_engine\Source\Editor\InspectorWindow.cpp" />
-    <ClCompile Include="..\argent_engine\Source\Editor\SceneWindow.cpp" />
     <ClCompile Include="External\Imgui\imgui.cpp" />
     <ClCompile Include="External\Imgui\imgui_draw.cpp" />
     <ClCompile Include="External\Imgui\imgui_tables.cpp" />
@@ -154,6 +150,10 @@
     <ClCompile Include="Source\DemoScene.cpp" />
     <ClCompile Include="Source\Editor\Editor.cpp" />
     <ClCompile Include="Source\Editor\EditorCamera.cpp" />
+    <ClCompile Include="Source\Editor\EditorWindow.cpp" />
+    <ClCompile Include="Source\Editor\Hierarchy.cpp" />
+    <ClCompile Include="Source\Editor\InspectorWindow.cpp" />
+    <ClCompile Include="Source\Editor\SceneWindow.cpp" />
     <ClCompile Include="Source\Graphics\FrameBuffer.cpp" />
     <ClCompile Include="Source\Graphics\GraphicsCommandList.cpp" />
     <ClCompile Include="Source\Graphics\Dx12\Descriptor.cpp" />
@@ -195,10 +195,6 @@
     <ClCompile Include="Source\Utility\Random.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\argent_engine\Source\Editor\EditorWindow.h" />
-    <ClInclude Include="..\argent_engine\Source\Editor\Hierarchy.h" />
-    <ClInclude Include="..\argent_engine\Source\Editor\InspectorWindow.h" />
-    <ClInclude Include="..\argent_engine\Source\Editor\SceneWindow.h" />
     <ClInclude Include="External\Imgui\imgui.h" />
     <ClInclude Include="External\Imgui\imgui_internal.h" />
     <ClInclude Include="External\Imgui\imstb_rectpack.h" />
@@ -212,6 +208,10 @@
     <ClInclude Include="Source\DemoScene.h" />
     <ClInclude Include="Source\Editor\Editor.h" />
     <ClInclude Include="Source\Editor\EditorCamera.h" />
+    <ClInclude Include="Source\Editor\EditorWindow.h" />
+    <ClInclude Include="Source\Editor\Hierarchy.h" />
+    <ClInclude Include="Source\Editor\InspectorWindow.h" />
+    <ClInclude Include="Source\Editor\SceneWindow.h" />
     <ClInclude Include="Source\Graphics\AnimationClip.h" />
     <ClInclude Include="Source\Graphics\FrameBuffer.h" />
     <ClInclude Include="Source\Graphics\GraphicsCommandList.h" />

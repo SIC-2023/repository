@@ -24,6 +24,9 @@ namespace argent::scene
 		virtual void Update() = 0;
 		virtual void Render(const rendering::RenderContext& render_context) = 0;
 
+		//TODO virtual ‚¶‚á‚È‚­‚·‚é‚±‚Æ
+		virtual void DrawGui() = 0;
+
 		const std::string& GetName() const { return name_; }
 		const char* GetNameCStr() const { return name_.c_str(); }
 	private:

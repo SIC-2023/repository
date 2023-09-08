@@ -44,14 +44,6 @@ void DemoScene::Update()
 
 void DemoScene::Render(const argent::rendering::RenderContext& render_context)
 {
-	if (ImGui::TreeNode("Scene"))
-	{
-		camera_.OnGui();
-		mesh_transform_.OnGui();
-		ImGui::DragFloat3("Light Direction", &light_direction_.x, 0.01f, -1.0f, 1.0f);
-		ImGui::TreePop();
-	}
-
 	SceneConstant scene_data{};
 	scene_data.camera_position_ = camera_.GetPosition();
 	scene_data.view_projection_ = camera_.GetViewProjection();
@@ -61,4 +53,18 @@ void DemoScene::Render(const argent::rendering::RenderContext& render_context)
 
 	static_mesh_renderer_->Render(render_context, mesh_transform_.CalcWorldMatrix());
 	sprite_renderer_->Render(render_context);
+}
+
+void DemoScene::DrawGui()
+{
+	if (ImGui::TreeNode("Scene"))
+	{
+		camera_.OnGui();
+		mesh_transform_.OnGui();
+		static_mesh_renderer_->DrawOnGui();
+		sprite_renderer_->DrawOnGui();
+		ImGui::DragFloat3("Light Direction", &light_direction_.x, 0.01f, -1.0f, 1.0f);
+
+		ImGui::TreePop();
+	}
 }

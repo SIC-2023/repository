@@ -19,6 +19,7 @@ public:
 	void OnAwake() override;
 	void Update() override;
 	void Render(const argent::rendering::RenderContext& render_context) override;
+	void DrawGui() override;
 
 private:
 	//todo •Ê‚ÌêŠ‚É’u‚­

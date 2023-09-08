@@ -5,6 +5,8 @@
 #include "../Core/Window.h"
 #include "../Graphics/GraphicsEngine.h"
 
+#include "../Scene/SceneManager.h"
+
 namespace argent::editor
 {
 	void Editor::OnAwake()
@@ -23,13 +25,13 @@ namespace argent::editor
 		imgui_controller_.OnShutdown();
 	}
 
-	void Editor::Begin(const rendering::RenderContext& render_context)
+	void Editor::OnRender(const rendering::RenderContext& render_context)
 	{
 		imgui_controller_.Begin(render_context.GetWindowWidth(), render_context.GetWindowHeight());
-	}
 
-	void Editor::End(const rendering::RenderContext& render_context)
-	{
+
+		GetEngine()->GetSubsystemLocator().Get<scene::SceneManager>()->GetCurrentScene()->DrawGui();
+
 		imgui_controller_.End(render_context.GetCommandList(), render_context.GetFrameIndex());
 	}
 }

@@ -59,19 +59,6 @@ namespace argent::rendering
 	void SpriteRenderer::Render(const rendering::RenderContext& render_context)
 	{
 		const auto graphics_command_list = render_context.GetCommandList();
-
-		//todo
-		if(ImGui::TreeNode("Sprite Renderer"))
-		{
-			ImGui::DragFloat2("Position", &position_.x, 0.1f, 0.0f, 1280.0f);
-			ImGui::DragFloat2("Texture Position", &tex_pos_.x, 0.1f, 0.0f, 1280.0f);
-			ImGui::DragFloat2("Render Texture Size", &tex_size_.x, 0.1f, 0.0f, 1280.0f);
-			ImGui::DragFloat2("Center Offset", &center_offset_.x, 0.1f, 0.0f, 1280.0f);
-			ImGui::DragFloat2("Scale", &scale_.x, 0.1f, 0.0f, 1280.0f);
-			ImGui::DragFloat("Angle", &angle_, 0.1f, 0.0f, 1280.0f);
-			ImGui::ColorPicker4("Color", &color_.x);
-			ImGui::TreePop();
-		}
 		const auto& viewport = render_context.GetViewport();
 
 		const DirectX::XMFLOAT2 viewport_size{ viewport.Width, viewport.Height };
@@ -133,6 +120,22 @@ namespace argent::rendering
 
 		graphics_command_list->SetGraphicsRoot32BitConstants(0u, 1, &constant, 0u);
 		graphics_command_list->DrawInstanced(4u, 1u, 0u, 0u);
+	}
+
+	void SpriteRenderer::DrawOnGui()
+	{
+		//todo
+		if (ImGui::TreeNode("Sprite Renderer"))
+		{
+			ImGui::DragFloat2("Position", &position_.x, 0.1f, 0.0f, 1280.0f);
+			ImGui::DragFloat2("Texture Position", &tex_pos_.x, 0.1f, 0.0f, 1280.0f);
+			ImGui::DragFloat2("Render Texture Size", &tex_size_.x, 0.1f, 0.0f, 1280.0f);
+			ImGui::DragFloat2("Center Offset", &center_offset_.x, 0.1f, 0.0f, 1280.0f);
+			ImGui::DragFloat2("Scale", &scale_.x, 0.1f, 0.0f, 1280.0f);
+			ImGui::DragFloat("Angle", &angle_, 0.1f, 0.0f, 1280.0f);
+			ImGui::ColorPicker4("Color", &color_.x);
+			ImGui::TreePop();
+		}
 	}
 
 	DirectX::XMFLOAT3 CalcNdcPosition(const DirectX::XMFLOAT2& world_position, const DirectX::XMFLOAT2& viewport_size)
