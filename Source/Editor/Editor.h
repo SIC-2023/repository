@@ -38,6 +38,7 @@ namespace argent::editor
 	private:
 		template<class T>
 		void Register();
+
 	private:
 		Camera editor_camera_;
 

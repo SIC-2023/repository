@@ -7,6 +7,9 @@
 
 #include "../Scene/SceneManager.h"
 
+#include "imgui.h"
+#include "imgui_internal.h"
+
 namespace argent::editor
 {
 	void Editor::OnAwake()
@@ -29,9 +32,49 @@ namespace argent::editor
 	{
 		imgui_controller_.Begin(render_context.GetWindowWidth(), render_context.GetWindowHeight());
 
+		ImGuiID docking_id{};
+		//Generate Null DockSpace
+		{
+			ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
 
+
+			static bool opt_padding = false;
+			static bool is_open = true;
+			static ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_None;
+
+			const ImGuiViewport* viewport = ImGui::GetMainViewport();
+			ImGui::SetNextWindowPos(viewport->WorkPos);
+			ImGui::SetNextWindowSize(viewport->WorkSize);
+			ImGui::SetNextWindowViewport(viewport->ID);
+			ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+			ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+			window_flags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove;
+			window_flags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
+
+
+			if (!opt_padding)
+				ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+			ImGui::Begin("DockSpace Demo", &is_open, window_flags);
+			if (!opt_padding)
+				ImGui::PopStyleVar();
+
+			ImGui::PopStyleVar(2);
+
+			ImGuiIO& io = ImGui::GetIO();
+			if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
+			{
+				ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
+				docking_id = ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
+			}
+			ImGui::End();
+		}
+
+		ImGui::SetNextWindowDockID(docking_id, ImGuiCond_FirstUseEver);
+		ImGui::SetNextWindowSize(ImVec2(280, 280));
+		ImGui::Begin("Scene");
 		GetEngine()->GetSubsystemLocator().Get<scene::SceneManager>()->GetCurrentScene()->DrawGui();
-
+		ImGui::End();
+		
 		imgui_controller_.End(render_context.GetCommandList(), render_context.GetFrameIndex());
 	}
 }
