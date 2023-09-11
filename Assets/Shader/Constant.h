@@ -56,4 +56,9 @@ struct PBRMaterial
 	float metallic_factor_;
 	float roughness_factor_;
 };
+
+struct FullscreenQuad
+{
+	uint texture_;
+};
 #endif //_CONSTANT_H_

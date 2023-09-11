@@ -86,6 +86,12 @@ namespace argent::graphics
 	void FrameBuffer::Begin(ID3D12GraphicsCommandList* command_list, 
 							UINT num_rects, const D3D12_RECT* p_rect)
 	{
+		//リソースバリア
+		const D3D12_RESOURCE_BARRIER resource_barrier = CD3DX12_RESOURCE_BARRIER::Transition(
+			sr_rt_resource_.Get(), D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, 
+			D3D12_RESOURCE_STATE_RENDER_TARGET);
+		command_list->ResourceBarrier(1u, &resource_barrier);
+
 		//rtv dsv クリア
 		command_list->ClearRenderTargetView(rtv_descriptor_.GetCpuHandle(), 
 			clear_color_, num_rects, p_rect);
@@ -93,11 +99,6 @@ namespace argent::graphics
 			D3D12_CLEAR_FLAG_DEPTH | D3D12_CLEAR_FLAG_STENCIL, 1.0f, 
 			0u, 0u, nullptr);
 
-		//リソースバリア
-		const D3D12_RESOURCE_BARRIER resource_barrier = CD3DX12_RESOURCE_BARRIER::Transition(
-			sr_rt_resource_.Get(), D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE, 
-			D3D12_RESOURCE_STATE_RENDER_TARGET);
-		command_list->ResourceBarrier(1u, &resource_barrier);
 
 		//レンダーターゲットとしてセット
 		const auto rtv_cpu_handle = rtv_descriptor_.GetCpuHandle();

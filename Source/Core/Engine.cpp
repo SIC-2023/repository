@@ -105,15 +105,15 @@ namespace argent
 
 		const auto render_context = gfx->Begin();
 
-		//subsystem_locator_.Get<rendering::RenderingManager>()->Execute(render_context);
+		subsystem_locator_.Get<rendering::RenderingManager>()->Execute(render_context, scene_manager->GetCurrentScene());
 
-		scene_manager->Render(render_context);
+		//scene_manager->Render(render_context);
 
-		//TODO PostProcess
-		if(is_editor_mode_)
-		{
-			subsystem_locator_.Get<editor::Editor>()->OnRender(render_context);
-		}
+		////TODO PostProcess
+		//if(is_editor_mode_)
+		//{
+		//	subsystem_locator_.Get<editor::Editor>()->OnRender(render_context);
+		//}
 
 		gfx->End(render_context);
 	}

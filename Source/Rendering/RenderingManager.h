@@ -7,6 +7,7 @@
 #include "../Graphics/GraphicsUtility.h"
 #include "../Graphics/FrameResource.h"
 #include "../Graphics/FrameBuffer.h"
+#include "../Graphics/GraphicsPipelineState.h"
 
 namespace argent::scene
 {
@@ -36,6 +37,7 @@ namespace argent::rendering
 
 		std::unique_ptr<graphics::FrameResource> frame_resource_[graphics::kNumBackBuffers];
 		std::unique_ptr<graphics::FrameBuffer> frame_buffers_[graphics::kNumBackBuffers];
+		std::unique_ptr<graphics::GraphicsPipelineState> graphics_pipeline_state_{};
 	};
 }
 

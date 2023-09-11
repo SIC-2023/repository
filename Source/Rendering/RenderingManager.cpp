@@ -21,6 +21,7 @@ namespace argent::rendering
 
 	void RenderingManager::OnAwake()
 	{
+		const DXGI_FORMAT render_target_format = DXGI_FORMAT_R8G8B8A8_UNORM;
 		const auto graphics_context = GetEngine()->GetSubsystemLocator().Get<graphics::GraphicsEngine>()->GetGraphicsContext();
 
 		for(int i = 0; i < graphics::kNumBackBuffers; ++i)
@@ -29,10 +30,15 @@ namespace argent::rendering
 				graphics_context.rtv_heap_->PopDescriptor(), graphics_context.dsv_heap_->PopDescriptor(), 
 				graphics_context.cbv_srv_uav_heap_->PopDescriptor(), graphics_context.cbv_srv_uav_heap_->PopDescriptor());
 
-			frame_buffers_[i] = std::make_unique<graphics::FrameBuffer>(graphics_context, 1280, 720, DXGI_FORMAT_R32G32B32A32_FLOAT);
+			frame_buffers_[i] = std::make_unique<graphics::FrameBuffer>(graphics_context, 1280, 720, render_target_format);
 		}
 
 		post_process_manager_.OnAwake(graphics_context);
+
+		graphics::GraphicsPipelineDesc graphics_pipeline_desc{};
+		graphics_pipeline_desc.vs_filename_ = L"./Assets/Shader/FullscreenQuadVS.hlsl";
+		graphics_pipeline_desc.ps_filename_ = L"./Assets/Shader/FullscreenQuadPS.hlsl";
+		graphics_pipeline_state_ = std::make_unique<graphics::GraphicsPipelineState>(graphics_context.device_, graphics_pipeline_desc, L"FullscreenQuad");
 
 		Subsystem::OnAwake();
 	}
@@ -45,29 +51,39 @@ namespace argent::rendering
 	void RenderingManager::Execute(const RenderContext& render_context, scene::BaseScene* scene)
 	{
 		//描画開始
+		auto* d3d12_command_list = render_context.GetCommandList();
 		const auto viewport = render_context.GetViewport();
 		D3D12_RECT rect { 0, 0, static_cast<LONG>(viewport.Width), static_cast<LONG>(viewport.Height) };
 
-		//render_context.GetCommandList()->RSSetViewports(1u, &viewport);
-		//render_context.GetCommandList()->RSSetScissorRects(1u, &rect);
+		d3d12_command_list->RSSetViewports(1u, &viewport);
+		d3d12_command_list->RSSetScissorRects(1u, &rect);
 
-		//frame_buffers_[render_context.GetFrameIndex()]->Begin(render_context.GetCommandList());
+		frame_buffers_[render_context.GetFrameIndex()]->Begin(d3d12_command_list);
 
 		////シーン描画
-		//scene->Render(render_context);
+		scene->Render(render_context);
 
-		//frame_buffers_[render_context.GetFrameIndex()]->End(render_context.GetCommandList());
+		frame_buffers_[render_context.GetFrameIndex()]->End(d3d12_command_list);
 
-		////ポストプロセス
+		//ポストプロセス
 		//post_process_manager_.Execute(render_context);
 
 		//最終出力
 		constexpr float clear_color[4] { 1, 1, 1, 1 };
-		frame_resource_[render_context.GetFrameIndex()]->Begin(render_context.GetCommandList(), viewport, rect, clear_color);
+		frame_resource_[render_context.GetFrameIndex()]->Begin(d3d12_command_list, viewport, rect, clear_color);
 
-		scene->Render(render_context);
+		graphics_pipeline_state_->SetOnCommandList(d3d12_command_list);
+		d3d12_command_list->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+
+		struct FullscreenQuadRenderResource
+		{
+			uint32_t texture_index_;
+		} render_resource{ frame_buffers_[render_context.GetFrameIndex()]->GetSrvHeapIndex() };
+		d3d12_command_list->SetGraphicsRoot32BitConstants(0u, 1u, &render_resource, 0u);
+		d3d12_command_list->DrawInstanced(4u, 1u, 0u, 0u);
+		//scene->Render(render_context);
 
 		//描画終了
-		frame_resource_[render_context.GetFrameIndex()]->End(render_context.GetCommandList());
+		frame_resource_[render_context.GetFrameIndex()]->End(d3d12_command_list);
 	}
 }

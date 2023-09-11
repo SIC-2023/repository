@@ -183,9 +183,9 @@ namespace argent::graphics
 
 		render_context.Begin();
 
-		frame_resources_[current_back_buffer_index_]->Begin(
-			graphics_command_lists_[current_back_buffer_index_]->GetCommandList(),
-			viewport_, scissor_rect_, kClearColor);
+		//frame_resources_[current_back_buffer_index_]->Begin(
+		//	graphics_command_lists_[current_back_buffer_index_]->GetCommandList(),
+		//	viewport_, scissor_rect_, kClearColor);
 
 		//ディスクリプタヒープをセットする
 		ID3D12DescriptorHeap* descriptor_heaps[]
@@ -200,7 +200,7 @@ namespace argent::graphics
 
 	void GraphicsEngine::End(const rendering::RenderContext& render_context)
 	{
-		frame_resources_[current_back_buffer_index_]->End(render_context.GetCommandList());
+//		frame_resources_[current_back_buffer_index_]->End(render_context.GetCommandList());
 		render_context.End(rendering_command_queue_.Get());
 
 		rendering_command_queue_->Signal(fence_.Get(), ++fence_value_);
