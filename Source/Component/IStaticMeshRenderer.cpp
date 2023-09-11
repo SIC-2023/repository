@@ -28,6 +28,16 @@ namespace argent::component
 			graphics->GetGraphicsContext(),	model);
 	}
 
+	void IStaticMeshRenderer::OnUpdate()
+	{
+		if(GetAsyncKeyState(0x0058) & 0x8000)
+		{
+			DirectX::XMFLOAT3 pos = GetOwner()->GetTransform()->GetPosition();
+			pos.z += 0.1f;
+			GetOwner()->GetTransform()->SetPosition(pos);
+		}
+	}
+
 	void IStaticMeshRenderer::OnRender(const rendering::RenderContext& render_context)
 	{
 		static_mesh_renderer_->Render(render_context, GetOwner()->GetTransform()->CalcWorldMatrix());

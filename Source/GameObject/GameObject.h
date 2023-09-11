@@ -39,6 +39,8 @@ namespace argent
 		template<class T>
 		T* AddComponent();
 
+		GameObject* AddChild();
+
 		template<class T>
 		T* GetComponent()  const;
 

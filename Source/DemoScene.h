@@ -4,7 +4,7 @@
 
 #include "Rendering/SpriteRenderer.h"
 #include "Rendering/StaticMeshRenderer.h"
-#include "Camera.h"
+#include "Component/Camera.h"
 #include "Scene/BaseScene.h"
 
 class DemoScene:
@@ -21,11 +21,7 @@ public:
 
 private:
 	//TODO ComponentŠ®¬‚µ‚½‚çˆÚ“®‚³‚¹‚é‚±‚Æ
-	Camera camera_;
+	argent::component::Camera camera_;
 	DirectX::XMFLOAT4 light_direction_{ -1.0f, -1.0f, 1.0, 0.0f };
-
-	std::unique_ptr<argent::rendering::SpriteRenderer> sprite_renderer_{};
-	std::unique_ptr<argent::rendering::StaticMeshRenderer> static_mesh_renderer_{};
-	std::unique_ptr<argent::rendering::StaticMeshRenderer> static_mesh_renderer_1{};
 };
 

@@ -22,6 +22,9 @@ void DemoScene::OnAwake()
 	auto* game_object = AddObject("Object1");
 	game_object->AddComponent<argent::component::ISpriteRenderer>();
 	game_object->AddComponent<argent::component::IStaticMeshRenderer>();
+	auto* child = game_object->AddChild();
+	child->AddComponent<argent::component::IStaticMeshRenderer>();
+	child->AddChild();
 	AddObject("Object2");
 	AddObject("Object3");
 	AddObject("Object4");
@@ -47,7 +50,5 @@ void DemoScene::Render(const argent::rendering::RenderContext& render_context)
 	scene_data.light_direction_ = light_direction_;
 	render_context.SetSceneData(scene_data);
 	render_context.SetFrustumData(scene_data.view_projection_, scene_data.camera_position_);
-
-
 }
 

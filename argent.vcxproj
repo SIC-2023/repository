@@ -142,7 +142,7 @@
     <ClCompile Include="External\Imgui\imgui_draw.cpp" />
     <ClCompile Include="External\Imgui\imgui_tables.cpp" />
     <ClCompile Include="External\Imgui\imgui_widgets.cpp" />
-    <ClCompile Include="Source\Camera.cpp" />
+    <ClCompile Include="Source\Component\Camera.cpp" />
     <ClCompile Include="Source\Component\Component.cpp" />
     <ClCompile Include="Source\Component\ISpriteRenderer.cpp" />
     <ClCompile Include="Source\Component\IStaticMeshRenderer.cpp" />
@@ -206,7 +206,7 @@
     <ClInclude Include="External\Imgui\imstb_rectpack.h" />
     <ClInclude Include="External\Imgui\imstb_textedit.h" />
     <ClInclude Include="External\Imgui\imstb_truetype.h" />
-    <ClInclude Include="Source\Camera.h" />
+    <ClInclude Include="Source\Component\Camera.h" />
     <ClInclude Include="Source\Component\Component.h" />
     <ClInclude Include="Source\Component\ISpriteRenderer.h" />
     <ClInclude Include="Source\Component\IStaticMeshRenderer.h" />

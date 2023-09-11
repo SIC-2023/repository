@@ -52,7 +52,7 @@ namespace argent::editor
 		ImGuiID docking_id{};
 		//Generate Null DockSpace
 		{
-			ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
+			ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoDocking;
 
 			static bool is_open = true;
 			static ImGuiDockNodeFlags dockspace_flags = ImGuiDockNodeFlags_None;
@@ -71,6 +71,32 @@ namespace argent::editor
 			ImGui::PopStyleVar();
 
 			ImGui::PopStyleVar(2);
+			static float padding_x = 1.0f;
+			static float padding_y = 5.0f;
+			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(padding_x, padding_y));
+			bool is_open_menu_bar = ImGui::BeginMainMenuBar();
+			ImGui::PopStyleVar();
+			if(is_open_menu_bar)
+			{
+				auto size = ImGui::GetWindowSize().y;
+				ImGui::SetCursorPosX(ImGui::GetWindowWidth() / 2 - size / 2);
+				if(ImGui::ImageButton("Play", reinterpret_cast<ImTextureID>(scene_srv_heap_index),
+					ImVec2(15, 15)))
+				{
+					OnPlay();
+				}
+				
+				if(ImGui::BeginMenu("Menu"))
+				{
+					ImGui::InputFloat("Size", &size);
+					ImGui::DragFloat("Padding X", &padding_x);
+					ImGui::DragFloat("Padding Y", &padding_y);
+					ImGui::EndMenu();
+				}
+				ImGui::EndMainMenuBar();
+			}
+
+
 
 			if(first_loop)
 			{

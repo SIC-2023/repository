@@ -98,7 +98,13 @@ namespace argent
 
 		//Update scene object(like player, enemy, camera ...) on cpu side
 		const auto scene_manager = subsystem_locator_.Get<scene::SceneManager>();
-		scene_manager->Update();
+
+		if(!GetIsEditorMode() || 
+			(subsystem_locator_.Get<editor::Editor>()->GetIsPlay() && 
+				!subsystem_locator_.Get<editor::Editor>()->GetIsPause()))
+		{
+			scene_manager->Update();
+		}
 
 		//Draw scene
 		const auto gfx = subsystem_locator_.Get<graphics::GraphicsEngine>();

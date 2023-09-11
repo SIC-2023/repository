@@ -17,6 +17,7 @@ namespace argent::component
 
 		~IStaticMeshRenderer() override = default;;
 
+		void OnUpdate() override;
 		void OnRender(const rendering::RenderContext& render_context) override;
 
 		void OnDrawInspector() override;

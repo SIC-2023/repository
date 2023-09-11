@@ -34,6 +34,14 @@ namespace argent::editor
 
 		void OnRender(const rendering::RenderContext& render_context, uint64_t scene_srv_heap_index);
 
+		bool GetIsPlay() const { return is_play_; }
+		bool GetIsPause() const { return is_pause_; }
+
+		void OnPlay() { is_play_ = true; is_pause_ = false; }
+		void OffPlay() { is_play_ = is_pause_ = false; }
+		void OnPause() { is_pause_ = true; }
+
+
 		static uint64_t GetSceneSrvHeapIndex() { return scene_srv_heap_index_; }
 	private:
 		template<class T>
@@ -48,6 +56,9 @@ namespace argent::editor
 
 		//TODO •Ê‚Ì‚¢‚¢•û–@‚ğl‚¦‚é
 		static uint64_t scene_srv_heap_index_;
+
+		bool is_play_;
+		bool is_pause_;
 	};
 
 	template <class T>

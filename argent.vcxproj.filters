@@ -66,9 +66,6 @@
     <ClCompile Include="Source\Core\Window.cpp">
       <Filter>Argent\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Camera.cpp">
-      <Filter>Com</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Graphics\Skeleton.cpp">
       <Filter>Argent\SubSystem\Graphics\Model</Filter>
     </ClCompile>
@@ -179,6 +176,9 @@
     </ClCompile>
     <ClCompile Include="Source\Component\ISpriteRenderer.cpp">
       <Filter>Argent\Component\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Component\Camera.cpp">
+      <Filter>Argent\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -332,9 +332,6 @@
     <ClInclude Include="Source\Core\Window.h">
       <Filter>Argent\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Camera.h">
-      <Filter>Com</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Graphics\Skeleton.h">
       <Filter>Argent\SubSystem\Graphics\Model</Filter>
     </ClInclude>
@@ -454,6 +451,9 @@
     </ClInclude>
     <ClInclude Include="Source\Component\ISpriteRenderer.h">
       <Filter>Argent\Component\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Component\Camera.h">
+      <Filter>Argent\Component</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

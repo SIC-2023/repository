@@ -70,4 +70,10 @@ namespace argent
 			components_.at(i)->OnDrawInspector();
 		}
 	}
+
+	GameObject* GameObject::AddChild()
+	{
+		child_objects_.emplace_back(std::make_unique<GameObject>("Child"));
+		return  (*child_objects_.rbegin()).get();
+	}
 }
