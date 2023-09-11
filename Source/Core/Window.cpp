@@ -45,7 +45,7 @@ namespace argent
 		RECT rc{ 0, 0, window_width_, window_height_ };
 		AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
 
-		hwnd_ = CreateWindowExW(0, wc.lpszClassName, L"Window Name",
+		hwnd_ = CreateWindowExW(0, wc.lpszClassName, L"Argent Engine",
 			WS_OVERLAPPEDWINDOW ^ WS_MAXIMIZEBOX ^ WS_THICKFRAME | WS_MAXIMIZE,
 			CW_USEDEFAULT, CW_USEDEFAULT, rc.right - rc.left,
 			rc.bottom - rc.top, nullptr, nullptr, 

@@ -27,7 +27,6 @@ namespace argent
 
 	void Timer::OnShutdown()
 	{
-		//TODO タイマーのシャットダウンでやることはある？
 		Subsystem::OnShutdown();
 	}
 

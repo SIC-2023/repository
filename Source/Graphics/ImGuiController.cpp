@@ -407,19 +407,6 @@ L"./Assets/Shader/ImGuiVS.hlsl", L"./Assets/Shader/ImGuiPS.hlsl");
 	void ImGuiController::End(ID3D12GraphicsCommandList* command_list
         , UINT current_back_buffer_index)
 	{
-		auto timer = GetEngine()->GetSubsystemLocator().Get<Timer>();
-		float delta_time = timer->GetDeltaTime();
-		float frame_times = timer->GetFrameTimes();
-		int fps = static_cast<int>(timer->GetFps());
-		static float step{};
-		static float step_fast{};
-		ImGui::DragFloat("Step", &step, 0.1f, -100.0f, 100.0f);
-		ImGui::DragFloat("Step Fast", &step_fast, 0.1f, -100.0f, 100.0f);
-		ImGui::InputFloat("Delta Time", &delta_time, step, step_fast, "%.6f");
-		ImGui::InputFloat("Frame Times", &frame_times);
-		ImGui::InputInt("FPS", &fps, 0, 0);
-
-
 		ImGui::Render();
 
 
