@@ -7,6 +7,8 @@
 #include "../Graphics/GraphicsContext.h"
 #include "../Graphics/GraphicsEngine.h"
 
+#include "../Editor/Editor.h"
+
 namespace argent::rendering
 {
 	RenderingManager::RenderingManager()
@@ -72,16 +74,25 @@ namespace argent::rendering
 		constexpr float clear_color[4] { 1, 1, 1, 1 };
 		frame_resource_[render_context.GetFrameIndex()]->Begin(d3d12_command_list, viewport, rect, clear_color);
 
-		graphics_pipeline_state_->SetOnCommandList(d3d12_command_list);
-		d3d12_command_list->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
-
-		struct FullscreenQuadRenderResource
+		//エディタモードならGuiを描画 and シーンをシーンウィンドウ上に出力
+		//offならそのまま出力
+		if(GetEngine()->GetIsEditorMode())
 		{
-			uint32_t texture_index_;
-		} render_resource{ frame_buffers_[render_context.GetFrameIndex()]->GetSrvHeapIndex() };
-		d3d12_command_list->SetGraphicsRoot32BitConstants(0u, 1u, &render_resource, 0u);
-		d3d12_command_list->DrawInstanced(4u, 1u, 0u, 0u);
-		//scene->Render(render_context);
+			GetEngine()->GetSubsystemLocator().Get<editor::Editor>()->OnRender(render_context, frame_buffers_[render_context.GetFrameIndex()]->GetSrvHeapIndex());
+		}
+		else
+		{
+			graphics_pipeline_state_->SetOnCommandList(d3d12_command_list);
+			d3d12_command_list->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+
+			struct FullscreenQuadRenderResource
+			{
+				uint32_t texture_index_;
+			} render_resource{ frame_buffers_[render_context.GetFrameIndex()]->GetSrvHeapIndex() };
+			d3d12_command_list->SetGraphicsRoot32BitConstants(0u, 1u, &render_resource, 0u);
+			d3d12_command_list->DrawInstanced(4u, 1u, 0u, 0u);
+			//scene->Render(render_context);
+		}
 
 		//描画終了
 		frame_resource_[render_context.GetFrameIndex()]->End(d3d12_command_list);

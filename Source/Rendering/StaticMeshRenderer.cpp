@@ -60,7 +60,7 @@ namespace argent::rendering
 		mesh_shader_pipeline_desc.as_filename_ = L"./Assets/Shader/DemoMeshShaderAS.hlsl";
 		mesh_shader_pipeline_desc.ps_filename_ = L"./Assets/Shader/DemoMeshShaderPS.hlsl";
 		mesh_shader_pipeline_desc.rasterizer_mode_ = graphics::dx12::RasterizerMode::CullBackSolid;
-	//	mesh_shader_pipeline_state_ = std::make_unique<graphics::GraphicsPipelineState>(device, mesh_shader_pipeline_desc);
+		mesh_shader_pipeline_state_ = std::make_unique<graphics::GraphicsPipelineState>(device, mesh_shader_pipeline_desc);
 	}
 
 	void StaticMeshRenderer::Render(const RenderContext& render_context, const DirectX::XMFLOAT4X4& world)

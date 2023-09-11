@@ -28,7 +28,7 @@ namespace argent::editor
 		imgui_controller_.OnShutdown();
 	}
 
-	void Editor::OnRender(const rendering::RenderContext& render_context)
+	void Editor::OnRender(const rendering::RenderContext& render_context, uint64_t scene_srv_heap_index)
 	{
 		imgui_controller_.Begin(render_context.GetWindowWidth(), render_context.GetWindowHeight());
 
@@ -73,6 +73,10 @@ namespace argent::editor
 		ImGui::SetNextWindowSize(ImVec2(280, 280));
 		ImGui::Begin("Scene");
 		GetEngine()->GetSubsystemLocator().Get<scene::SceneManager>()->GetCurrentScene()->DrawGui();
+
+		//TODO ÀÛ‚Ì‰æ–ÊƒTƒCƒY‚©‚ç•‚‚³‚ğ’²ß‚·‚é
+		float imgui_window_width = ImGui::GetWindowWidth();
+		ImGui::Image(reinterpret_cast<ImTextureID>(scene_srv_heap_index), ImVec2(imgui_window_width, imgui_window_width / 1280.0f * 720.0f));
 		ImGui::End();
 		
 		imgui_controller_.End(render_context.GetCommandList(), render_context.GetFrameIndex());

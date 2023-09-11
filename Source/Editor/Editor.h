@@ -33,7 +33,7 @@ namespace argent::editor
 		void OnAwake() override;
 		void OnShutdown() override;
 
-		void OnRender(const rendering::RenderContext& render_context);
+		void OnRender(const rendering::RenderContext& render_context, uint64_t scene_srv_heap_index);
 
 	private:
 		template<class T>

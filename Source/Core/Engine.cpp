@@ -102,18 +102,9 @@ namespace argent
 
 		//Draw scene
 		const auto gfx = subsystem_locator_.Get<graphics::GraphicsEngine>();
-
 		const auto render_context = gfx->Begin();
 
 		subsystem_locator_.Get<rendering::RenderingManager>()->Execute(render_context, scene_manager->GetCurrentScene());
-
-		//scene_manager->Render(render_context);
-
-		////TODO PostProcess
-		//if(is_editor_mode_)
-		//{
-		//	subsystem_locator_.Get<editor::Editor>()->OnRender(render_context);
-		//}
 
 		gfx->End(render_context);
 	}
