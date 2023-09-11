@@ -7,7 +7,7 @@ namespace argent::editor
 	class EditorWindow
 	{
 	public:
-		EditorWindow();
+		EditorWindow(std::string name);
 		virtual ~EditorWindow() = default;
 
 		virtual void OnAwake() {}

@@ -1,13 +1,15 @@
 #pragma once
+
 #include "EditorWindow.h"
 
 namespace argent::editor
 {
-	class InspectorWindow final :
-			public EditorWindow
+	class HierarchyWindow final :
+		public EditorWindow
 	{
 	public:
-		InspectorWindow();
+
+		HierarchyWindow();
 		void OnAwake() override;
 		void OnShutdown() override;
 		void OnRender() override;

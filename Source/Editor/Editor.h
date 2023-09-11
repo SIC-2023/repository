@@ -2,7 +2,6 @@
 
 #include <DirectXMath.h>
 
-
 #include "../SubSystem/Subsystem.h"
 
 #include "EditorWindow.h"
@@ -50,6 +49,7 @@ namespace argent::editor
 	template <class T>
 	void Editor::Register()
 	{
+		static_assert(std::is_base_of<EditorWindow, T>::value, "EditorWindow‚Å‚Í‚È‚¢Œ^‚ªŽw’è‚³‚ê‚Ü‚µ‚½");
 		editor_windows_.emplace_back(std::make_unique<T>());
 	}
 }

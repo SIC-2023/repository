@@ -1,14 +1,19 @@
 #include "Editor.h"
 
-#include "../Core/Engine.h"
+#include "imgui.h"
+#include "imgui_internal.h"
 
+#include "../Core/Engine.h"
 #include "../Core/Window.h"
+
+#include "SceneWindow.h"
+#include "InspectorWindow.h"
+#include "HierarchyWindow.h"
+
 #include "../Graphics/GraphicsEngine.h"
 
 #include "../Scene/SceneManager.h"
 
-#include "imgui.h"
-#include "imgui_internal.h"
 
 namespace argent::editor
 {
@@ -21,6 +26,12 @@ namespace argent::editor
 		imgui_controller_.OnAwake(subsystem_locator.Get<Window>()->GetHwnd(), 
 			graphics_context.device_, graphics_context.cbv_srv_uav_heap_->PopDescriptor(), 
 			graphics_context.cbv_srv_uav_heap_->GetIncrementSize(), graphics_context.cbv_srv_uav_heap_->GetGpuHandleStart());
+
+
+		//Register Editor Window
+		Register<SceneWindow>();
+		Register<HierarchyWindow>();
+		Register<InspectorWindow>();
 	}
 
 	void Editor::OnShutdown()
@@ -36,7 +47,6 @@ namespace argent::editor
 		//Generate Null DockSpace
 		{
 			ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoDocking;
-
 
 			static bool opt_padding = false;
 			static bool is_open = true;
@@ -62,11 +72,17 @@ namespace argent::editor
 			ImGuiIO& io = ImGui::GetIO();
 			if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
 			{
-				ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
+				const ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
 				docking_id = ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
 			}
 			ImGui::End();
 		}
+
+		for(auto& editor_window : editor_windows_)
+		{
+			editor_window->OnRender();
+		}
+
 
 		ImGui::SetNextWindowDockID(docking_id, ImGuiCond_FirstUseEver);
 		ImGui::SetNextWindowSize(ImVec2(280, 280), ImGuiCond_FirstUseEver);
@@ -74,7 +90,7 @@ namespace argent::editor
 		GetEngine()->GetSubsystemLocator().Get<scene::SceneManager>()->GetCurrentScene()->DrawGui();
 
 		//TODO é¿ç€ÇÃâÊñ ÉTÉCÉYÇ©ÇÁïùçÇÇ≥Çí≤êﬂÇ∑ÇÈ
-		float imgui_window_width = ImGui::GetWindowWidth();
+		const float imgui_window_width = ImGui::GetWindowWidth();
 		ImGui::Image(reinterpret_cast<ImTextureID>(scene_srv_heap_index), ImVec2(imgui_window_width, imgui_window_width / 1280.0f * 720.0f));
 		ImGui::End();
 		

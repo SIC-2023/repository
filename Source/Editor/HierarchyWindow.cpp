@@ -1,30 +1,29 @@
-#include "SceneWindow.h"
+#include "HierarchyWindow.h"
 
 #include "imgui.h"
 
 namespace argent::editor
 {
-	SceneWindow::SceneWindow():
-		EditorWindow("SceneWindow")
+	HierarchyWindow::HierarchyWindow():
+		EditorWindow("Hierarchy")
 	{
 	}
 
-	void SceneWindow::OnAwake()
+	void HierarchyWindow::OnAwake()
 	{
 		EditorWindow::OnAwake();
 	}
 
-	void SceneWindow::OnShutdown()
+	void HierarchyWindow::OnShutdown()
 	{
 		EditorWindow::OnShutdown();
 	}
 
-	void SceneWindow::OnRender()
+	void HierarchyWindow::OnRender()
 	{
 		ImGui::SetNextWindowSize(ImVec2(280, 280), ImGuiCond_FirstUseEver);
 		ImGui::Begin(GetName().c_str());
 
 		ImGui::End();
 	}
-
 }

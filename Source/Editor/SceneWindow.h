@@ -4,11 +4,15 @@
 
 namespace argent::editor
 {
-	class SceneWindow final : public EditorWindow
+	class SceneWindow final
+		: public EditorWindow
 	{
+	public:
 		SceneWindow();
 
-
+		void OnAwake() override;
+		void OnShutdown() override;
+		void OnRender() override;
 	private:
 	};
 }
