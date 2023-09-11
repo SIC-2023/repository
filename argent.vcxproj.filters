@@ -66,9 +66,6 @@
     <ClCompile Include="Source\Core\Window.cpp">
       <Filter>Argent\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Transform.cpp">
-      <Filter>Com</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Camera.cpp">
       <Filter>Com</Filter>
     </ClCompile>
@@ -162,6 +159,27 @@
     <ClCompile Include="Source\Editor\SceneWindow.cpp">
       <Filter>Argent\SubSystem\Editor\Window</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Editor\ProjectWindow.cpp">
+      <Filter>Argent\SubSystem\Editor\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Component\Component.cpp">
+      <Filter>Argent\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameObject\GameObject.cpp">
+      <Filter>Argent\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Component\Transform.cpp">
+      <Filter>Argent\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Component\RendererComponent.cpp">
+      <Filter>Argent\Component\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Component\IStaticMeshRenderer.cpp">
+      <Filter>Argent\Component\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Component\ISpriteRenderer.cpp">
+      <Filter>Argent\Component\Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -221,6 +239,15 @@
     <Filter Include="Argent\SubSystem\Graphics\Core">
       <UniqueIdentifier>{dff74ed1-c210-40cd-ac12-cec0ef3ae552}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Argent\SubSystem\Editor\Window">
+      <UniqueIdentifier>{aaa280d8-37e6-48c1-96d6-2b0d1ef19296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\GameObject">
+      <UniqueIdentifier>{c23fcff1-a304-4845-8662-8dd717577f8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Argent\Component">
+      <UniqueIdentifier>{560ac218-0acc-453c-b805-1e1266beddaa}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Argent\SubSystem\Rendering">
       <UniqueIdentifier>{fc10e8fc-b109-47ea-a78f-bbea4937af09}</UniqueIdentifier>
     </Filter>
@@ -230,8 +257,8 @@
     <Filter Include="Argent\SubSystem\Rendering\PostProcess">
       <UniqueIdentifier>{46496079-d388-429e-b6dc-f08c2cdb7db5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Argent\SubSystem\Editor\Window">
-      <UniqueIdentifier>{aaa280d8-37e6-48c1-96d6-2b0d1ef19296}</UniqueIdentifier>
+    <Filter Include="Argent\Component\Renderer">
+      <UniqueIdentifier>{bc81bf1e-3373-4d0c-a63d-b18d23173e07}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -304,9 +331,6 @@
     </ClInclude>
     <ClInclude Include="Source\Core\Window.h">
       <Filter>Argent\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Transform.h">
-      <Filter>Com</Filter>
     </ClInclude>
     <ClInclude Include="Source\Camera.h">
       <Filter>Com</Filter>
@@ -409,6 +433,27 @@
     </ClInclude>
     <ClInclude Include="Source\Editor\SceneWindow.h">
       <Filter>Argent\SubSystem\Editor\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Editor\ProjectWindow.h">
+      <Filter>Argent\SubSystem\Editor\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Component\Component.h">
+      <Filter>Argent\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameObject\GameObject.h">
+      <Filter>Argent\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Component\Transform.h">
+      <Filter>Argent\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Component\RendererComponent.h">
+      <Filter>Argent\Component\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Component\IStaticMeshRenderer.h">
+      <Filter>Argent\Component\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Component\ISpriteRenderer.h">
+      <Filter>Argent\Component\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

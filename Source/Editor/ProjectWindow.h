@@ -4,17 +4,17 @@
 
 namespace argent::editor
 {
-	class HierarchyWindow final :
+	class ProjectWindow final :
 		public EditorWindow
 	{
 	public:
+		ProjectWindow();
 
-		HierarchyWindow();
 		void OnAwake() override;
 		void OnShutdown() override;
 		void OnRender() override;
 
-		
+	private:
 	};
 }
 

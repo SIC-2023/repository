@@ -1,11 +1,5 @@
 #pragma once
-#include <Windows.h>
-
 #include <memory>
-
-#include "../Graphics/GraphicsEngine.h"
-#include "../Scene/SceneManager.h"
-#include "Timer.h"
 
 #include "Engine.h"
 
@@ -27,7 +21,7 @@ namespace argent
 		Application& operator=(const Application&&) = delete;
 
 
-		void SetUp();
+		void SetUp(bool is_editor_mode = true);
 		int OnShutdown();
 
 		/**
@@ -37,7 +31,6 @@ namespace argent
 		void Run();
 
 	private:
-
 
 		std::unique_ptr<Engine> engine_;
 	};

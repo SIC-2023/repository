@@ -1,13 +1,16 @@
 #pragma once
 
 #include <DirectXMath.h>
+#include "Component.h"
 
-namespace argent
+namespace argent::component
 {
-	class Transform
+	class Transform final :
+		public Component
 	{
 	public:
-		Transform() = default;
+		Transform();
+		~Transform() override = default;
 
 		DirectX::XMFLOAT4X4 CalcWorldMatrix() const
 		{
@@ -22,7 +25,7 @@ namespace argent
 			return ret;
 		}
 
-
+		void OnDrawInspector() override;
 		void OnGui();
 
 		DirectX::XMFLOAT3 GetPosition() const { return position_; }

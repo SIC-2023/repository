@@ -28,7 +28,6 @@ namespace argent::graphics
 		dx12::Descriptor srv_descriptor_;
 		dx12::Descriptor dsv_descriptor_;
 
-
 		float clear_color_[4] { 0, 0, 1, 1 };
 	};
 }

@@ -26,6 +26,18 @@ void Camera::Controller()
 	using namespace argent::input;
 	if (mouse.GetButton(argent::input::MouseButton::RButton)/*右クリックの入力*/)
 	{
+		//カメラの回転
+		{
+			const float dx = mouse.GetMovedVec().x;	//マウスX軸方向の移動値
+			const float dy = mouse.GetMovedVec().y;	//マウスY軸方向の移動値
+
+			const float x_d_angle = dy * rotation_speed_;
+			const float y_d_angle = dx * rotation_speed_;
+
+			rotation_.x += x_d_angle;
+			rotation_.y += y_d_angle;
+		}
+
 		//カメラの移動
 		{
 			//方向を算出
@@ -58,17 +70,6 @@ void Camera::Controller()
 			position_ = { p.x, p.y, p.z, 1.0f };
 		}
 
-		//カメラの回転
-		{
-			const float dx = mouse.GetMovedVec().x;	//マウスX軸方向の移動値
-			const float dy = mouse.GetMovedVec().y;	//マウスY軸方向の移動値
-
-			const float x_d_angle = dy * rotation_speed_;
-			const float y_d_angle = dx * rotation_speed_;
-
-			rotation_.x += x_d_angle;
-			rotation_.y += y_d_angle;
-		}
 	}
 }
 

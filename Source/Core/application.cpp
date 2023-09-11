@@ -1,10 +1,11 @@
 #include "application.h"
 
+#include <d3d12.h>
+
 #include "../Utility/Misc.h"
 
 namespace argent
 {
-	
 #ifdef _DEBUG
 	void EnableDebugLayer()
 	{
@@ -18,7 +19,7 @@ namespace argent
 	}
 #endif
 
-	void Application::SetUp()
+	void Application::SetUp(bool is_editor_mode)
 	{
 #ifdef _DEBUG 
 	EnableDebugLayer();
@@ -28,7 +29,7 @@ namespace argent
 	//_CrtSetBreakAlloc();
 #endif
 
-		engine_ = std::make_unique<Engine>();
+		engine_ = std::make_unique<Engine>(is_editor_mode);
 		engine_->SetUp();
 	}
 

@@ -2,10 +2,12 @@
 
 #include "imgui.h"
 
+#include "Editor.h"
+
 namespace argent::editor
 {
 	SceneWindow::SceneWindow():
-		EditorWindow("SceneWindow")
+		EditorWindow("Scene")
 	{
 	}
 
@@ -21,8 +23,10 @@ namespace argent::editor
 
 	void SceneWindow::OnRender()
 	{
-		ImGui::SetNextWindowSize(ImVec2(280, 280), ImGuiCond_FirstUseEver);
-		ImGui::Begin(GetName().c_str());
+		ImGui::Begin(GetName().c_str(), nullptr, ImGuiWindowFlags_NoScrollWithMouse | ImGuiWindowFlags_NoScrollbar);
+		const ImVec2 window_size =  ImGui::GetWindowSize();
+
+		ImGui::Image(reinterpret_cast<ImTextureID>(Editor::GetSceneSrvHeapIndex()), window_size);
 
 		ImGui::End();
 	}

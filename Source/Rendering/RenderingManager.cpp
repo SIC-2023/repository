@@ -40,7 +40,7 @@ namespace argent::rendering
 		graphics::GraphicsPipelineDesc graphics_pipeline_desc{};
 		graphics_pipeline_desc.vs_filename_ = L"./Assets/Shader/FullscreenQuadVS.hlsl";
 		graphics_pipeline_desc.ps_filename_ = L"./Assets/Shader/FullscreenQuadPS.hlsl";
-		graphics_pipeline_desc.rtv_format_[0] = DXGI_FORMAT_B8G8R8A8_UNORM;
+		graphics_pipeline_desc.rtv_format_[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
 		graphics_pipeline_state_ = std::make_unique<graphics::GraphicsPipelineState>(graphics_context.device_, graphics_pipeline_desc, L"FullscreenQuad");
 
 		Subsystem::OnAwake();
@@ -66,6 +66,10 @@ namespace argent::rendering
 
 		////ƒV[ƒ“•`‰æ
 		scene->Render(render_context);
+		for(auto& renderer : renderer_components_)
+		{
+			renderer->OnRender(render_context);
+		}
 
 		frame_buffers_[frame_index]->End(d3d12_command_list);
 

@@ -15,7 +15,7 @@ namespace argent
 	class Engine
 	{
 	public:
-		Engine();
+		Engine(bool is_editor_mode);
 		~Engine();
 
 		Engine(const Engine&) = delete;

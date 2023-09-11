@@ -1,5 +1,5 @@
 #include "Core/Application.h"
-
+#include <Windows.h>
 
 #ifdef _DEBUG
 int main()
@@ -13,7 +13,7 @@ int WINAPI wWinMain(
 #endif
 {
 	argent::Application application;
-	application.SetUp();
+	application.SetUp(true);
 	application.Run();
 	return application.OnShutdown();
 }

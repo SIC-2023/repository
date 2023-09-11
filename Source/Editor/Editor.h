@@ -34,6 +34,7 @@ namespace argent::editor
 
 		void OnRender(const rendering::RenderContext& render_context, uint64_t scene_srv_heap_index);
 
+		static uint64_t GetSceneSrvHeapIndex() { return scene_srv_heap_index_; }
 	private:
 		template<class T>
 		void Register();
@@ -44,6 +45,9 @@ namespace argent::editor
 		graphics::ImGuiController imgui_controller_;
 
 		std::vector<std::unique_ptr<EditorWindow>> editor_windows_;
+
+		//TODO •Ê‚Ì‚¢‚¢•û–@‚ğl‚¦‚é
+		static uint64_t scene_srv_heap_index_;
 	};
 
 	template <class T>

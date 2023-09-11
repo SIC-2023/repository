@@ -29,8 +29,9 @@ namespace argent
 		return engine;
 	}
 
-	Engine::Engine():
+	Engine::Engine(bool is_editor_mode):
 		is_request_showdown_(false)
+	,	is_editor_mode_(is_editor_mode)
 	{
 		if (engine) _ASSERT_EXPR(FALSE, L"Already Instantiated : argent::Engine");
 

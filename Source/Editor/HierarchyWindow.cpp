@@ -2,6 +2,9 @@
 
 #include "imgui.h"
 
+#include "../Core/Engine.h"
+#include "../Scene/SceneManager.h"
+
 namespace argent::editor
 {
 	HierarchyWindow::HierarchyWindow():
@@ -21,8 +24,9 @@ namespace argent::editor
 
 	void HierarchyWindow::OnRender()
 	{
-		ImGui::SetNextWindowSize(ImVec2(280, 280), ImGuiCond_FirstUseEver);
 		ImGui::Begin(GetName().c_str());
+
+		GetEngine()->GetSubsystemLocator().Get<scene::SceneManager>()->GetCurrentScene()->DrawGui();
 
 		ImGui::End();
 	}

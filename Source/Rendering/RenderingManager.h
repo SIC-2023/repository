@@ -9,6 +9,8 @@
 #include "../Graphics/FrameBuffer.h"
 #include "../Graphics/GraphicsPipelineState.h"
 
+#include "../Component/RendererComponent.h"
+
 namespace argent::scene
 {
 	class BaseScene;
@@ -35,6 +37,7 @@ namespace argent::rendering
 		bool GetIsPostProcessing() const { return is_post_processing_; }
 		void SetIsPostProcessing(bool b) { is_post_processing_ = b; }
 
+		void Register(component::RendererComponent* com) { renderer_components_.emplace_back(com); }
 	private:
 		PostProcessManager post_process_manager_;
 		bool is_post_processing_ = true;
@@ -42,6 +45,8 @@ namespace argent::rendering
 		std::unique_ptr<graphics::FrameResource> frame_resource_[graphics::kNumBackBuffers];
 		std::unique_ptr<graphics::FrameBuffer> frame_buffers_[graphics::kNumBackBuffers];
 		std::unique_ptr<graphics::GraphicsPipelineState> graphics_pipeline_state_{};
+
+		std::vector<component::RendererComponent*> renderer_components_;
 	};
 }
 

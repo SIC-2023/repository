@@ -1,6 +1,11 @@
 #pragma once
 #include "EditorWindow.h"
 
+namespace argent
+{
+	class GameObject;
+}
+
 namespace argent::editor
 {
 	class InspectorWindow final :
@@ -11,6 +16,9 @@ namespace argent::editor
 		void OnAwake() override;
 		void OnShutdown() override;
 		void OnRender() override;
+
+		//TODO
+		static GameObject* focused_game_object_;
 	};
 }
 

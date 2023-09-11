@@ -143,6 +143,11 @@
     <ClCompile Include="External\Imgui\imgui_tables.cpp" />
     <ClCompile Include="External\Imgui\imgui_widgets.cpp" />
     <ClCompile Include="Source\Camera.cpp" />
+    <ClCompile Include="Source\Component\Component.cpp" />
+    <ClCompile Include="Source\Component\ISpriteRenderer.cpp" />
+    <ClCompile Include="Source\Component\IStaticMeshRenderer.cpp" />
+    <ClCompile Include="Source\Component\RendererComponent.cpp" />
+    <ClCompile Include="Source\Component\Transform.cpp" />
     <ClCompile Include="source\core\Application.cpp" />
     <ClCompile Include="Source\Core\Engine.cpp" />
     <ClCompile Include="Source\core\Timer.cpp" />
@@ -153,7 +158,9 @@
     <ClCompile Include="Source\Editor\EditorWindow.cpp" />
     <ClCompile Include="Source\Editor\HierarchyWindow.cpp" />
     <ClCompile Include="Source\Editor\InspectorWindow.cpp" />
+    <ClCompile Include="Source\Editor\ProjectWindow.cpp" />
     <ClCompile Include="Source\Editor\SceneWindow.cpp" />
+    <ClCompile Include="Source\GameObject\GameObject.cpp" />
     <ClCompile Include="Source\Graphics\FrameBuffer.cpp" />
     <ClCompile Include="Source\Graphics\GraphicsCommandList.cpp" />
     <ClCompile Include="Source\Graphics\Dx12\Descriptor.cpp" />
@@ -191,7 +198,6 @@
     <ClCompile Include="Source\Scene\BaseScene.cpp" />
     <ClCompile Include="Source\Scene\SceneManager.cpp" />
     <ClCompile Include="Source\SubSystem\Subsystem.cpp" />
-    <ClCompile Include="Source\Transform.cpp" />
     <ClCompile Include="Source\Utility\Random.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +207,11 @@
     <ClInclude Include="External\Imgui\imstb_textedit.h" />
     <ClInclude Include="External\Imgui\imstb_truetype.h" />
     <ClInclude Include="Source\Camera.h" />
+    <ClInclude Include="Source\Component\Component.h" />
+    <ClInclude Include="Source\Component\ISpriteRenderer.h" />
+    <ClInclude Include="Source\Component\IStaticMeshRenderer.h" />
+    <ClInclude Include="Source\Component\RendererComponent.h" />
+    <ClInclude Include="Source\Component\Transform.h" />
     <ClInclude Include="source\core\Application.h" />
     <ClInclude Include="Source\Core\Engine.h" />
     <ClInclude Include="Source\core\Timer.h" />
@@ -211,7 +222,9 @@
     <ClInclude Include="Source\Editor\EditorWindow.h" />
     <ClInclude Include="Source\Editor\HierarchyWindow.h" />
     <ClInclude Include="Source\Editor\InspectorWindow.h" />
+    <ClInclude Include="Source\Editor\ProjectWindow.h" />
     <ClInclude Include="Source\Editor\SceneWindow.h" />
+    <ClInclude Include="Source\GameObject\GameObject.h" />
     <ClInclude Include="Source\Graphics\AnimationClip.h" />
     <ClInclude Include="Source\Graphics\FrameBuffer.h" />
     <ClInclude Include="Source\Graphics\GraphicsCommandList.h" />
@@ -251,7 +264,6 @@
     <ClInclude Include="Source\Scene\BaseScene.h" />
     <ClInclude Include="Source\Scene\SceneManager.h" />
     <ClInclude Include="Source\SubSystem\Subsystem.h" />
-    <ClInclude Include="Source\Transform.h" />
     <ClInclude Include="source\utility\Misc.h" />
     <ClInclude Include="Source\Utility\Random.h" />
   </ItemGroup>
