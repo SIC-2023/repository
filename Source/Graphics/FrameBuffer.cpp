@@ -59,7 +59,7 @@ namespace argent::graphics
 
 		//Create Depth Resource and DSV
 		{
-			const D3D12_CLEAR_VALUE clear_value = CD3DX12_CLEAR_VALUE(DXGI_FORMAT_D24_UNORM_S8_UINT, 1.0f, 0.0f);
+			const D3D12_CLEAR_VALUE clear_value = CD3DX12_CLEAR_VALUE(DXGI_FORMAT_D24_UNORM_S8_UINT, 1.0f, 0u);
 
 			D3D12_RESOURCE_DESC resource_desc{};
 			resource_desc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;

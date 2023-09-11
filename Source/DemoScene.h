@@ -22,7 +22,7 @@ public:
 	void DrawGui() override;
 
 private:
-	//todo •Ê‚ÌêŠ‚É’u‚­
+	//TODO ComponentŠ®¬‚µ‚½‚çˆÚ“®‚³‚¹‚é‚±‚Æ
 	argent::Transform mesh_transform_;
 	argent::Transform sprite_transform_;
 	Camera camera_;

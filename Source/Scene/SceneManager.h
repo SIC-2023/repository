@@ -17,7 +17,7 @@ namespace argent::scene
 	public:
 		SceneManager() = default;
 
-		virtual ~SceneManager() = default;
+		virtual ~SceneManager() override = default;
 
 		void OnAwake() override;
 		void OnShutdown() override;
@@ -29,7 +29,7 @@ namespace argent::scene
 		BaseScene* GetCurrentScene() const { return scene_.get(); }
 	private:
 
-		//todo
+		//TODO •¡”ƒV[ƒ“‚Ö‚Ì‘Î‰@
 		std::unique_ptr<BaseScene> scene_;
 	};
 }

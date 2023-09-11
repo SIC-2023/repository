@@ -135,7 +135,8 @@ namespace argent::graphics
 		uint32_t current_back_buffer_index_{};
 		uint64_t fence_value_{};
 		uint64_t fence_values_[kNumBackBuffers]{};
-		
+
+		//TODO 専用のパイプラインマネージャーを作るべきか
 		Microsoft::WRL::ComPtr<ID3D12PipelineLibrary> pipeline_library_;
 	};
 }

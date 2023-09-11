@@ -5,7 +5,6 @@
 
 namespace argent::graphics
 {
-	//TODO Žg‚Á‚Ä‚È‚¢‚æ
 	class GraphicsCommandList
 	{
 	public:

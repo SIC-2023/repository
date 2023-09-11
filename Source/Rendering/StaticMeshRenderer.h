@@ -49,7 +49,7 @@ namespace argent::rendering
 		std::unique_ptr<graphics::ConstantBuffer<ObjectConstant>> object_constant_buffer_[3]{};
 		std::vector<std::unique_ptr<graphics::ConstantBuffer<MeshConstant>>> mesh_constant_buffers_[3]{};
 
-		//TODO 消しなさい
+		//TODO メッシュシェーダーを使うかどうか　場合分けをどうする？？
 		bool use_mesh_shader_ = false;
 	};
 }

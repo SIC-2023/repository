@@ -20,7 +20,7 @@ namespace argent::graphics
 		const wchar_t* hs_filename_ = nullptr;	//nullptrでもOk
 		UINT num_render_targets_ = 1u;
 		dx12::BlendMode blend_mode_[8] = { dx12::BlendMode::Alpha };
-		DXGI_FORMAT	rtv_format_[8] = { DXGI_FORMAT_R8G8B8A8_UNORM };
+		DXGI_FORMAT	rtv_format_[8] = { DXGI_FORMAT_R32G32B32A32_FLOAT };
 		bool alpha_to_coverage_enable_ = false;
 		bool independent_blend_enable_ = false;
 		dx12::DepthMode depth_mode_ = dx12::DepthMode::TestOnWriteOn;
@@ -39,7 +39,7 @@ namespace argent::graphics
 		const wchar_t* ps_filename_ = nullptr;	//Pixel Shader [Neccesary]
 		UINT num_render_targets_ = 1u;
 		dx12::BlendMode blend_mode_[8] = { dx12::BlendMode::Alpha };
-		DXGI_FORMAT	rtv_format_[8] = { DXGI_FORMAT_R8G8B8A8_UNORM };
+		DXGI_FORMAT	rtv_format_[8] = { DXGI_FORMAT_R32G32B32A32_FLOAT };
 		bool alpha_to_coverage_enable_ = false;
 		bool independent_blend_enable_ = false;
 		dx12::DepthMode depth_mode_ = dx12::DepthMode::TestOnWriteOn;
@@ -52,8 +52,11 @@ namespace argent::graphics
 	class GraphicsPipelineState
 	{
 	public:
+		//通常の頂点シェーダーなどを用いたパイプライン作成時に使う
 		GraphicsPipelineState(ID3D12Device* device, const GraphicsPipelineDesc& graphics_pipeline_desc, LPCWSTR pipeline_name);
+		//Mesh Shader 使用時に使う
 		GraphicsPipelineState(ID3D12Device8* device, const MeshShaderPipelineDesc& mesh_shader_pipeline_desc);
+		//ImGuiの方で使ってる
 		GraphicsPipelineState(ID3D12Device* device, 
 			D3D12_GRAPHICS_PIPELINE_STATE_DESC pipeline_state_desc, 
 			const wchar_t* vs_filename, const wchar_t* ps_filename);

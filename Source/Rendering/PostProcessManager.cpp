@@ -14,9 +14,9 @@ namespace argent::rendering
 	}
 
 
-	void PostProcessManager::Execute(const RenderContext& render_context)
+	void PostProcessManager::Execute(const RenderContext& render_context, uint32_t scene_srv_heap_index)
 	{
-		
+		result_srv_heap_index_ = scene_srv_heap_index;
 	}
 
 }

@@ -1,12 +1,12 @@
 #include "SpriteRenderer.h"
 
+#include "imgui.h"
+
 #include "../Graphics/GraphicsContext.h"
 #include "../Graphics/Shader.h"
 
 #include "RenderContext.h"
 
-//todo
-#include "imgui.h"
 
 namespace argent::rendering
 {
@@ -124,7 +124,6 @@ namespace argent::rendering
 
 	void SpriteRenderer::DrawOnGui()
 	{
-		//todo
 		if (ImGui::TreeNode("Sprite Renderer"))
 		{
 			ImGui::DragFloat2("Position", &position_.x, 0.1f, 0.0f, 1280.0f);

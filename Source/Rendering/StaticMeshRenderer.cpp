@@ -93,7 +93,7 @@ namespace argent::rendering
 			//ƒ}ƒeƒŠƒAƒ‹
 			const auto& material = model_->GetMaterial(mesh->GetMaterialIndex());
 			material->UpdateConstantBuffer();
-			render_resource.material_constant_index_ = material->GetHeapIndex();
+			render_resource.material_constant_index_ = static_cast<uint32_t>(material->GetHeapIndex());
 
 			if(!use_mesh_shader_)
 			{

@@ -23,7 +23,7 @@ namespace argent::rendering
 
 	void RenderingManager::OnAwake()
 	{
-		const DXGI_FORMAT render_target_format = DXGI_FORMAT_R8G8B8A8_UNORM;
+		const DXGI_FORMAT render_target_format = DXGI_FORMAT_R32G32B32A32_FLOAT;
 		const auto graphics_context = GetEngine()->GetSubsystemLocator().Get<graphics::GraphicsEngine>()->GetGraphicsContext();
 
 		for(int i = 0; i < graphics::kNumBackBuffers; ++i)
@@ -40,6 +40,7 @@ namespace argent::rendering
 		graphics::GraphicsPipelineDesc graphics_pipeline_desc{};
 		graphics_pipeline_desc.vs_filename_ = L"./Assets/Shader/FullscreenQuadVS.hlsl";
 		graphics_pipeline_desc.ps_filename_ = L"./Assets/Shader/FullscreenQuadPS.hlsl";
+		graphics_pipeline_desc.rtv_format_[0] = DXGI_FORMAT_B8G8R8A8_UNORM;
 		graphics_pipeline_state_ = std::make_unique<graphics::GraphicsPipelineState>(graphics_context.device_, graphics_pipeline_desc, L"FullscreenQuad");
 
 		Subsystem::OnAwake();
@@ -54,31 +55,35 @@ namespace argent::rendering
 	{
 		//描画開始
 		auto* d3d12_command_list = render_context.GetCommandList();
-		const auto viewport = render_context.GetViewport();
-		D3D12_RECT rect { 0, 0, static_cast<LONG>(viewport.Width), static_cast<LONG>(viewport.Height) };
+		const int frame_index = render_context.GetFrameIndex();
+		const D3D12_VIEWPORT viewport = render_context.GetViewport();
+		const D3D12_RECT rect { 0, 0, static_cast<LONG>(viewport.Width), static_cast<LONG>(viewport.Height) };
 
 		d3d12_command_list->RSSetViewports(1u, &viewport);
 		d3d12_command_list->RSSetScissorRects(1u, &rect);
 
-		frame_buffers_[render_context.GetFrameIndex()]->Begin(d3d12_command_list);
+		frame_buffers_[frame_index]->Begin(d3d12_command_list);
 
 		////シーン描画
 		scene->Render(render_context);
 
-		frame_buffers_[render_context.GetFrameIndex()]->End(d3d12_command_list);
+		frame_buffers_[frame_index]->End(d3d12_command_list);
 
 		//ポストプロセス
-		//post_process_manager_.Execute(render_context);
+		post_process_manager_.Execute(render_context, static_cast<uint32_t>(frame_buffers_[frame_index]->GetSrvHeapIndex()));
 
 		//最終出力
 		constexpr float clear_color[4] { 1, 1, 1, 1 };
-		frame_resource_[render_context.GetFrameIndex()]->Begin(d3d12_command_list, viewport, rect, clear_color);
+		frame_resource_[frame_index]->Begin(d3d12_command_list, viewport, rect, clear_color);
+
+		const uint64_t scene_srv_heap_index = is_post_processing_ ? 
+			post_process_manager_.GetSrvHeapIndex() : frame_buffers_[frame_index]->GetSrvHeapIndex();
 
 		//エディタモードならGuiを描画 and シーンをシーンウィンドウ上に出力
 		//offならそのまま出力
 		if(GetEngine()->GetIsEditorMode())
 		{
-			GetEngine()->GetSubsystemLocator().Get<editor::Editor>()->OnRender(render_context, frame_buffers_[render_context.GetFrameIndex()]->GetSrvHeapIndex());
+			GetEngine()->GetSubsystemLocator().Get<editor::Editor>()->OnRender(render_context, scene_srv_heap_index);
 		}
 		else
 		{
@@ -88,13 +93,13 @@ namespace argent::rendering
 			struct FullscreenQuadRenderResource
 			{
 				uint32_t texture_index_;
-			} render_resource{ frame_buffers_[render_context.GetFrameIndex()]->GetSrvHeapIndex() };
+			} const render_resource{ static_cast<uint32_t>(scene_srv_heap_index) };
+
 			d3d12_command_list->SetGraphicsRoot32BitConstants(0u, 1u, &render_resource, 0u);
 			d3d12_command_list->DrawInstanced(4u, 1u, 0u, 0u);
-			//scene->Render(render_context);
 		}
 
 		//描画終了
-		frame_resource_[render_context.GetFrameIndex()]->End(d3d12_command_list);
+		frame_resource_[frame_index]->End(d3d12_command_list);
 	}
 }

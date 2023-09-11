@@ -15,7 +15,7 @@ namespace argent::graphics::dx12
 	HRESULT CreateDepthStencilBufferAndView(ID3D12Device* device, UINT64 width, UINT height,
 	                                        ID3D12Resource** pp_depth_stencil_resource, D3D12_CPU_DESCRIPTOR_HANDLE cpu_descriptor_handle);
 
-	//todo 置く場所間違ってると思う
+	//TODO 本当に必要か？？？ 置く場所間違ってると思う
 	/**
 	 * \brief トランジションリソースバリアを張る
 	 * \param command_list 命令を乗せるコマンドリスト

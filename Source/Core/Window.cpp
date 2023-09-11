@@ -57,7 +57,6 @@ namespace argent
 
 	void Window::OnShutdown()
 	{
-		//TODO Is it need to override OnShutdown function of this class
 		Subsystem::OnShutdown();
 	}
 

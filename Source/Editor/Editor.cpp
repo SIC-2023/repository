@@ -70,7 +70,7 @@ namespace argent::editor
 		}
 
 		ImGui::SetNextWindowDockID(docking_id, ImGuiCond_FirstUseEver);
-		ImGui::SetNextWindowSize(ImVec2(280, 280));
+		ImGui::SetNextWindowSize(ImVec2(280, 280), ImGuiCond_FirstUseEver);
 		ImGui::Begin("Scene");
 		GetEngine()->GetSubsystemLocator().Get<scene::SceneManager>()->GetCurrentScene()->DrawGui();
 

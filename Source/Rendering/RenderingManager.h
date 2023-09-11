@@ -32,8 +32,12 @@ namespace argent::rendering
 
 		void Execute(const RenderContext& render_context, scene::BaseScene* scene);
 
+		bool GetIsPostProcessing() const { return is_post_processing_; }
+		void SetIsPostProcessing(bool b) { is_post_processing_ = b; }
+
 	private:
 		PostProcessManager post_process_manager_;
+		bool is_post_processing_ = true;
 
 		std::unique_ptr<graphics::FrameResource> frame_resource_[graphics::kNumBackBuffers];
 		std::unique_ptr<graphics::FrameBuffer> frame_buffers_[graphics::kNumBackBuffers];

@@ -41,13 +41,12 @@ namespace argent
 
 	Engine::~Engine()
 	{
-		//TODO maybe nothing to do here
-		
+				
 	}
 
 	void Engine::SetUp()
 	{
-		//TODO add various subsystem on subsystem locator
+		//add various subsystem on subsystem locator
 		subsystem_locator_.Add<Window>();
 
 		subsystem_locator_.Add<input::InputManager>();
@@ -65,7 +64,7 @@ namespace argent
 
 	void Engine::OnShutdown()
 	{
-		//TODO remove various subsystem from subsystem locator
+		//remove various subsystem from subsystem locator
 		subsystem_locator_.Remove<Timer>();
 
 		subsystem_locator_.Remove<scene::SceneManager>();
@@ -83,7 +82,7 @@ namespace argent
 
 	void Engine::Run()
 	{
-		//TODO to call update or renderer function
+		//update and rendering
 
 		//Update window event and message
 		const auto& window = subsystem_locator_.Get<Window>();

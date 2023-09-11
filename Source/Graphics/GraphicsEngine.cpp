@@ -14,9 +14,6 @@
 #include "FrameResource.h"
 #include "GraphicsContext.h"
 
-
-//todo 別の場所に置く
-#include "ImGuiController.h"
 #include "../Rendering/RenderContext.h"
 
 namespace argent::graphics
@@ -38,8 +35,8 @@ namespace argent::graphics
 
 		//エディターモードのときだけやるようにする
 		GetClientRect(hwnd, &window_rect);
-		window_width_ = window_rect.right - window_rect.left;
-		window_height_ = window_rect.bottom - window_rect.top;
+		window_width_ = static_cast<float>(window_rect.right - window_rect.left);
+		window_height_ = static_cast<float>(window_rect.bottom - window_rect.top);
 
 
 		HRESULT hr{};
@@ -132,10 +129,7 @@ namespace argent::graphics
 		graphics_context_.cbv_srv_uav_heap_ = descriptor_heaps_[static_cast<int>(dx12::DescriptorHeap::HeapType::CbvSrvUav)].get();
 		graphics_context_.dsv_heap_ = descriptor_heaps_[static_cast<int>(dx12::DescriptorHeap::HeapType::Dsv)].get();
 		graphics_context_.rtv_heap_ = descriptor_heaps_[static_cast<int>(dx12::DescriptorHeap::HeapType::Rtv)].get();
-
-
-
-
+		
 		//TODO 別の場所に
 		hr = device_->CreatePipelineLibrary(nullptr, 0, IID_PPV_ARGS(pipeline_library_.ReleaseAndGetAddressOf()));
 		_ARGENT_ASSERT_EXPR(hr);
@@ -143,8 +137,6 @@ namespace argent::graphics
 
 	void GraphicsEngine::OnShutdown()
 	{
-		//TODO ImguiはEditorとして別のサブシステムにするべきかも
-
 		//すべての描画が終了するまで待機する
 		uint64_t fence_value = 0u;
 		for(UINT i = 0; i < kNumBackBuffers; ++i)
@@ -183,10 +175,6 @@ namespace argent::graphics
 
 		render_context.Begin();
 
-		//frame_resources_[current_back_buffer_index_]->Begin(
-		//	graphics_command_lists_[current_back_buffer_index_]->GetCommandList(),
-		//	viewport_, scissor_rect_, kClearColor);
-
 		//ディスクリプタヒープをセットする
 		ID3D12DescriptorHeap* descriptor_heaps[]
 		{
@@ -200,7 +188,6 @@ namespace argent::graphics
 
 	void GraphicsEngine::End(const rendering::RenderContext& render_context)
 	{
-//		frame_resources_[current_back_buffer_index_]->End(render_context.GetCommandList());
 		render_context.End(rendering_command_queue_.Get());
 
 		rendering_command_queue_->Signal(fence_.Get(), ++fence_value_);

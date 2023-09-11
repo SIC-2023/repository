@@ -7,10 +7,10 @@ class Camera
 public:
 	Camera() = default;
 
-	//TODO リネーム
+	//TODO ImGuiへの描画を行う関数名の変更
 	void OnGui();
 
-	//TODO 消す
+	//TODO カメラコントローラー　Editor専用なので移動させること
 	void Controller();
 
 	DirectX::XMFLOAT4 GetPosition() const { return position_; }
@@ -26,7 +26,7 @@ private:
 	float near_panel_ = 0.01f;
 	float far_panel_ = 1000.0f;
 
-	//TODO kese
+	//TODO Editor専用のやつなので移動させる
 	float move_speed_;
 	float rotation_speed_;
 };

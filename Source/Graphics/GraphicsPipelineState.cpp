@@ -10,7 +10,7 @@
 #include "../Utility/Misc.h"
 #include "Dx12/Dx12Utility.h"
 
-//TODO 消せ
+//TODO パイプラインマネージャができたら消すこと
 #include "GraphicsEngine.h"
 #include "../Core/Engine.h"
 
@@ -108,7 +108,7 @@ namespace argent::graphics
 		graphics_pipeline_state_desc.NodeMask = 1u;
 		graphics_pipeline_state_desc.Flags = D3D12_PIPELINE_STATE_FLAG_NONE;
 
-		//TODO 消せ
+		//TODO パイプラインマネージャができたら消すこと
 		auto pipeline_library = GetEngine()->GetSubsystemLocator().Get<GraphicsEngine>()->GetPipelineLibrary();
 		hr = pipeline_library->LoadGraphicsPipeline(pipeline_name, &graphics_pipeline_state_desc, IID_PPV_ARGS(pipeline_state_.ReleaseAndGetAddressOf()));
 		if(FAILED(hr))

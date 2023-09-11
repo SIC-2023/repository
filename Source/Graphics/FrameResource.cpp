@@ -106,7 +106,7 @@ namespace argent::graphics
 		// Also take note that planes face inward
 		for (int i = 0; i < 6; ++i)
 		{
-			float length = sqrt((tmp_frustum.frustum_panels_[i].x * tmp_frustum.frustum_panels_[i].x) + (tmp_frustum.frustum_panels_[i].y * tmp_frustum.frustum_panels_[i].y) + (tmp_frustum.frustum_panels_[i].z * tmp_frustum.frustum_panels_[i].z));
+			float length = sqrtf((tmp_frustum.frustum_panels_[i].x * tmp_frustum.frustum_panels_[i].x) + (tmp_frustum.frustum_panels_[i].y * tmp_frustum.frustum_panels_[i].y) + (tmp_frustum.frustum_panels_[i].z * tmp_frustum.frustum_panels_[i].z));
 			tmp_frustum.frustum_panels_[i].x /= length;
 			tmp_frustum.frustum_panels_[i].y /= length;
 			tmp_frustum.frustum_panels_[i].z /= length;

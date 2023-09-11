@@ -35,7 +35,7 @@ void DemoScene::OnAwake()
 
 void DemoScene::Update()
 {
-	//TODO 消せ
+	//TODO カメラコントローラー呼び出し　消すこと
 	//カメラコントローラーのチェック
 	{
 		camera_.Controller();
