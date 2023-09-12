@@ -12,6 +12,7 @@
 #include "../Graphics/ImGuiController.h"
 #include "../Graphics/FrameResource.h"
 #include "../Graphics/GraphicsEngine.h"
+#include "../Graphics/Texture.h"
 
 #include "../Rendering/RenderContext.h"
 #include "../Rendering/RenderingManager.h"

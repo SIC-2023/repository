@@ -12,9 +12,9 @@ namespace argent::editor
 	{
 	}
 
-	void HierarchyWindow::OnAwake()
+	void HierarchyWindow::Awake()
 	{
-		EditorWindow::OnAwake();
+		EditorWindow::Awake();
 	}
 
 	void HierarchyWindow::OnShutdown()

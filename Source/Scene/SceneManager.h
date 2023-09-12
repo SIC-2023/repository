@@ -19,8 +19,8 @@ namespace argent::scene
 
 		virtual ~SceneManager() override = default;
 
-		void OnAwake() override;
-		void OnShutdown() override;
+		void Awake() override;
+		void Shutdown() override;
 
 		void Update();
 

@@ -10,7 +10,7 @@ namespace argent::editor
 	public:
 		SceneWindow();
 
-		void OnAwake() override;
+		void Awake() override;
 		void OnShutdown() override;
 		void OnRender() override;
 	private:

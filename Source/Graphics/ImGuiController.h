@@ -35,7 +35,7 @@ namespace argent::graphics
 		static LRESULT ImGuiWndProcHandler(HWND hwnd, UINT msg, WPARAM w_param, LPARAM l_param);
 
 	public:
-		void OnAwake(HWND hwnd, ID3D12Device* device, const dx12::Descriptor& srv_descriptor,
+		void Awake(HWND hwnd, ID3D12Device* device, const dx12::Descriptor& srv_descriptor,
 				UINT descriptor_increment_size, SIZE_T descriptor_heap_pointer_start);
 		void OnShutdown();
 

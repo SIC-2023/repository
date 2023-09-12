@@ -10,6 +10,10 @@
 
 #include "../Rendering/RenderContext.h"
 
+namespace argent::graphics
+{
+	class Texture;
+}
 namespace argent::editor
 {
 	class Editor final : public Subsystem
@@ -29,17 +33,17 @@ namespace argent::editor
 		Editor() = default;
 		~Editor() override = default;
 
-		void OnAwake() override;
-		void OnShutdown() override;
+		void Awake() override;
+		void Shutdown() override;
 
 		void OnRender(const rendering::RenderContext& render_context, uint64_t scene_srv_heap_index);
 
 		bool GetIsPlay() const { return is_play_; }
 		bool GetIsPause() const { return is_pause_; }
 
-		void OnPlay() { is_play_ = true; is_pause_ = false; }
-		void OffPlay() { is_play_ = is_pause_ = false; }
-		void OnPause() { is_pause_ = true; }
+		//void OnPlay() { is_play_ = true; is_pause_ = false; }
+		//void OffPlay() { is_play_ = is_pause_ = false; }
+		//void OnPause() { is_pause_ = true; }
 
 
 		static uint64_t GetSceneSrvHeapIndex() { return scene_srv_heap_index_; }
@@ -59,6 +63,8 @@ namespace argent::editor
 
 		bool is_play_;
 		bool is_pause_;
+		std::unique_ptr<graphics::Texture> play_texture_;
+		std::unique_ptr<graphics::Texture> pause_texture_;
 	};
 
 	template <class T>

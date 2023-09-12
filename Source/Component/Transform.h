@@ -25,7 +25,7 @@ namespace argent::component
 			return ret;
 		}
 
-		void OnDrawInspector() override;
+		void OnGui() override;
 		void OnGui();
 
 		DirectX::XMFLOAT3 GetPosition() const { return position_; }

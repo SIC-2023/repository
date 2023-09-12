@@ -20,7 +20,7 @@ namespace argent::component
 
 		void OnRender(const rendering::RenderContext& render_context) override;
 
-		void OnDrawInspector() override;
+		void OnGui() override;
 	private:
 		std::unique_ptr<rendering::SpriteRenderer> sprite_renderer_;
 	};

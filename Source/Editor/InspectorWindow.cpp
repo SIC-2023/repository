@@ -12,9 +12,9 @@ namespace argent::editor
 	{
 	}
 
-	void InspectorWindow::OnAwake()
+	void InspectorWindow::Awake()
 	{
-		EditorWindow::OnAwake();
+		EditorWindow::Awake();
 	}
 
 	void InspectorWindow::OnShutdown()

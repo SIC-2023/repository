@@ -14,8 +14,8 @@ namespace argent::rendering
 		PostProcessManager() = default;
 		virtual ~PostProcessManager() = default;
 
-		void OnAwake(const graphics::GraphicsContext& graphics_context);
-		void OnShutdown();
+		void Awake(const graphics::GraphicsContext& graphics_context);
+		void Shutdown();
 
 		void Execute(const RenderContext& render_context, uint32_t scene_srv_heap_index);
 

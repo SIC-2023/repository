@@ -29,7 +29,7 @@ namespace argent
 	,	window_height_(720)
 	{}
 
-	void Window::OnAwake()
+	void Window::Awake()
 	{
 		//Creating and registering window
 		WNDCLASSEXW wc{};
@@ -58,12 +58,12 @@ namespace argent
 			wc.hInstance, nullptr);
 
 		ShowWindow(hwnd_, SW_SHOW);
-		Subsystem::OnAwake();
+		Subsystem::Awake();
 	}
 
-	void Window::OnShutdown()
+	void Window::Shutdown()
 	{
-		Subsystem::OnShutdown();
+		Subsystem::Shutdown();
 	}
 
 	void Window::ProcessSystemEventQueue()

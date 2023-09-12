@@ -14,7 +14,7 @@ namespace argent::component
 
 
 		//TODO ImGuiへの描画を行う関数名の変更
-		void OnDrawInspector() override;
+		void OnGui() override;
 
 		//TODO カメラコントローラー　Editor専用なので移動させること
 		void Controller();

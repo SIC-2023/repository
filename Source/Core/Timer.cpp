@@ -19,15 +19,15 @@ namespace argent
 		delta_time_ = 0.0f;
 	}
 
-	void Timer::OnAwake()
+	void Timer::Awake()
 	{
 		delta_time_ = 0;
-		Subsystem::OnAwake();
+		Subsystem::Awake();
 	}
 
-	void Timer::OnShutdown()
+	void Timer::Shutdown()
 	{
-		Subsystem::OnShutdown();
+		Subsystem::Shutdown();
 	}
 
 	void Timer::Tick()

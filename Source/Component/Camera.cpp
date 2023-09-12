@@ -14,7 +14,7 @@ namespace argent::component
 		
 	}
 
-	void Camera::OnDrawInspector()
+	void Camera::OnGui()
 	{
 		if(ImGui::TreeNode(GetName().c_str()))
 		{

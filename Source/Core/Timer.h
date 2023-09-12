@@ -16,8 +16,8 @@ namespace argent
 
 	public:
 
-		void OnAwake() override;
-		void OnShutdown() override;
+		void Awake() override;
+		void Shutdown() override;
 
 		float GetDeltaTime() const { return delta_time_;}
 		float GetFrameTimes() const { return frame_times_; }

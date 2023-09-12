@@ -23,16 +23,16 @@ namespace argent
 		}
 	}
 
-	void GameObject::OnAwake()
+	void GameObject::Awake()
 	{
 		for(size_t i = 0; i < components_.size(); ++i)
 		{
-			components_.at(i)->OnAwake();
+			components_.at(i)->Awake();
 		}
 
 		for(size_t i = 0; i < child_objects_.size(); ++i)
 		{
-			child_objects_.at(i)->OnAwake();
+			child_objects_.at(i)->Awake();
 		}
 	}
 
@@ -40,7 +40,7 @@ namespace argent
 	{
 		for(size_t i = 0; i < components_.size(); ++i)
 		{
-			components_.at(i)->OnShutdown();
+			components_.at(i)->Shutdown();
 		}
 
 		for(size_t i = 0; i < child_objects_.size(); ++i)
@@ -53,7 +53,7 @@ namespace argent
 	{
 		for(size_t i = 0; i < components_.size(); ++i)
 		{
-			components_.at(i)->OnUpdate();
+			components_.at(i)->Update();
 		}
 
 		for(size_t i = 0; i < child_objects_.size(); ++i)
@@ -67,7 +67,7 @@ namespace argent
 		ImGui::Text(name_.c_str());
 		for(size_t i = 0; i < components_.size(); ++i)
 		{
-			components_.at(i)->OnDrawInspector();
+			components_.at(i)->OnGui();
 		}
 	}
 

@@ -3,17 +3,17 @@
 
 namespace argent::scene
 {
-	void SceneManager::OnAwake()
+	void SceneManager::Awake()
 	{
 		scene_ = std::make_unique<DemoScene>();
-		scene_->OnAwake();
-		Subsystem::OnAwake();
+		scene_->Awake();
+		Subsystem::Awake();
 	}
 
-	void SceneManager::OnShutdown()
+	void SceneManager::Shutdown()
 	{
-		scene_->OnShutdown();
-		Subsystem::OnShutdown();
+		scene_->Shutdown();
+		Subsystem::Shutdown();
 	}
 
 	void SceneManager::Update()

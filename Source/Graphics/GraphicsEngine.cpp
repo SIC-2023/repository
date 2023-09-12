@@ -16,9 +16,14 @@
 
 #include "../Rendering/RenderContext.h"
 
+//DirectX12 Agility SDK
+extern "C" { __declspec ( dllexport ) extern const UINT D3D12SDKVersion = 610 ;}
+extern "C" { __declspec ( dllexport ) extern const char8_t* D3D12SDKPath = u8".\\D3D12\\"; }
+
+
 namespace argent::graphics
 {
-	void GraphicsEngine::OnAwake()
+	void GraphicsEngine::Awake()
 	{
 		const auto& window = GetEngine()->GetSubsystemLocator().Get<Window>();
 
@@ -135,7 +140,7 @@ namespace argent::graphics
 		_ARGENT_ASSERT_EXPR(hr);
 	}
 
-	void GraphicsEngine::OnShutdown()
+	void GraphicsEngine::Shutdown()
 	{
 		//‚·‚×‚Ä‚Ì•`‰æ‚ªI—¹‚·‚é‚Ü‚Å‘Ò‹@‚·‚é
 		uint64_t fence_value = 0u;

@@ -17,10 +17,10 @@ namespace argent::component
 
 		~IStaticMeshRenderer() override = default;;
 
-		void OnUpdate() override;
+		void Update() override;
 		void OnRender(const rendering::RenderContext& render_context) override;
 
-		void OnDrawInspector() override;
+		void OnGui() override;
 	private:
 		std::unique_ptr<rendering::StaticMeshRenderer> static_mesh_renderer_;
 	};

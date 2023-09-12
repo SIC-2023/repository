@@ -29,8 +29,8 @@ namespace argent::rendering
 		RenderingManager();
 		~RenderingManager() override;
 
-		void OnAwake() override;
-		void OnShutdown() override;
+		void Awake() override;
+		void Shutdown() override;
 
 		void Execute(const RenderContext& render_context, scene::BaseScene* scene);
 

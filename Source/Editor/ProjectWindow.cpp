@@ -10,7 +10,7 @@ namespace argent::editor
 		
 	}
 
-	void ProjectWindow::OnAwake()
+	void ProjectWindow::Awake()
 	{
 
 	}

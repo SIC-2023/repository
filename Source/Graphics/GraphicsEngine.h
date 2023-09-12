@@ -70,12 +70,12 @@ namespace argent::graphics
 		/**
 		 * \brief 初回起動時に呼ばれる　
 		 */
-		void OnAwake() override;
+		void Awake() override;
 
 		/**
 		 * \brief アプリ終了時に呼ばれる
 		 */
-		void OnShutdown() override;
+		void Shutdown() override;
 
 		/**
 		 * \brief 描画開始

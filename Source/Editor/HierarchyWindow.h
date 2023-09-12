@@ -10,7 +10,7 @@ namespace argent::editor
 	public:
 
 		HierarchyWindow();
-		void OnAwake() override;
+		void Awake() override;
 		void OnShutdown() override;
 		void OnRender() override;
 

@@ -13,7 +13,7 @@
 #include "Component/IStaticMeshRenderer.h"
 
 
-void DemoScene::OnAwake()
+void DemoScene::Awake()
 {
 
 	//sprite_renderer_ = std::make_unique<argent::rendering::SpriteRenderer>(

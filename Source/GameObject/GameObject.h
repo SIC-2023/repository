@@ -30,7 +30,7 @@ namespace argent
 		 * \brief â‘Î‚É1‰ñ‚µ‚©ŒÄ‚Î‚ê‚È‚¢ŠÖ”
 		 */
 		void Start();
-		void OnAwake();
+		void Awake();
 		void OnShutDown();
 		void OnUpdate();
 

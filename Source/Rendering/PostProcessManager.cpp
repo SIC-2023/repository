@@ -3,12 +3,12 @@
 
 namespace argent::rendering
 {
-	void PostProcessManager::OnAwake(const graphics::GraphicsContext& graphics_context)
+	void PostProcessManager::Awake(const graphics::GraphicsContext& graphics_context)
 	{
 
 	}
 
-	void PostProcessManager::OnShutdown()
+	void PostProcessManager::Shutdown()
 	{
 		
 	}

@@ -10,7 +10,7 @@ namespace argent::editor
 		EditorWindow(std::string name);
 		virtual ~EditorWindow() = default;
 
-		virtual void OnAwake() {}
+		virtual void Awake() {}
 		virtual void OnShutdown() {}
 
 		virtual void OnRender() = 0;

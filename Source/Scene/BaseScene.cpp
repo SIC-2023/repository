@@ -6,15 +6,15 @@
 
 namespace argent::scene
 {
-	void BaseScene::OnAwake()
+	void BaseScene::Awake()
 	{
 		for(size_t i = 0; i < game_objects_.size(); ++i)
 		{
-			game_objects_.at(i)->OnAwake();
+			game_objects_.at(i)->Awake();
 		}
 	}
 
-	void BaseScene::OnShutdown()
+	void BaseScene::Shutdown()
 	{
 		for(size_t i = 0; i < game_objects_.size(); ++i)
 		{

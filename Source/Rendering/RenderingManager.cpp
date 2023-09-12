@@ -21,7 +21,7 @@ namespace argent::rendering
 
 	}
 
-	void RenderingManager::OnAwake()
+	void RenderingManager::Awake()
 	{
 		const DXGI_FORMAT render_target_format = DXGI_FORMAT_R32G32B32A32_FLOAT;
 		const auto graphics_context = GetEngine()->GetSubsystemLocator().Get<graphics::GraphicsEngine>()->GetGraphicsContext();
@@ -35,7 +35,7 @@ namespace argent::rendering
 			frame_buffers_[i] = std::make_unique<graphics::FrameBuffer>(graphics_context, 1280, 720, render_target_format);
 		}
 
-		post_process_manager_.OnAwake(graphics_context);
+		post_process_manager_.Awake(graphics_context);
 
 		graphics::GraphicsPipelineDesc graphics_pipeline_desc{};
 		graphics_pipeline_desc.vs_filename_ = L"./Assets/Shader/FullscreenQuadVS.hlsl";
@@ -43,12 +43,12 @@ namespace argent::rendering
 		graphics_pipeline_desc.rtv_format_[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
 		graphics_pipeline_state_ = std::make_unique<graphics::GraphicsPipelineState>(graphics_context.device_, graphics_pipeline_desc, L"FullscreenQuad");
 
-		Subsystem::OnAwake();
+		Subsystem::Awake();
 	}
 
-	void RenderingManager::OnShutdown()
+	void RenderingManager::Shutdown()
 	{
-		post_process_manager_.OnShutdown();
+		post_process_manager_.Shutdown();
 	}
 	
 	void RenderingManager::Execute(const RenderContext& render_context, scene::BaseScene* scene)

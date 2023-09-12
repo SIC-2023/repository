@@ -11,9 +11,9 @@ namespace argent::editor
 	{
 	}
 
-	void SceneWindow::OnAwake()
+	void SceneWindow::Awake()
 	{
-		EditorWindow::OnAwake();
+		EditorWindow::Awake();
 	}
 
 	void SceneWindow::OnShutdown()

@@ -19,10 +19,10 @@ namespace argent::component
 		virtual ~Component() = default;
 
 		virtual void Start() {}
-		virtual void OnAwake() {}
-		virtual void OnShutdown() {}
-		virtual void OnUpdate() {}
-		virtual void OnDrawInspector() {}
+		virtual void Awake() {}
+		virtual void Shutdown() {}
+		virtual void Update() {}
+		virtual void OnGui() {}
 
 		GameObject* GetOwner() const { return owner_; }
 		std::string GetName() const { return name_; }

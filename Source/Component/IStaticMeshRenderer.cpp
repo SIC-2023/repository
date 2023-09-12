@@ -28,7 +28,7 @@ namespace argent::component
 			graphics->GetGraphicsContext(),	model);
 	}
 
-	void IStaticMeshRenderer::OnUpdate()
+	void IStaticMeshRenderer::Update()
 	{
 		if(GetAsyncKeyState(0x0058) & 0x8000)
 		{
@@ -43,7 +43,7 @@ namespace argent::component
 		static_mesh_renderer_->Render(render_context, GetOwner()->GetTransform()->CalcWorldMatrix());
 	}
 
-	void IStaticMeshRenderer::OnDrawInspector()
+	void IStaticMeshRenderer::OnGui()
 	{
 		static_mesh_renderer_->DrawOnGui();
 	}

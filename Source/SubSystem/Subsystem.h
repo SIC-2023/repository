@@ -13,10 +13,10 @@ namespace argent
 		virtual ~Subsystem() = default;
 
 		//‹N“®
-		virtual void OnAwake() {}
+		virtual void Awake() {}
 
 		//I—¹
-		virtual void OnShutdown() {}
+		virtual void Shutdown() {}
 	};
 
 	class SubsystemLocator
@@ -43,7 +43,7 @@ namespace argent
 			std::shared_ptr<T> sp_subsystem = std::make_shared<T>();
 			if (!sp_subsystem) return;
 			subsystems_[typeid(T).hash_code()] = sp_subsystem;
-			sp_subsystem->OnAwake();
+			sp_subsystem->Awake();
 		}
 
 		template<class T> void Remove()
@@ -52,7 +52,7 @@ namespace argent
 			auto sp_subsystem = subsystems_[typeid(T).hash_code()];
 			if(sp_subsystem)
 			{
-				sp_subsystem->OnShutdown();
+				sp_subsystem->Shutdown();
 			}
 		}
 

@@ -12,22 +12,21 @@
 #include "ProjectWindow.h"
 
 #include "../Graphics/GraphicsEngine.h"
+#include "../Graphics/Texture.h"
 
 #include "../Scene/SceneManager.h"
-
-bool first_loop = true;
 
 namespace argent::editor
 {
 	uint64_t Editor::scene_srv_heap_index_ = 0;
 
-	void Editor::OnAwake()
+	void Editor::Awake()
 	{
 		auto& subsystem_locator = GetEngine()->GetSubsystemLocator();
 
 		const auto& graphics_context = subsystem_locator.Get<graphics::GraphicsEngine>()->GetGraphicsContext();
 
-		imgui_controller_.OnAwake(subsystem_locator.Get<Window>()->GetHwnd(), 
+		imgui_controller_.Awake(subsystem_locator.Get<Window>()->GetHwnd(), 
 			graphics_context.device_, graphics_context.cbv_srv_uav_heap_->PopDescriptor(), 
 			graphics_context.cbv_srv_uav_heap_->GetIncrementSize(), graphics_context.cbv_srv_uav_heap_->GetGpuHandleStart());
 
@@ -36,9 +35,12 @@ namespace argent::editor
 		Register<HierarchyWindow>();
 		Register<InspectorWindow>();
 		Register<ProjectWindow>();
+
+		play_texture_ = std::make_unique<graphics::Texture>(graphics_context, L"./Assets/Engine/Play.png");
+		pause_texture_ = std::make_unique<graphics::Texture>(graphics_context, L"./Assets/Engine/Pause.png");
 	}
 
-	void Editor::OnShutdown()
+	void Editor::Shutdown()
 	{
 		imgui_controller_.OnShutdown();
 	}
@@ -71,33 +73,56 @@ namespace argent::editor
 			ImGui::PopStyleVar();
 
 			ImGui::PopStyleVar(2);
-			static float padding_x = 1.0f;
-			static float padding_y = 5.0f;
-			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(padding_x, padding_y));
-			bool is_open_menu_bar = ImGui::BeginMainMenuBar();
+
+
+			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(1, 8.0f));
+			const bool is_open_menu_bar = ImGui::BeginMainMenuBar();
 			ImGui::PopStyleVar();
 			if(is_open_menu_bar)
 			{
-				auto size = ImGui::GetWindowSize().y;
-				ImGui::SetCursorPosX(ImGui::GetWindowWidth() / 2 - size / 2);
-				if(ImGui::ImageButton("Play", reinterpret_cast<ImTextureID>(scene_srv_heap_index),
-					ImVec2(15, 15)))
+				static ImVec4 play_color{ 1, 1, 1, 1 };
+				static ImVec4 pause_color{ 1, 1, 1, 1 };
+				constexpr ImVec2 size = { 25, 25 };
+				ImGui::SetCursorPosX(ImGui::GetWindowWidth() / 2 - size.x / 2);
+				if(ImGui::ImageButton("Play", reinterpret_cast<ImTextureID>(play_texture_->GetHeapIndex()),
+					size, ImVec2(), ImVec2(1, 1),
+					ImVec4(0, 0, 0, 0), play_color))
 				{
-					OnPlay();
+					if(is_play_ && is_pause_)
+					{
+						is_pause_ = false;
+						pause_color = { 1, 1, 1, 1 };
+					}
+					else if(is_play_)
+					{
+						is_play_ = is_pause_ = false;
+						play_color = { 1, 1, 1, 1 };
+						pause_color = { 1, 1, 1, 1 };
+					}
+					else
+					{
+						is_play_ = true;
+						is_pause_ = false;
+						play_color = { 0.1f, 0.5f, 1.0f, 1.0f };
+					}
 				}
-				
-				if(ImGui::BeginMenu("Menu"))
+
+				if(ImGui::ImageButton("Pause", reinterpret_cast<ImTextureID>(pause_texture_->GetHeapIndex()),
+					size, ImVec2(), ImVec2(1, 1),
+					ImVec4(0, 0, 0, 0), pause_color))
 				{
-					ImGui::InputFloat("Size", &size);
-					ImGui::DragFloat("Padding X", &padding_x);
-					ImGui::DragFloat("Padding Y", &padding_y);
-					ImGui::EndMenu();
+					if(is_play_)
+					{
+						is_pause_ = true;
+						pause_color = { 0.1f, 0.5f, 1.0f, 1.0f };
+					}
 				}
+
 				ImGui::EndMainMenuBar();
 			}
 
-
-
+			//ドッキングレイアウトの作成
+			static bool first_loop = true;
 			if(first_loop)
 			{
 				//新しくドックレイアウトを作るのにワークスペースの幅高さ、中心が必要

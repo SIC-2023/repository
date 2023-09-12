@@ -20,7 +20,7 @@ namespace argent::component
 		sprite_renderer_->Render(render_context);
 	}
 
-	void ISpriteRenderer::OnDrawInspector()
+	void ISpriteRenderer::OnGui()
 	{
 		sprite_renderer_->DrawOnGui();
 	}

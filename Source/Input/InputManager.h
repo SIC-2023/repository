@@ -15,8 +15,8 @@ namespace argent::input
 		InputManager() = default;
 		~InputManager() override = default;
 
-		void OnAwake() override;
-		void OnShutdown() override;
+		void Awake() override;
+		void Shutdown() override;
 
 		void Update(HWND hwnd);
 		const Keyboard& GetKeyboard() const { return keyboard_; }

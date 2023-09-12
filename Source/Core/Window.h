@@ -12,8 +12,8 @@ namespace argent
 		Window();
 		virtual ~Window() override = default;
 
-		void OnAwake() override;
-		void OnShutdown() override;
+		void Awake() override;
+		void Shutdown() override;
 
 		HWND GetHwnd() const { return hwnd_; }
 		LONG GetWindowWidth() const { return window_width_; }

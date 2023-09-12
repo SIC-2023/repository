@@ -2,14 +2,14 @@
 
 namespace argent::input
 {
-	void InputManager::OnAwake()
+	void InputManager::Awake()
 	{
 		keyboard_.OnAwake();
 	}
 
-	void InputManager::OnShutdown()
+	void InputManager::Shutdown()
 	{
-		Subsystem::OnShutdown();
+		Subsystem::Shutdown();
 	}
 
 	void InputManager::Update(HWND hwnd)

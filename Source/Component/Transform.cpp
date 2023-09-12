@@ -10,7 +10,7 @@ namespace argent::component
 
 	}
 
-	void Transform::OnDrawInspector()
+	void Transform::OnGui()
 	{
 		if(ImGui::TreeNode("Transform"))
 		{

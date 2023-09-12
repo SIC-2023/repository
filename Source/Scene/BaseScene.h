@@ -19,8 +19,8 @@ namespace argent::scene
 		{}
 		virtual ~BaseScene() = default;
 
-		virtual void OnAwake();
-		virtual void OnShutdown();
+		virtual void Awake();
+		virtual void Shutdown();
 
 		virtual void Update();
 		virtual void Render(const rendering::RenderContext& render_context) = 0;

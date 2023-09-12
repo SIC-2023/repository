@@ -225,7 +225,7 @@ namespace argent::graphics
 	}
 
 	//imgui‚Ì‰Šú‰»ˆ—
-	void ImGuiController::OnAwake(HWND hwnd, ID3D12Device* device, const dx12::Descriptor& srv_descriptor,
+	void ImGuiController::Awake(HWND hwnd, ID3D12Device* device, const dx12::Descriptor& srv_descriptor,
 		UINT descriptor_increment_size, size_t descriptor_heap_pointer_start)
 	{
 		hwnd_ = hwnd;

@@ -15,7 +15,7 @@ public:
 		BaseScene("Demo")
 	{}
 
-	void OnAwake() override;
+	void Awake() override;
 	void Update() override;
 	void Render(const argent::rendering::RenderContext& render_context) override;
 
