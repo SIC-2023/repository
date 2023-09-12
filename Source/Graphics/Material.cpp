@@ -40,7 +40,7 @@ namespace argent::graphics
 
 	void PbrMaterial::OnGui()
 	{
-		if(ImGui::TreeNode("ƒ}ƒeƒŠƒAƒ‹"))
+		if(ImGui::TreeNode("Material"))
 		{
 			uint64_t base = textures_.at(TextureUsage::BaseColor)->GetHeapIndex();
 			uint64_t normal = textures_.at(TextureUsage::Normal)->GetHeapIndex();

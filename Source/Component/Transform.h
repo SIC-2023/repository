@@ -12,21 +12,9 @@ namespace argent::component
 		Transform();
 		~Transform() override = default;
 
-		DirectX::XMFLOAT4X4 CalcWorldMatrix() const
-		{
-			DirectX::XMMATRIX C = DirectX::XMLoadFloat4x4(&coordinate_system);
-			DirectX::XMMATRIX S = DirectX::XMMatrixScaling(scale_.x, scale_.y, scale_.z);
-			DirectX::XMMATRIX R = DirectX::XMMatrixRotationRollPitchYaw(rotation_.x, rotation_.y, rotation_.z);
-			DirectX::XMMATRIX T = DirectX::XMMatrixTranslation(position_.x, position_.y, position_.z);
-
-			DirectX::XMMATRIX M = C * S * R * T;
-			DirectX::XMFLOAT4X4 ret{};
-			DirectX::XMStoreFloat4x4(&ret, M);
-			return ret;
-		}
+		DirectX::XMFLOAT4X4 CalcWorldMatrix() const;
 
 		void OnGui() override;
-		void OnGui();
 
 		DirectX::XMFLOAT3 GetPosition() const { return position_; }
 		DirectX::XMFLOAT3 GetScale() const { return scale_; }

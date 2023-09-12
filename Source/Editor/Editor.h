@@ -14,6 +14,7 @@ namespace argent::graphics
 {
 	class Texture;
 }
+
 namespace argent::editor
 {
 	class Editor final : public Subsystem

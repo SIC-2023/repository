@@ -29,7 +29,7 @@ namespace argent::editor
 
 		if(focused_game_object_)
 		{
-			focused_game_object_->OnDrawInspector();
+			focused_game_object_->OnGui();
 		}
 		ImGui::End();
 	}

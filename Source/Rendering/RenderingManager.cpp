@@ -8,6 +8,7 @@
 #include "../Graphics/GraphicsEngine.h"
 
 #include "../Editor/Editor.h"
+#include "../Graphics/Texture.h"
 
 namespace argent::rendering
 {
@@ -43,6 +44,12 @@ namespace argent::rendering
 		graphics_pipeline_desc.rtv_format_[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
 		graphics_pipeline_state_ = std::make_unique<graphics::GraphicsPipelineState>(graphics_context.device_, graphics_pipeline_desc, L"FullscreenQuad");
 
+		sky_map_texture_ = std::make_unique<graphics::Texture>(graphics_context, L"./Assets/Skymap.dds");
+		graphics_pipeline_desc.depth_mode_ = graphics::dx12::DepthMode::TestOffWriteOff;
+		graphics_pipeline_desc.rasterizer_mode_ = graphics::dx12::RasterizerMode::CullNoneSolid;
+		graphics_pipeline_desc.ps_filename_ = L"./Assets/Shader/SkymapPS.hlsl";
+		graphics_pipeline_desc.rtv_format_[0] = DXGI_FORMAT_R32G32B32A32_FLOAT;
+		sky_map_graphics_pipeline_state_ = std::make_unique<graphics::GraphicsPipelineState>(graphics_context.device_, graphics_pipeline_desc, L"SkyMap");
 		Subsystem::Awake();
 	}
 
@@ -66,9 +73,24 @@ namespace argent::rendering
 
 		////ƒV[ƒ“•`‰æ
 		scene->Render(render_context);
+
+		d3d12_command_list->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+		sky_map_graphics_pipeline_state_->SetOnCommandList(d3d12_command_list);
+		struct RenderResource
+		{
+			uint32_t texture_index_;
+			uint32_t scene_constant_index_;
+		} render_resource { sky_map_texture_->GetHeapIndex(), render_context.GetSceneConstantHeapIndex() };
+
+		d3d12_command_list->SetGraphicsRoot32BitConstants(0u, 2u, &render_resource, 0u);
+		d3d12_command_list->DrawInstanced(4u, 1u, 0u, 0u);
+
 		for(auto& renderer : renderer_components_)
 		{
-			renderer->OnRender(render_context);
+			if(renderer->GetIsActive() && renderer->GetOwner()->GetIsActive())
+			{
+				renderer->OnRender(render_context);
+			}
 		}
 
 		frame_buffers_[frame_index]->End(d3d12_command_list);

@@ -168,7 +168,7 @@ namespace argent::graphics
 		if(fence_->GetCompletedValue() < fence_values_[current_back_buffer_index_])
 		{
 			const HANDLE fence_event{};
-			fence_->SetEventOnCompletion(fence_value_, fence_event);
+			fence_->SetEventOnCompletion(fence_values_[current_back_buffer_index_], fence_event);
 			WaitForSingleObject(fence_event, INFINITE);
 		}
 

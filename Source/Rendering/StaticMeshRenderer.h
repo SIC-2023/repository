@@ -3,7 +3,6 @@
 #include "../Graphics/GraphicsPipelineState.h"
 #include "../Graphics/Model.h"
 
-
 namespace argent::graphics
 {
 	struct GraphicsContext;
@@ -50,7 +49,7 @@ namespace argent::rendering
 		std::vector<std::unique_ptr<graphics::ConstantBuffer<MeshConstant>>> mesh_constant_buffers_[3]{};
 
 		//TODO メッシュシェーダーを使うかどうか　場合分けをどうする？？
-		bool use_mesh_shader_ = false;
+		bool use_mesh_shader_ = true;
 	};
 }
 

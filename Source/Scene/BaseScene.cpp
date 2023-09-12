@@ -10,7 +10,17 @@ namespace argent::scene
 	{
 		for(size_t i = 0; i < game_objects_.size(); ++i)
 		{
-			game_objects_.at(i)->Awake();
+			if(game_objects_.at(i)->GetIsActive()) game_objects_.at(i)->Awake();
+		}
+
+		for(size_t i = 0; i < game_objects_.size(); ++i)
+		{
+			if(game_objects_.at(i)->GetIsActive()) game_objects_.at(i)->OnEnable();
+		}
+
+		for(size_t i = 0; i < game_objects_.size(); ++i)
+		{
+			if(game_objects_.at(i)->GetIsActive()) game_objects_.at(i)->Start();
 		}
 	}
 
@@ -18,7 +28,12 @@ namespace argent::scene
 	{
 		for(size_t i = 0; i < game_objects_.size(); ++i)
 		{
-			game_objects_.at(i)->OnShutDown();
+			if(game_objects_.at(i)->GetIsActive()) game_objects_.at(i)->OnDisable();
+		}
+
+		for(size_t i = 0; i < game_objects_.size(); ++i)
+		{
+			if(game_objects_.at(i)->GetIsActive()) game_objects_.at(i)->OnDestroy();
 		}
 	}
 
@@ -26,7 +41,7 @@ namespace argent::scene
 	{
 		for(size_t i = 0; i < game_objects_.size(); ++i)
 		{
-			game_objects_.at(i)->OnUpdate();
+			if(game_objects_.at(i)->GetIsActive()) game_objects_.at(i)->Update();
 		}
 	}
 
@@ -79,7 +94,7 @@ namespace argent::scene
 		}
 	}
 
-	void BaseScene::DrawGui()
+	void BaseScene::OnGui()
 	{
 		for(size_t i = 0; i < game_objects_.size(); ++i)
 		{

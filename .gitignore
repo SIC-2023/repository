@@ -110,3 +110,4 @@ packages/Microsoft.Direct3D.D3D12.1.610.5/build/native/include/d3dx12/d3dx12_res
 packages/Microsoft.Direct3D.D3D12.1.610.5/build/native/include/d3dx12/d3dx12_root_signature.h
 packages/Microsoft.Direct3D.D3D12.1.610.5/build/native/include/d3dx12/d3dx12_state_object.h
 packages/Microsoft.Direct3D.D3D12.1.610.5/build/native/src/d3dx12/d3dx12_property_format_table.cpp
+Assets/Skymap.dds

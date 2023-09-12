@@ -25,7 +25,7 @@ namespace argent::scene
 		virtual void Update();
 		virtual void Render(const rendering::RenderContext& render_context) = 0;
 
-		void DrawGui();
+		void OnGui();
 
 		const std::string& GetName() const { return name_; }
 		const char* GetNameCStr() const { return name_.c_str(); }

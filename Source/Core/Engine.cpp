@@ -42,9 +42,7 @@ namespace argent
 	}
 
 	Engine::~Engine()
-	{
-				
-	}
+	{}
 
 	void Engine::SetUp()
 	{
@@ -84,12 +82,11 @@ namespace argent
 
 	void Engine::Run()
 	{
-		//update and rendering
+		//pdate and rendering
 
 		//Update window event and message
 		const auto& window = subsystem_locator_.Get<Window>();
 		window->ProcessSystemEventQueue();
-		
 
 		//Update input (keyboard, mouse and Gamepad)
 		subsystem_locator_.Get<input::InputManager>()->Update(window->GetHwnd());

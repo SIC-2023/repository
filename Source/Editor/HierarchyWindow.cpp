@@ -26,7 +26,7 @@ namespace argent::editor
 	{
 		ImGui::Begin(GetName().c_str());
 
-		GetEngine()->GetSubsystemLocator().Get<scene::SceneManager>()->GetCurrentScene()->DrawGui();
+		GetEngine()->GetSubsystemLocator().Get<scene::SceneManager>()->GetCurrentScene()->OnGui();
 
 		ImGui::End();
 	}

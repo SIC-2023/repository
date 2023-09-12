@@ -5,6 +5,7 @@
 
 #include "../Core/Engine.h"
 #include "../Core/Window.h"
+#include "../Core/Timer.h"
 
 #include "SceneWindow.h"
 #include "InspectorWindow.h"
@@ -74,7 +75,6 @@ namespace argent::editor
 
 			ImGui::PopStyleVar(2);
 
-
 			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(1, 8.0f));
 			const bool is_open_menu_bar = ImGui::BeginMainMenuBar();
 			ImGui::PopStyleVar();
@@ -123,7 +123,7 @@ namespace argent::editor
 
 			//ドッキングレイアウトの作成
 			static bool first_loop = true;
-			if(first_loop)
+			if(first_loop) 
 			{
 				//新しくドックレイアウトを作るのにワークスペースの幅高さ、中心が必要
 				const ImVec2 work_pos = ImGui::GetMainViewport()->WorkPos;
@@ -165,6 +165,7 @@ namespace argent::editor
 				const ImGuiID dockspace_id = ImGui::GetID("OriginalDockSpace");
 				docking_id = ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
 			}
+
 			ImGui::End();
 		}
 
@@ -174,6 +175,11 @@ namespace argent::editor
 		}
 
 		ImGui::Begin("Console");
+
+		auto timer = GetEngine()->GetSubsystemLocator().Get<Timer>();
+		ImGui::Text("Delta Time : %f", timer->GetDeltaTime());
+		ImGui::Text("FPS : %d", timer->GetFps());
+		ImGui::Text("Rendering Polygon Counts : %d", 34756 * 200);
 		ImGui::End();
 		
 		imgui_controller_.End(render_context.GetCommandList(), render_context.GetFrameIndex());

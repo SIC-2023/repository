@@ -13,6 +13,7 @@
     <FxCompile Include="..\Assets\Shader\FullscreenQuadVS.hlsl" />
     <FxCompile Include="..\Assets\Shader\FullscreenQuad.hlsli" />
     <FxCompile Include="..\Assets\Shader\FullscreenQuadPS.hlsl" />
+    <FxCompile Include="..\Assets\Shader\SkymapPS.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\External\DirectXTK12\Inc\SimpleMath.inl">

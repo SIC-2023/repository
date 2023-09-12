@@ -6,6 +6,7 @@ namespace argent::rendering
 {
 	class RenderContext;
 }
+
 namespace argent::component
 {
 	class RendererComponent :
@@ -18,4 +19,3 @@ namespace argent::component
 		virtual void OnRender(const rendering::RenderContext& render_context) = 0;
 	};
 }
-

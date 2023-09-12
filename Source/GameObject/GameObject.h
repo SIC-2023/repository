@@ -18,23 +18,52 @@ namespace argent
 
 	}
 
+	/**
+	 * \brief シーン上に存在するすべてのオブジェクトの基底クラス
+	 * 今のところ継承するつもりはない
+	 */
 	class GameObject
 	{
 	public:
 
 	public:
-		//消せ
+		//TODO 消せ
 		GameObject(std::string name);
 
 		/**
-		 * \brief 絶対に1回しか呼ばれない関数
+		 * \brief is_activeがtrueになったときに一度だけ呼ばれる
+		 * 一番最初に呼ばれる
 		 */
-		void Start();
-		void Awake();
-		void OnShutDown();
-		void OnUpdate();
+		void Awake() const;
 
-		void OnDrawInspector();
+		/**
+		 * \brief is_activeがtrueになるたびに呼ばれる
+		 * Awake()の後で呼ばれる
+		 */
+		void OnEnable() const;
+
+		/**
+		 * \brief Awake()と同じくis_active=trueのときに一度だけ呼ばれる
+		 * Awake(), OnEnable() のあとに呼ばれる
+		 */
+		void Start() const;
+
+		/**
+		 * \brief 毎フレーム1回呼ばれる
+		 */
+		void Update() const;
+
+		/**
+		 * \brief is_activeがfalseになるたびに呼ばれる
+		 */
+		void OnDisable() const;
+
+		/**
+		 * \brief ゲームオブジェクトが破棄されるときに呼ばれる
+		 */
+		void OnDestroy() const;
+
+		void OnGui() const;
 
 		template<class T>
 		T* AddComponent();
@@ -47,12 +76,15 @@ namespace argent
 		size_t GetChildCounts() const { return child_objects_.size(); }
 		GameObject* GetChild(size_t child_index) const { return child_objects_.at(child_index).get(); }
 
-		size_t GetComponentsCount() const { return components_.size(); }
+		size_t GetComponentCounts() const { return components_.size(); }
 		std::string GetName() const { return name_; }
 		component::Transform* GetTransform() const { return transform_; }
+		bool GetIsActive() const { return is_active_; }
+		void SetIsActive(bool active_flag);
 	private:
 		std::string name_;
 		Tag tag_;
+		bool is_active_ = true;
 		component::Transform* transform_ = nullptr;
 		std::vector<std::unique_ptr<component::Component>> components_;
 		std::vector<std::unique_ptr<GameObject>> child_objects_;
