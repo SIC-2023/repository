@@ -17,7 +17,8 @@ namespace argent::component
 
 		if(!model)
 		{
-			auto model_data = argent::graphics::ImportModel("./Assets/Gear1.gltf");
+			auto model_data = argent::graphics::ImportModel("./Assets/mountain.gltf");
+			//auto model_data = argent::graphics::ImportModel("./Assets/Gear1.gltf");
 			//auto model_data = argent::graphics::ImportModel("./Assets/ToyCar.gltf");
 			//auto model_data = argent::graphics::ImportModel("./Assets/arakBarrak_v025.fbx");
 			//auto model_data = argent::graphics::ImportModel("./Assets/ue_Mannequin.fbx");

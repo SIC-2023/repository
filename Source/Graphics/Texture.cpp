@@ -7,14 +7,13 @@
 #include "WICTextureLoader.h"
 #include "ResourceUploadBatch.h"
 
-
 #include "GraphicsContext.h"
 #include "GraphicsUtility.h"
 #include "../Utility/Misc.h"
 
 namespace argent::graphics
 {
-	Texture::Texture(const GraphicsContext& graphics_context, const wchar_t* filename):
+	Texture::Texture(const GraphicsContext& graphics_context, const wchar_t* filename, D3D12_SRV_DIMENSION srv_dimension):
 	srv_descriptor_(graphics_context.cbv_srv_uav_heap_->PopDescriptor())
 	{
 		LoadTexture(graphics_context.device_, graphics_context.upload_queue_, filename);
@@ -22,7 +21,7 @@ namespace argent::graphics
 		D3D12_SHADER_RESOURCE_VIEW_DESC shader_resource_view_desc{};
 		shader_resource_view_desc.Format = texture_resource_->GetDesc().Format;
 		shader_resource_view_desc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
-		shader_resource_view_desc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
+		shader_resource_view_desc.ViewDimension = srv_dimension;
 		shader_resource_view_desc.Texture2D.MipLevels = texture_resource_->GetDesc().MipLevels;
 		graphics_context.device_->CreateShaderResourceView(texture_resource_.Get(), &shader_resource_view_desc, srv_descriptor_.GetCpuHandle());
 
@@ -31,7 +30,7 @@ namespace argent::graphics
 
 	}
 
-	Texture::Texture(const GraphicsContext& graphics_context, const char* filename) :
+	Texture::Texture(const GraphicsContext& graphics_context, const char* filename, D3D12_SRV_DIMENSION srv_dimension) :
 		srv_descriptor_(graphics_context.cbv_srv_uav_heap_->PopDescriptor())
 	{
 		std::filesystem::path filepath = filename;
@@ -40,7 +39,7 @@ namespace argent::graphics
 		D3D12_SHADER_RESOURCE_VIEW_DESC shader_resource_view_desc{};
 		shader_resource_view_desc.Format = texture_resource_->GetDesc().Format;
 		shader_resource_view_desc.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
-		shader_resource_view_desc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
+		shader_resource_view_desc.ViewDimension = srv_dimension;
 		shader_resource_view_desc.Texture2D.MipLevels = texture_resource_->GetDesc().MipLevels;
 		graphics_context.device_->CreateShaderResourceView(texture_resource_.Get(), &shader_resource_view_desc, srv_descriptor_.GetCpuHandle());
 

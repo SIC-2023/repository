@@ -22,8 +22,8 @@ float4 main(VertexShaderOutput pin) : SV_TARGET
     float4 normal_color = normal_texture.Sample(linearSampler, texcoord);
 
     float3 normal = pin.normal.xyz;
-    float3 L = normalize(constant.light_direction_.xyz);
-    float3 E = normalize(float3(constant.camera_position_.xyz - pin.world_position.xyz));
+    float3 L = normalize(constant.direction_light_.direction_.xyz);
+    float3 E = normalize(float3(constant.camera_data_.position_.xyz - pin.world_position.xyz));
 
 #if 1 
     float3 N = GetNormal(pin.normal.xyz, pin.binormal.xyz, normal_color.xyz, pin.tangent);
@@ -32,8 +32,7 @@ float4 main(VertexShaderOutput pin) : SV_TARGET
 #endif
     float d = max(0, dot(N, -L));
     //float d = max(0, dot(pin.normal.xyz, -L));
-    float3 diffuse = color.rgb * d;
-    float3 ambient = color.rgb * 0.1f;
+    float3 diffuse = color.rgb * d * constant.direction_light_.color_.rgb;
 
-    return float4(diffuse + ambient, 1.0f);
+    return float4(diffuse, 1.0f);
 }

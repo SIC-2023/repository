@@ -13,7 +13,7 @@ VertexShaderOutput main(VertexShaderInput vin, uint instance_index : SV_INSTANCE
 
     row_major float4x4 world = mul(mesh_constant.local_transform_, object_constant.world_);
 
-    vout.position = mul(float4(vin.position, 1.0f), mul(world, constant.view_projection_));
+    vout.position = mul(float4(vin.position, 1.0f), mul(world, constant.camera_data_.view_projection_));
     vout.world_position = mul(float4(vin.position, 1.0f), world);
     vout.normal = normalize(mul(float4(vin.normal, 0.0f), world));
 

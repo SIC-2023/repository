@@ -4,10 +4,23 @@
 
 #include "../Editor/InspectorWindow.h"
 
+#include "../../Assets/Shader/Constant.h"
+#include "../Component/Camera.h"
+#include "../Component/Light.h"
+
 namespace argent::scene
 {
+	BaseScene::BaseScene(const char* name):
+		name_(name)
+	{
+	}
+
 	void BaseScene::Awake()
 	{
+		auto camera = AddObject("Main Camera");
+		camera->AddComponent<component::Camera>();
+		auto light_object = AddObject("Direction Light");
+		light_object->AddComponent<component::Light>();
 		for(size_t i = 0; i < game_objects_.size(); ++i)
 		{
 			if(game_objects_.at(i)->GetIsActive()) game_objects_.at(i)->Awake();
@@ -106,5 +119,37 @@ namespace argent::scene
 	{
 		game_objects_.emplace_back(std::make_unique<GameObject>(name));
 		return (*game_objects_.rbegin()).get();
+	}
+
+	void BaseScene::RegisterDirectionLight(component::Light* light)
+	{
+		light_ = light;
+	}
+
+	void BaseScene::RegisterCamera(component::Camera* camera)
+	{
+		camera_ = camera;
+	}
+
+	std::vector<DirectionLight> BaseScene::AccumulateDirectionLightData(std::vector<DirectionLight>& direction_lights) const
+	{
+		auto& d = direction_lights.emplace_back();
+		const DirectX::XMFLOAT3 light_color = light_->GetColor();
+		const DirectX::XMFLOAT3 direction = light_->GetDirection();
+		d.color_ = DirectX::XMFLOAT4(light_color.x, light_color.y, light_color.z, light_->GetIntensity());
+		d.direction_ = DirectX::XMFLOAT4(direction.x, direction.y, direction.z, 0.0f);
+		return direction_lights;
+	}
+
+	std::vector<CameraData> BaseScene::AccumulateCameraData(std::vector<CameraData>& camera_data)
+	{
+		auto& c = camera_data.emplace_back();
+		c.view_projection_ = camera_->GetViewProjection();
+		DirectX::XMStoreFloat4x4(&c.inv_view_projection_,
+			DirectX::XMMatrixInverse(nullptr, 
+				DirectX::XMLoadFloat4x4(&c.view_projection_)));
+		auto pos = camera_->GetPosition();
+		c.position_ = DirectX::XMFLOAT4(pos.x, pos.y, pos.z, 1.0f);
+		return camera_data;
 	}
 }

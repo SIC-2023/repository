@@ -16,8 +16,8 @@ float4 main(MSOutput input) : SV_TARGET0
     float4 normal_color = normal_texture.Sample(linearSampler, texcoord);
 
     float3 normal = input.normal_.xyz;
-	float3 L = normalize(constant.light_direction_.xyz);
-    float3 E = normalize(float3(constant.camera_position_.xyz - input.world_position_.xyz));
+	float3 L = normalize(constant.direction_light_.direction_.xyz);
+    float3 E = normalize(float3(constant.camera_data_.position_.xyz - input.world_position_.xyz));
 
 
 #if 1
@@ -28,7 +28,7 @@ float4 main(MSOutput input) : SV_TARGET0
     float d = max(0, dot(N, -L));
 
     //float d = max(0, dot(pin.normal_.xyz, -L));
-    float3 diffuse = color.rgb * d;
+    float3 diffuse = color.rgb * d * constant.direction_light_.color_.rgb;
 
     return float4(diffuse, 1.0f);
 }

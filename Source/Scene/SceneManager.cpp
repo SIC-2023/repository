@@ -23,7 +23,7 @@ namespace argent::scene
 
 	void SceneManager::Render(const rendering::RenderContext& render_context)
 	{
-		scene_->Render(render_context);
+		//scene_->Render(render_context);
 	}
 
 }

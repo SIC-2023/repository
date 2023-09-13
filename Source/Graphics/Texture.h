@@ -11,8 +11,8 @@ namespace argent::graphics
 	class Texture
 	{
 	public:
-		Texture(const GraphicsContext& graphics_context, const wchar_t* filename);
-		Texture(const GraphicsContext& graphics_context, const char* filename);
+		Texture(const GraphicsContext& graphics_context, const wchar_t* filename, D3D12_SRV_DIMENSION = D3D12_SRV_DIMENSION_TEXTURE2D);
+		Texture(const GraphicsContext& graphics_context, const char* filename, D3D12_SRV_DIMENSION = D3D12_SRV_DIMENSION_TEXTURE2D);
 		uint64_t GetHeapIndex() const { return srv_descriptor_.GetHeapIndex(); }
 		float GetWidth() const { return width_; }
 		float GetHeight() const { return height_; }

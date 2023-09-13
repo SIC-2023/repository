@@ -18,12 +18,24 @@
 
 #define _LANE_COUNT_IN_WAVE		32
 #define _MAX_BONE_NUM_			256
+
+struct DirectionLight
+{
+	float4 direction_;
+	float4 color_;
+};
+
+struct CameraData
+{
+	float4 position_;
+	float4x4 view_projection_;
+	float4x4 inv_view_projection_;
+};
+
 struct SceneConstant
 {
-	float4x4 view_projection_;
-	float4 camera_position_;
-	float4 light_direction_;
-	float4x4 inv_view_projection_;
+	CameraData camera_data_;
+	DirectionLight direction_light_;
 };
 
 struct ObjectConstant

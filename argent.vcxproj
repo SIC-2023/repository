@@ -147,6 +147,7 @@
     <ClCompile Include="Source\Component\Component.cpp" />
     <ClCompile Include="Source\Component\ISpriteRenderer.cpp" />
     <ClCompile Include="Source\Component\IStaticMeshRenderer.cpp" />
+    <ClCompile Include="Source\Component\Light.cpp" />
     <ClCompile Include="Source\Component\RendererComponent.cpp" />
     <ClCompile Include="Source\Component\Transform.cpp" />
     <ClCompile Include="source\core\Application.cpp" />
@@ -211,6 +212,7 @@
     <ClInclude Include="Source\Component\Component.h" />
     <ClInclude Include="Source\Component\ISpriteRenderer.h" />
     <ClInclude Include="Source\Component\IStaticMeshRenderer.h" />
+    <ClInclude Include="Source\Component\Light.h" />
     <ClInclude Include="Source\Component\RendererComponent.h" />
     <ClInclude Include="Source\Component\Transform.h" />
     <ClInclude Include="source\core\Application.h" />

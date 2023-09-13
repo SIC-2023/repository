@@ -7,6 +7,7 @@ struct RenderResource
     uint texture_index_;
     uint scene_constant_index_;
 };
+
 ConstantBuffer<RenderResource> render_resource : register(b0);
 
 
@@ -37,7 +38,8 @@ float4 sample_skybox(float3 v, float roughness)
     //float4 ret = skybox.Sample(anisotropicSampler, v);
 	//  ret = InverseGammaProcess(ret, 2.2);
 
-   // ret.rgb = ret.rgb / float3(float3(1, 1, 1) + ret.rgb);
+    v = (v + float3(1, 1, 1)) / 2.0f;
+    return float4(v, 1.0f);
     return float4(ret.xyz, 1);
 }
 
@@ -45,7 +47,7 @@ float4 sample_skybox(float3 v, float roughness)
 float4 main(VSOut pin) : SV_TARGET
 {
     float4 ndc;
-    //UV座標を用いてNDC座標系に変換する 背景の場合は一番奥に描画されるため
+    //UV座標を用いてNDC座標に変換する 背景の場合は一番奥に描画されるため
     //Z値は１
     ndc.x = (pin.texcoord_.x * 2.0) - 1.0;
     ndc.y = 1.0 - (pin.texcoord_.y * 2.0);
@@ -55,15 +57,26 @@ float4 main(VSOut pin) : SV_TARGET
     ConstantBuffer<SceneConstant> sceneConstant = ResourceDescriptorHeap[render_resource.scene_constant_index_];
 
     //ビュープロジェクション行列の逆行列をかけることでワールド座標へ変換
-    float4 R = mul(ndc, sceneConstant.inv_view_projection_);
+    float4 R = mul(ndc, sceneConstant.camera_data_.inv_view_projection_);
+
+    float3 ray_camera_to_world_position = normalize(R.xyz - sceneConstant.camera_data_.position_.xyz);
+
+    ray_camera_to_world_position /= R.w;
 
     //これはなんですか？？？
     //W成分は視錐台の拡大率にあたるらしい
     //そのためw成分で割ることで-1~1の範囲に値を収められる
     //ただの座標変換では直接使うことはないがプロジェクション行列が関わったら
     //重要っぽい…
-    R /= R.w;
+    //つまりNDC上に配置できるってこと？？？
+	R /= R.w;
     const float roughness = 0;
     //return float4(1, 1, 1, 1);
+
+    //ワールドからカメラ座標に変換
+    //R = mul(float4(R.xyz, 1.0f), sceneConstant.view_projection_);
+    //R = R / R.w;
+
+	//return sample_skybox(ray_camera_to_world_position, roughness);
     return sample_skybox(R.xyz, roughness);
 }

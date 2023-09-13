@@ -180,6 +180,7 @@
     <ClCompile Include="Source\Component\Camera.cpp">
       <Filter>Argent\Component</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Component\Light.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -208,9 +209,6 @@
     </Filter>
     <Filter Include="Argent\SubSystem\Graphics\Model">
       <UniqueIdentifier>{002c2379-45aa-438d-9823-c12a2ef77c8c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Com">
-      <UniqueIdentifier>{875b541c-4c5b-447c-8393-e7085554bcd4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Argent\SubSystem\Editor">
       <UniqueIdentifier>{4b40ab6d-9f86-4e2e-a683-3579077aa530}</UniqueIdentifier>
@@ -455,6 +453,7 @@
     <ClInclude Include="Source\Component\Camera.h">
       <Filter>Argent\Component</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Component\Light.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

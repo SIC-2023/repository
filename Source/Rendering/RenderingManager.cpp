@@ -57,9 +57,28 @@ namespace argent::rendering
 	{
 		post_process_manager_.Shutdown();
 	}
-	
+
+	SceneConstant RenderingManager::AccumulateSceneData(scene::BaseScene* scene)
+	{
+		SceneConstant scene_constant{};
+		std::vector<DirectionLight> direction_lights{};
+		std::vector<CameraData> camera_data{};
+		direction_lights = scene->AccumulateDirectionLightData(direction_lights);
+		camera_data = scene->AccumulateCameraData(camera_data);
+
+		scene_constant.direction_light_ = direction_lights.at(0);
+		scene_constant.camera_data_ = camera_data.at(0);
+		return scene_constant;
+	}
+
 	void RenderingManager::Execute(const RenderContext& render_context, scene::BaseScene* scene)
 	{
+		//シーンデータのアップデート
+		auto scene_constant = AccumulateSceneData(scene);
+		render_context.SetSceneData(scene_constant);
+		render_context.SetFrustumData(scene_constant.camera_data_.view_projection_, scene_constant.camera_data_.position_);
+		
+
 		//描画開始
 		auto* d3d12_command_list = render_context.GetCommandList();
 		const int frame_index = render_context.GetFrameIndex();
@@ -72,7 +91,7 @@ namespace argent::rendering
 		frame_buffers_[frame_index]->Begin(d3d12_command_list);
 
 		////シーン描画
-		scene->Render(render_context);
+	//	scene->Render(render_context);
 
 		d3d12_command_list->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 		sky_map_graphics_pipeline_state_->SetOnCommandList(d3d12_command_list);

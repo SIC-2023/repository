@@ -21,6 +21,7 @@ namespace argent::component
 		void OnRender(const rendering::RenderContext& render_context) override;
 
 		void OnGui() override;
+		
 	private:
 		std::unique_ptr<rendering::StaticMeshRenderer> static_mesh_renderer_;
 	};

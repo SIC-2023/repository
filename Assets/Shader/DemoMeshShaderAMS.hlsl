@@ -64,7 +64,7 @@ void main
         //row_major float4x4 world = mesh_constant.local_transform_;
         row_major float4x4 world = mul(mesh_constant.local_transform_, object_constant.world_);
 
-        output.position_ = mul(float4(position.xyz, 1.0f), mul(world, constant.view_projection_));
+        output.position_ = mul(float4(position.xyz, 1.0f), mul(world, constant.camera_data_.view_projection_));
 
         output.world_position_ = mul(float4(position, 1.0f), world);
         output.normal_ = normalize(mul(float4(normal, 0.0f), world));

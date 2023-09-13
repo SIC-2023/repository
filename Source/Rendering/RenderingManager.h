@@ -37,6 +37,7 @@ namespace argent::rendering
 		void Awake() override;
 		void Shutdown() override;
 
+		SceneConstant AccumulateSceneData(scene::BaseScene* scene);
 		void Execute(const RenderContext& render_context, scene::BaseScene* scene);
 
 		bool GetIsPostProcessing() const { return is_post_processing_; }

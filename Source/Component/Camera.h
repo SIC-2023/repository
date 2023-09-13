@@ -12,6 +12,8 @@ namespace argent::component
 		Camera();
 		~Camera() override = default;
 
+		void Awake() override;
+		void Update() override;
 
 		//TODO ImGuiへの描画を行う関数名の変更
 		void OnGui() override;
@@ -19,13 +21,13 @@ namespace argent::component
 		//TODO カメラコントローラー　Editor専用なので移動させること
 		void Controller();
 
-		DirectX::XMFLOAT4 GetPosition() const { return position_; }
+		DirectX::XMFLOAT3 GetPosition() const;
 		DirectX::XMFLOAT4X4 GetViewProjection() const;
 	private:
 
 
-		DirectX::XMFLOAT4 position_{ 0, 0, 0, 1.0f };
-		DirectX::XMFLOAT3 rotation_;
+		//DirectX::XMFLOAT4 position_{ 0, 0, 0, 1.0f };
+		//DirectX::XMFLOAT3 rotation_;
 		DirectX::XMVECTOR up_{ 0, 1, 0, 0 };
 		float fov_angle_ = DirectX::XMConvertToRadians(60.0f);
 		float aspect_ratio_ = 1280.0f / 720.0f;
